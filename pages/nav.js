@@ -51,7 +51,10 @@ const buttonOp = new button(`收起`,()=>{
     }
 })
 const buttonTop2 = new button(`回到顶部`,()=>{
-    window.scrollTo(0,0)
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    })
 })
 buttonTop2.element.style.width = `100px`
 buttonTop2.element.style.left = `50px`
@@ -84,7 +87,10 @@ sqlist.forEach((item)=>{
     if(item.localName===`h6`)box.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${item.innerHTML}`
     box.style.lineHeight = `30px`
     box.addEventListener(`click`,()=>{
-        window.scrollTo(0,item.offsetTop-50)
+        window.scrollTo({
+            top: item.offsetTop-50,
+            behavior: "smooth"
+        })
     })
     box.style.cursor = `pointer`
 })

@@ -55,6 +55,12 @@ const buttonTop2 = new button(`回到顶部`,()=>{
 })
 buttonTop2.element.style.width = `100px`
 buttonTop2.element.style.left = `50px`
+const buttonBack = new button(`回到目录`,()=>{
+    history.go(-1)
+})
+buttonBack.element.style.width = `100px`
+buttonBack.element.style.left = `150px`
+
 
 
 const preview = document.querySelector(`.markdown-preview`)
@@ -78,7 +84,7 @@ sqlist.forEach((item)=>{
     if(item.localName===`h6`)box.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${item.innerHTML}`
     box.style.lineHeight = `30px`
     box.addEventListener(`click`,()=>{
-        window.scrollTo(0,item.offsetTop)
+        window.scrollTo(0,item.offsetTop-50)
     })
     box.style.cursor = `pointer`
 })

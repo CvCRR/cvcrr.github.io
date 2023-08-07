@@ -1,5 +1,7 @@
 <h1 align="center">Vue2&Vue3</h1>
 
+<div align="right">最近更新时间：2023-08-07</div>
+
 ## 介绍
 
 |        | Vue                         |
@@ -1027,5 +1029,3 @@ npm run build
 | stores     | 存pinia插件类构造配置文件counter.js   |
 | utils      | 自封装的js模块                    |
 | api        | 自封装的同类请求方法                  |
-
-

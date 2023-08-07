@@ -1,5 +1,7 @@
 <h1 align="center">JavaScript</h1>
 
+<div align="right">最近更新时间：2023-08-07</div>
+
 ## 介绍
 
 |         | 内容                             |
@@ -16,11 +18,11 @@
 
 + API：应用程序编程接口，提供封装了特定功能的函数、方法、类、对象等。
 
-| 嵌入html文件三种方式 | 语法                                  |
-|:------------:|:-----------------------------------:|
-| html内部       | `<script> js代码块 </script>`          |
-| html外部       | `<script src=“js文件”></script>`      |
-| html行内       | `<button onclick="js代码行"></button>` |
+| 嵌入html文件三种方式      | 语法                                  |
+|:-----------------:|:-----------------------------------:|
+| html内部（body尾部子元素） | `<script> js代码块 </script>`          |
+| html外部            | `<script src=“js文件”></script>`      |
+| html行内            | `<button onclick="js代码行"></button>` |
 
 ---
 
@@ -926,5 +928,3 @@ throw new Error('错误提示')
 + 间歇函数、延时函数会返回该定时器编号
 
 ---
-
-

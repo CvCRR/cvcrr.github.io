@@ -1,6 +1,6 @@
 <h1 align="center">JavaScript</h1>
 
-<div align="right">最近更新时间：2023-08-07</div>
+<div align="right">最近更新时间：2023-09-30</div>
 
 ## 介绍
 
@@ -82,7 +82,7 @@
         <td>对象</td><td>Object</td>
     </tr>
     <tr>
-        <td rowspan="5">特殊</td><td>空</td><td>null</td>
+        <td rowspan="6">特殊</td><td>空</td><td>null</td>
     </tr>
     <tr>
         <td>未定义</td><td>undefined</td>
@@ -92,6 +92,9 @@
     </tr>
     <tr>
         <td>函数</td><td>function</td>
+    </tr>
+    <tr>
+        <td>独一无二</td><td>Symbol</td>
     </tr>
     <tr>
         <td>类</td><td>class</td>
@@ -222,8 +225,11 @@ for(取自数据容器 in 数据容器){
 
 ```javascript
 class 类名{
+    属性        //属性的定义
+    属性 = 值    //属性的定义，带默认值
+    static 属性    //静态属性
     constructor(形参,形参) {
-        this.属性 = 形参    //属性的定义，赋值
+        this.属性 = 形参    //属性的初始化赋值，建议先在上面先定义
         this.属性 = 形参
     }
     方法(){方法体}    //方法的定义
@@ -234,14 +240,18 @@ class 类名{
 **类的实例化**
 
 ```javascript
-let 对象 = new 类名()  
+let 对象 = new 类名(形参)  
 ```
 
 **类继承**
 
 ```javascript
 class 子类 extends 父类{
-    类定义
+    constructor(形参,形参) {
+        super(父类构造函数形参)    //子类使用构造函数必须先super
+        略
+    }
+    略
 }
 ```
 
@@ -278,7 +288,7 @@ let 对象 = new 构造函数名()
 
 ```javascript
 子构造函数.prototype = new 父构造函数()
-子构造函数.prototype.constructor = 父构造函数
+子构造函数.prototype.constructor = 子构造函数
 ```
 
 + 构造函数：用于批量生产对象
@@ -398,19 +408,6 @@ function(形参){
 + 函数调用：`函数名()`
 
 + 立即执行：`(函数体)();`或`(函数体());`
-
-| 函数this指针的指向 | 指向     |
-|:-----------:|:------:|
-| 一般函数        | window |
-| 构造函数        | 调用者    |
-| 对象方法        | 对象     |
-| 事件回调函数      | 绑定事件对象 |
-
-| 函数实例方法改变this指针 | 说明                     |
-|:--------------:|:----------------------:|
-| `call(对象)`     | 让本函数this指向该对象，然后调用函数   |
-| `apply(数组对象)`  | 让本函数this指向该数组对象，然后调用函数 |
-| `bind(对象)`     | 让本函数this指向该对象，但不调用函数   |
 
 ---
 
@@ -914,17 +911,59 @@ throw new Error('错误提示')
 
 ## window对象
 
-| 常用属性方法   |                            |
-|:--------:|:--------------------------:|
-| 间歇函数     | `setInterval(回调函数,间隔时间ms)` |
-| 关闭间歇函数   | `clearInterval(要关闭的定时器编号)` |
-| 延迟函数     | `setTimeout(回调函数,延迟时间ms)`  |
-| 关闭延迟函数   | `clearTimeout(要关闭的定时器编号)`  |
-| 页面滚动     | `scrollTo()`               |
-| 弹框输出     | `alert('内容')`              |
-| 弹框接受布尔输入 | `confirm('提示')`            |
-| 弹框接收输入   | `prompt('提示')`             |
+| 常用属性方法   | API                                                          |
+|:--------:|:------------------------------------------------------------:|
+| 间歇函数     | `setInterval(回调函数,间隔时间ms)`                                   |
+| 关闭间歇函数   | `clearInterval(要关闭的定时器编号)`                                   |
+| 延迟函数     | `setTimeout(回调函数,延迟时间ms)`                                    |
+| 关闭延迟函数   | `clearTimeout(要关闭的定时器编号)`                                    |
+| 微任务函数    | `queueMicroTask(回调函数)`                                       |
+| DOM监听器类  | `new MutationObserver(回调函数).observe(DOM元素,{childList:true})` |
+| 页面滚动函数   | `scrollTo()`                                                 |
+| 弹框输出函数   | `alert('内容')`                                                |
+| 弹框接收布尔输入 | `confirm('提示')`                                              |
+| 弹框接收输入   | `prompt('提示')`                                               |
 
 + 间歇函数、延时函数会返回该定时器编号
 
 ---
+
+## this相关
+
+| 所处环境  | 非严格模式this指向 | 严格模式this指向  |
+|:-----:|:-----------:|:-----------:|
+| 最外层环境 | window/所有对象 | window/所有对象 |
+| 函数    | window/所有对象 | undefine    |
+| 对象方法  | 调用者         | 调用者         |
+| 箭头函数  | 继承上层环境this  | 继承上层环境this  |
+
++ **严格模式**：默认关，开启方法在环境/函数最顶部添加`'use strict'`
+
+| 函数实例方法改变this     | 说明                          |
+|:----------------:|:---------------------------:|
+| `call(对象,形参)`    | 让this指向该对象，传参，并调用           |
+| `apply(对象,数组形参)` | 让this指向该对象，传参数组，并调用         |
+| `bind(对象,形参)`    | 让this指向该对象，同时绑定形参，不调用，返回新函数 |
+
++ 自定义实例方法：（核心是**改环境**，由函数改为对象方法）
+  
+  ```javascript
+  Function.prototype.myCall = function (thisArr,...arr){
+      const key = Symbol()    //避免方法重名
+      thisArr[key] = this    //将函数作为方法挂入对象内
+      const res = thisArr[key](...arr)    //用对象方法调用
+      delete thisArr[key]    //临时方法要删除
+      return res    //保持函数返回
+  }
+  Function.prototype.myApply = function (thisArr,arr){    //区别于此
+      const key = Symbol()
+      thisArr[key] = this
+      const res = thisArr[key](...arr)
+      delete thisArr[key]
+      return res
+  }
+  Function.prototype.myBind = function (thisArr,...bindArr){
+      //利用箭头函数的特点：this继承、作函数表达式传函数体
+      return (...newArr) => this.call(thisArr,...bindArr,...newArr)
+  }
+  ```

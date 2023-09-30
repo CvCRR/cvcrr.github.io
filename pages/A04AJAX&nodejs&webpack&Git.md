@@ -1,6 +1,6 @@
 <h1 align="center">AJAX&nodejs&webpack&Git</h1>
 
-<div align="right">最近更新时间：2023-08-07</div>
+<div align="right">最近更新时间：2023-09-30</div>
 
 ## 介绍
 
@@ -31,10 +31,7 @@
         <td>version</td><td>版本</td>
     </tr>
     <tr>
-        <td rowspan="4">请求头</td><td>Content-Type</td><td>表明附带的请求体格式</td>
-    </tr>
-    <tr>
-        <td>Headers</td><td>请求头参数</td>
+        <td rowspan="3">请求头</td><td>Content-Type</td><td>表明附带的请求体格式</td>
     </tr>
     <tr>
         <td>Cookie</td><td>用于身份验证</td>
@@ -170,6 +167,103 @@ promise.catch((error)=>{ //状态rejected才执行，error为promiseResult
 
 + `promise.promiseResult`存传入函数的参数，并传入`then/catch`函数。
 
+**手写promise类**
+
+```javascript
+class MyPromise(){
+    promiseState = 'padding'//三种状态
+    result = undefined//正确、错误两状态结果都存在这
+    #handlers = []//延时触发存储
+    constructor(func){
+        const resolve = (res) => {
+            if(this.promiseState === 'padding'){//状态不可逆
+                this.promiseState = 'fulfilled'
+                this.result = res
+                this.#handlers.forEach(item=>{//延时触发
+                    item.onFulfilled(this.result)
+                })
+            }
+        }
+        const reject = （res） => {
+            if(this.promiseState === 'padding'){//状态不可逆
+                this.promiseState = 'rejected'
+                this.result = res
+                this.#handlers.forEach(item=>{//延时触发
+                    item.onRejected(this.result)
+                })
+            }
+        }
+        func(resolve,reject)
+    }
+    then(onFulfilled,onRejected){
+        //是函数不动，不是函数改造成（x）=>{return x}的函数
+        onFulfilled = typeof onFulfilled==='function'?onFulfilled:x=>x
+        //是函数不动，不是函数改造成（x）=>{throw x}的函数
+        onRejected = typeof onRejected==='function'?onRejected:x=>{throw x}
+        const p2 = new MyPromise(resolve,reject){
+            if(this.promiseState === 'fulfilled'){//正确立即触发
+                AsyncTask(()=>{
+                    try{
+                        cosnt x = onFulfilled(this.result)
+                        resolvePromise(p2,x,resolve,reject)
+                    }catch(error){
+                        reject(error)
+                    }
+                })
+            }else if(this.promiseState === 'rejected'){//错误立即触发
+                AsyncTask(()=>{
+                    try{
+                        const x = onRejected(this.result) 
+                        resolvePromise(p2,x,resolve,reject)
+                    }catch(error){
+                        reject(error)
+                    }
+                })
+            }else if(this.promiseState === 'padding'){//延时触发存储
+                this.#handlers.append({
+                    onFulfilled:AsyncTask(()=>{//存储的正确触发
+                        try{
+                            cosnt x = onFulfilled(this.result)
+                            resolvePromise(p2,x,resolve,reject)
+                        }catch(error){
+                            reject(error)
+                        }
+                    }),
+                    onRejected:AsyncTask(()=>{//存储的错误触发
+                        try{
+                            const x = onRejected(this.result) 
+                            resolvePromise(p2,x,resolve,reject)
+                        }catch(error){
+                            reject(error)
+                        }
+                    })
+                })
+            }
+        return p2    //有返回值时，支持链式编程，返回新promise
+    }
+}
+function AsyncTask(callback){//把执行函数变成异步任务
+    if(typeof queueMicroTask === 'function'){//兼容性
+        queueMicroTask(callback)
+    }else if(typeof MutationObserver === 'function'){//兼容性
+        const obs = new MutationObserver(callback)
+        const div = document.createElement('div')
+        obs.observe(div,{childList:true})
+        div.innerTest = 'change'
+    }else{
+        setTimeout(callback，0)
+    }
+}
+function resolvePromise(p2,x,resolve,reject){
+    if(x === p2){throw new TypeError('循环重复引用错误')}
+    if(x instanceof MyPromise){//返P实例，原封不动复制到新实例
+        x.then(res=>{resolve(res)},err=>{reject(err)})
+    }else{
+        resolve(x)    //返非P实例，作为新实例的res
+    }
+}
+```
+
 ---
 
 ### axios第三方库
@@ -258,7 +352,7 @@ axios.interceptors.response.use(
 
 ---
 
-### 回调函数地狱
+### 回调函数地狱与异步管理
 
 **概念**：回调函数嵌套回调函数，一直嵌套下去，造成问题：耦合性严重，外部无法捕获内部异常。解决方法：promise链式调用，async和await关键字。
 
@@ -300,6 +394,52 @@ async function fun(){
 fun()
 ```
 
+**Generator生成器函数**：js自带的异步解决工具，按区划分代码，调用next方法会接着执行一个区域，是promise链式调用到async的过渡工具，可以说其语法糖是async。
+
+```javascript
+function* MyGenerator(){    //function*是生成器函数定义
+    yield axios('www.123.com')
+    yield axios('www.345.com')
+    yield axios('www.456.com')
+}
+const mygenerator = MyGenerator()//生成器函数调用，返回generator对象
+(function(){
+    mygenerator.next().value.then(res => {//通过next接着执行一个yield区域
+        console.log(`www.123.com请求成功，返回数据为${res}`)
+        return mygenerator.next().value
+    }).then(res => {
+        console.log(`www.345.com请求成功，返回数据为${res}`)
+        return mygenerator.next().value
+    }).then(res => {
+        console.log(`www.456.com请求成功，返回数据为${res}`)
+        return mygenerator.next().value
+    })
+})();
+```
+
+---
+
+### fetch类
+
+**概念**：js自带的轻量版axios请求函数
+
+```javascript
+(async function(){
+    const res = await fetch('www.123.com?age=100',{
+        methods:'post',
+        headers:new Headers().append(
+            JSON.stringfly({'content-type':'multipart/form-data'})
+        ),
+        body:请求体数据
+    })
+    if(res.status >= 200 && res.status < 300){
+        console.log(`请求成功，结果为：${JSON.parse(res)}`)
+    }else{
+        console.log(`请求失败，状态码为：${res/status}`)
+    }
+})();
+```
+
 ---
 
 ### JS执行机制
@@ -312,6 +452,8 @@ fun()
 + 所以任务总共划分为**三级**：同步任务、微任务、宏任务
 
 + **执行顺序**：同步任务优先执行，调入可执行的微任务在清空同步任务后，调入可执行的宏任务在清空同步任务和微任务后。
+
++ **异步任务API**：Promise.then()，queueMicroTask()，MutationObserver()，setTimeout()
 
 ---
 

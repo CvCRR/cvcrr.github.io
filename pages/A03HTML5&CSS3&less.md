@@ -1,6 +1,6 @@
 <h1 align="center">HTML5&CSS3&less</h1>
 
-<div align="right">最近更新时间：2023-08-07</div>
+<div align="right">最近更新时间：2024-01-04</div>
 
 ## 介绍
 
@@ -344,6 +344,7 @@ css选择器{
 | 改轴（父）     | `flex-direction`  | 水平`row` 垂直`column `<br/>水平颠倒`row-reverse` <br/>垂直颠倒`column-reverse`                                                        |
 | 换行（父）     | `flex-wrap`       | 换行`wrap` 不换行`nowrap`                                                                                                       |
 | 换行侧轴排列（父） | `align-content`   | 开头`flex-start` <br/>尾部`flex-end` <br/>居中`center` <br/>空白中间`space-between` <br/>空白两侧`space-around` <br/>空白均匀`space-evently` |
+| 剩余区域划分（子） | `flex`            | 相对份数`1`                                                                                                                    |
 
 ---
 

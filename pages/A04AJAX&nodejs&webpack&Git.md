@@ -1,6 +1,6 @@
 <h1 align="center">AJAX&nodejs&webpack&Git</h1>
 
-<div align="right">最近更新时间：2023-09-30</div>
+<div align="right">最近更新时间：2024-01-04</div>
 
 ## 介绍
 
@@ -166,6 +166,8 @@ promise.catch((error)=>{ //状态rejected才执行，error为promiseResult
 + `promise.promiseState`的**三种状态**：`padding、fulfilled、rejected`
 
 + `promise.promiseResult`存传入函数的参数，并传入`then/catch`函数。
+
++ 同时请求的语法：`Promise.all([请求1,请求2,请求3])`
 
 **手写promise类**
 

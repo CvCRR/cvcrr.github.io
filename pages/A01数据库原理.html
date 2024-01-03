@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>A01&#x6570;&#x636E;&#x5E93;&#x539F;&#x7406;</title>
+      <title>A01数据库原理</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -8,1118 +8,869 @@
       
       
       
-      
-      
-      
-      
-      
       <style>
-      /**
- * prism.js Github theme based on GitHub's theme.
- * @author Sam Clarke
- */
-code[class*="language-"],
-pre[class*="language-"] {
-  color: #333;
-  background: none;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 1.4;
-
-  -moz-tab-size: 8;
-  -o-tab-size: 8;
-  tab-size: 8;
-
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-  padding: .8em;
-  overflow: auto;
-  /* border: 1px solid #ddd; */
-  border-radius: 3px;
-  /* background: #fff; */
-  background: #f5f5f5;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: .1em;
-  border-radius: .3em;
-  white-space: normal;
-  background: #f5f5f5;
-}
-
-.token.comment,
-.token.blockquote {
-  color: #969896;
-}
-
-.token.cdata {
-  color: #183691;
-}
-
-.token.doctype,
-.token.punctuation,
-.token.variable,
-.token.macro.property {
-  color: #333;
-}
-
-.token.operator,
-.token.important,
-.token.keyword,
-.token.rule,
-.token.builtin {
-  color: #a71d5d;
-}
-
-.token.string,
-.token.url,
-.token.regex,
-.token.attr-value {
-  color: #183691;
-}
-
-.token.property,
-.token.number,
-.token.boolean,
-.token.entity,
-.token.atrule,
-.token.constant,
-.token.symbol,
-.token.command,
-.token.code {
-  color: #0086b3;
-}
-
-.token.tag,
-.token.selector,
-.token.prolog {
-  color: #63a35c;
-}
-
-.token.function,
-.token.namespace,
-.token.pseudo-element,
-.token.class,
-.token.class-name,
-.token.pseudo-class,
-.token.id,
-.token.url-reference .token.variable,
-.token.attr-name {
-  color: #795da3;
-}
-
-.token.entity {
-  cursor: help;
-}
-
-.token.title,
-.token.title .token.punctuation {
-  font-weight: bold;
-  color: #1d3e81;
-}
-
-.token.list {
-  color: #ed6a43;
-}
-
-.token.inserted {
-  background-color: #eaffea;
-  color: #55a532;
-}
-
-.token.deleted {
-  background-color: #ffecec;
-  color: #bd2c00;
-}
-
-.token.bold {
-  font-weight: bold;
-}
-
-.token.italic {
-  font-style: italic;
-}
-
-
-/* JSON */
-.language-json .token.property {
-  color: #183691;
-}
-
-.language-markup .token.tag .token.punctuation {
-  color: #333;
-}
-
-/* CSS */
-code.language-css,
-.language-css .token.function {
-  color: #0086b3;
-}
-
-/* YAML */
-.language-yaml .token.atrule {
-  color: #63a35c;
-}
-
-code.language-yaml {
-  color: #183691;
-}
-
-/* Ruby */
-.language-ruby .token.function {
-  color: #333;
-}
-
-/* Markdown */
-.language-markdown .token.url {
-  color: #795da3;
-}
-
-/* Makefile */
-.language-makefile .token.symbol {
-  color: #795da3;
-}
-
-.language-makefile .token.variable {
-  color: #183691;
-}
-
-.language-makefile .token.builtin {
-  color: #0086b3;
-}
-
-/* Bash */
-.language-bash .token.keyword {
-  color: #0086b3;
-}
-
-/* highlight */
-pre[data-line] {
-  position: relative;
-  padding: 1em 0 1em 3em;
-}
-pre[data-line] .line-highlight-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: transparent;
-  display: block;
-  width: 100%;
-}
-
-pre[data-line] .line-highlight {
-  position: absolute;
-  left: 0;
-  right: 0;
-  padding: inherit 0;
-  margin-top: 1em;
-  background: hsla(24, 20%, 50%,.08);
-  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
-  pointer-events: none;
-  line-height: inherit;
-  white-space: pre;
-}
-
-pre[data-line] .line-highlight:before, 
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-start);
-  position: absolute;
-  top: .4em;
-  left: .6em;
-  min-width: 1em;
-  padding: 0 .5em;
-  background-color: hsla(24, 20%, 50%,.4);
-  color: hsl(24, 20%, 95%);
-  font: bold 65%/1.5 sans-serif;
-  text-align: center;
-  vertical-align: .3em;
-  border-radius: 999px;
-  text-shadow: none;
-  box-shadow: 0 1px white;
-}
-
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-end);
-  top: auto;
-  bottom: .4em;
-}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p,html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div{display:inline}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
 /* Please visit the URL below for more information: */
 /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
 
       </style>
-    </head>
-    <body for="html-export">
-      <div class="mume markdown-preview  ">
-      <h1 align="middle">&#x6570;&#x636E;&#x5E93;&#x539F;&#x7406;</h1>
-<div align="right">&#x6700;&#x8FD1;&#x66F4;&#x65B0;&#x65F6;&#x95F4;&#xFF1A;2023-08-07</div>
-<h2 class="mume-header" id="%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E7%90%86%E8%AE%BA">&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#x7406;&#x8BBA;</h2>
-
-<p><strong>&#x6570;&#x636E;&#x5E93;&#x5206;&#x7C7B;</strong>&#xFF1A;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#xFF08;&#x5982;MySQL&#xFF09;&#x3001;&#x975E;&#x5173;&#x7CFB;&#x578B;&#x6570;&#x636E;&#x5E93;&#xFF08;&#x5982;Redis&#xFF09;</p>
-<h3 class="mume-header" id="%E4%B8%89%E8%A6%81%E7%B4%A0">&#x4E09;&#x8981;&#x7D20;</h3>
-
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 align="middle">数据库原理</h1>
+<div align="right">最近更新时间：2024-01-04</div>
+<h2 id="关系型数据库理论">关系型数据库理论 </h2>
+<p><strong>数据库分类</strong>：关系型数据库（如MySQL）、非关系型数据库（如Redis）</p>
+<h3 id="三要素">三要素 </h3>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x4E09;&#x8981;&#x7D20;</th>
-<th style="text-align:center">&#x5185;&#x5BB9;</th>
+<th style="text-align:center">三要素</th>
+<th style="text-align:center">内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x5173;&#x7CFB;&#x6570;&#x636E;&#x7ED3;&#x6784;</td>
-<td style="text-align:center">&#x4E8C;&#x7EF4;&#x8868;</td>
+<td style="text-align:center">关系数据结构</td>
+<td style="text-align:center">二维表</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x5173;&#x7CFB;&#x64CD;&#x4F5C;</td>
-<td style="text-align:center">&#x589E;&#x5220;&#x6539;&#x67E5;&#xFF08;&#x5173;&#x7CFB;&#x4EE3;&#x6570;&#x8BED;&#x8A00;&#xFF0C;&#x5173;&#x7CFB;&#x6F14;&#x7B97;&#x8BED;&#x8A00;&#xFF0C;&#x7EFC;&#x5408;&#x6027;&#x7684;SQL&#xFF09;</td>
+<td style="text-align:center">关系操作</td>
+<td style="text-align:center">增删改查（关系代数语言，关系演算语言，综合性的SQL）</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x5B8C;&#x6574;&#x6027;&#x7EA6;&#x675F;</td>
-<td style="text-align:center">&#x5B9E;&#x4F53;&#x5B8C;&#x6574;&#x6027;&#x3001;&#x53C2;&#x7167;&#x5B8C;&#x6574;&#x6027;&#x3001;&#x81EA;&#x5B9A;&#x4E49;&#x5B8C;&#x6574;&#x6027;</td>
+<td style="text-align:center">完整性约束</td>
+<td style="text-align:center">实体完整性、参照完整性、自定义完整性</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x8981;&#x7D20;&#x4E00;&#xFF1A;&#x5173;&#x7CFB;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x672F;&#x8BED;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">要素一：关系数据结构术语</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x5173;&#x7CFB;&#x6A21;&#x5F0F;</td>
-<td style="text-align:center">&#x8868;&#x683C;&#x7684;&#x8868;&#x5934;</td>
+<td style="text-align:center">关系模式</td>
+<td style="text-align:center">表格的表头</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x57DF;&#x3001;&#x5C5E;&#x6027;</td>
-<td style="text-align:center">&#x8868;&#x683C;&#x7684;&#x5217;</td>
+<td style="text-align:center">域、属性</td>
+<td style="text-align:center">表格的列</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x5173;&#x7CFB;&#x3001;&#x5143;&#x7EC4;</td>
-<td style="text-align:center">&#x8868;&#x683C;&#x7684;&#x5185;&#x5BB9;&#x884C;</td>
+<td style="text-align:center">关系、元组</td>
+<td style="text-align:center">表格的内容行</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x7801;</td>
-<td style="text-align:center">&#x7531;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x5C5E;&#x6027;&#x6784;&#x6210;&#xFF0C;&#x80FD;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x6BCF;&#x4E2A;&#x5143;&#x7EC4;</td>
+<td style="text-align:center">码</td>
+<td style="text-align:center">由一个或多个属性构成，能唯一标识每个元组</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x5019;&#x9009;&#x7801;</td>
-<td style="text-align:center">&#x6240;&#x6709;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x7684;&#x7801;</td>
+<td style="text-align:center">候选码</td>
+<td style="text-align:center">所有符合条件的码</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x4E3B;&#x7801;&#x3001;&#x4E3B;&#x952E;</td>
-<td style="text-align:center">&#x4ECE;&#x5019;&#x9009;&#x7801;&#x4E2D;&#xFF0C;&#x9009;&#x51FA;&#x7684;1&#x4E2A;</td>
+<td style="text-align:center">主码、主键</td>
+<td style="text-align:center">从候选码中，选出的1个</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x8981;&#x7D20;&#x4E8C;&#xFF1A;&#x5173;&#x7CFB;&#x64CD;&#x4F5C;&#x672F;&#x8BED;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">要素二：关系操作术语</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x5173;&#x7CFB;&#x4EE3;&#x6570;&#x8BED;&#x8A00;</td>
-<td style="text-align:center">&#x67E5;&#x8BE2;&#x64CD;&#x4F5C;&#x65F6;&#x662F;<strong>&#x96C6;&#x5408;&#x64CD;&#x4F5C;</strong>&#x4E3A;&#x57FA;&#x7840;&#x8FD0;&#x7B97;&#x7684;&#x8BED;&#x8A00;</td>
+<td style="text-align:center">关系代数语言</td>
+<td style="text-align:center">查询操作时是<strong>集合操作</strong>为基础运算的语言</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x5173;&#x7CFB;&#x6F14;&#x7B97;&#x8BED;&#x8A00;</td>
-<td style="text-align:center">&#x67E5;&#x8BE2;&#x64CD;&#x4F5C;&#x662F;&#x4EE5;<strong>&#x8C13;&#x8BCD;&#x6F14;&#x7B97;</strong>&#x4E3A;&#x57FA;&#x7840;&#x8FD0;&#x7B97;&#x7684;&#x8BED;&#x8A00;</td>
+<td style="text-align:center">关系演算语言</td>
+<td style="text-align:center">查询操作是以<strong>谓词演算</strong>为基础运算的语言</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x7EFC;&#x5408;&#x6027;&#x7684;SQL</td>
-<td style="text-align:center">&#x7EFC;&#x5408;&#x5173;&#x7CFB;&#x4EE3;&#x6570;&#x8BED;&#x8A00;&#x3001;&#x5173;&#x7CFB;&#x6F14;&#x7B97;&#x8BED;&#x8A00;&#x7279;&#x70B9;&#x7684;DDL&#x3001;DML&#x3001;DQL&#x3001;DCL&#x8BED;&#x8A00;</td>
+<td style="text-align:center">综合性的SQL</td>
+<td style="text-align:center">综合关系代数语言、关系演算语言特点的DDL、DML、DQL、DCL语言</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x8981;&#x7D20;&#x4E09;&#xFF1A;&#x5B8C;&#x6574;&#x6027;&#x7EA6;&#x675F;&#x672F;&#x8BED;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">要素三：完整性约束术语</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x5B9E;&#x4F53;&#x5B8C;&#x6574;&#x6027;</td>
-<td style="text-align:center">&#x5173;&#x7CFB;&#x4E2D;&#x4E0D;&#x80FD;&#x6709;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#x7684;&#x5143;&#x7EC4;</td>
+<td style="text-align:center">实体完整性</td>
+<td style="text-align:center">关系中不能有完全相同的元组</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x53C2;&#x7167;&#x5B8C;&#x6574;&#x6027;</td>
-<td style="text-align:center">&#x53C2;&#x7167;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;&#x53CA;&#x5185;&#x5BB9;&#xFF0C;&#x5FC5;&#x987B;&#x662F;&#x88AB;&#x53C2;&#x7167;&#x8868;&#x6240;&#x6709;&#x7684;</td>
+<td style="text-align:center">参照完整性</td>
+<td style="text-align:center">参照的所有属性及内容，必须是被参照表所有的</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x81EA;&#x5B9A;&#x4E49;&#x5B8C;&#x6574;&#x6027;</td>
-<td style="text-align:center">&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x53D6;&#x503C;&#x9650;&#x5236;</td>
+<td style="text-align:center">自定义完整性</td>
+<td style="text-align:center">自定义的取值限制</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x5173;&#x7CFB;&#x4EE3;&#x6570;&#x8868;&#x793A;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">关系代数表示</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x4EA4;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2229;</mo></mrow><annotation encoding="application/x-tex">\cap</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">&#x2229;</span></span></span></span>&#x3001;&#x5E76;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x222A;</mo></mrow><annotation encoding="application/x-tex">\cup</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">&#x222A;</span></span></span></span>&#x3001;&#x5DEE;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2212;</mo></mrow><annotation encoding="application/x-tex">-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">&#x2212;</span></span></span></span></td>
-<td style="text-align:center">&#x96C6;&#x5408;&#x57FA;&#x7840;&#x8FD0;&#x7B97;</td>
+<td style="text-align:center">交<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∩</mo></mrow><annotation encoding="application/x-tex">\cap</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∩</span></span></span></span>、并<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∪</mo></mrow><annotation encoding="application/x-tex">\cup</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∪</span></span></span></span>、差<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo></mrow><annotation encoding="application/x-tex">-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span></span></span></span></td>
+<td style="text-align:center">集合基础运算</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x7B1B;&#x5361;&#x5C14;&#x79EF;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#xD7;</mo></mrow><annotation encoding="application/x-tex">&#xD7;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">&#xD7;</span></span></span></span></td>
-<td style="text-align:center">&#x4E0D;&#x540C;&#x8868;&#x7684;&#x6240;&#x6709;&#x7EC4;&#x5408;</td>
+<td style="text-align:center">笛卡尔积<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">×</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">×</span></span></span></span></td>
+<td style="text-align:center">不同表的所有组合</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x6295;&#x5F71;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3C0;</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C0;</span></span></span></span></td>
-<td style="text-align:center">&#x53EA;&#x663E;&#x793A;&#x67D0;&#x5217;&#xFF0C;&#x540C;SELECET...</td>
+<td style="text-align:center">投影<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi></mrow><annotation encoding="application/x-tex">\pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span></span></td>
+<td style="text-align:center">只显示某列，同SELECET...</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x9009;&#x62E9;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3C3;</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">&#x3C3;</span></span></span></span></td>
-<td style="text-align:center">&#x9009;&#x62E9;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x7684;&#xFF0C;&#x540C;WHERE...</td>
+<td style="text-align:center">选择<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>σ</mi></mrow><annotation encoding="application/x-tex">\sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">σ</span></span></span></span></td>
+<td style="text-align:center">选择符合条件的，同WHERE...</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x91CD;&#x547D;&#x540D;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>&#x3C1;</mi></mrow><annotation encoding="application/x-tex">\rho</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">&#x3C1;</span></span></span></span></td>
-<td style="text-align:center">&#x91CD;&#x547D;&#x540D;&#xFF0C;&#x540C;AS...</td>
+<td style="text-align:center">重命名<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi></mrow><annotation encoding="application/x-tex">\rho</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">ρ</span></span></span></span></td>
+<td style="text-align:center">重命名，同AS...</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x8F85;&#x52A9;&#x8FD0;&#x7B97;&#x7B26;</td>
-<td style="text-align:center">&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7B26;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mo>&lt;</mo><mo>=</mo></mrow><annotation encoding="application/x-tex">&gt;&lt;=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;&lt;=</span></span></span></span>&#x3001;&#x903B;&#x8F91;&#x8FD0;&#x7B97;&#x7B26;<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&#x2228;</mo><mo>&#x2227;</mo><mo>&#x2212;</mo></mrow><annotation encoding="application/x-tex">\vee \wedge-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">&#x2228;</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">&#x2227;</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">&#x2212;</span></span></span></span></td>
+<td style="text-align:center">辅助运算符</td>
+<td style="text-align:center">比较运算符<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>&gt;</mo><mo>&lt;</mo><mo>=</mo></mrow><annotation encoding="application/x-tex">&gt;&lt;=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&gt;&lt;=</span></span></span></span>、逻辑运算符<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∨</mo><mo>∧</mo><mo>−</mo></mrow><annotation encoding="application/x-tex">\vee \wedge-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="mord">∨</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em;"></span><span class="mord">−</span></span></span></span></td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h3 class="mume-header" id="er%E5%9B%BE">ER&#x56FE;</h3>
-
-<p><strong>&#x6982;&#x5FF5;</strong>&#xFF1A;&#x5B9E;&#x4F53;&#x8054;&#x7CFB;&#x56FE;&#xFF0C;&#x7528;&#x6765;&#x5EFA;&#x7ACB;&#x6570;&#x636E;&#x6A21;&#x578B;</p>
+<h3 id="er图">ER图 </h3>
+<p><strong>概念</strong>：实体联系图，用来建立数据模型</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">ER&#x56FE;&#x4E09;&#x8981;&#x7D20;</th>
-<th style="text-align:center">&#x8868;&#x793A;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">ER图三要素</th>
+<th style="text-align:center">表示</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x5B9E;&#x4F53;&#x578B;</td>
-<td style="text-align:center">&#x77E9;&#x5F62;</td>
+<td style="text-align:center">实体型</td>
+<td style="text-align:center">矩形</td>
 <td style="text-align:center">\</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x5C5E;&#x6027;</td>
-<td style="text-align:center">&#x692D;&#x5706;&#x5F62;</td>
-<td style="text-align:center">&#x4E3B;&#x5C5E;&#x6027;&#x4E0B;&#x5212;&#x7EBF;</td>
+<td style="text-align:center">属性</td>
+<td style="text-align:center">椭圆形</td>
+<td style="text-align:center">主属性下划线</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x8054;&#x7CFB;</td>
-<td style="text-align:center">&#x83F1;&#x5F62;</td>
-<td style="text-align:center">&#x4E24;&#x7AEF;&#x5199;&#x4E0A;&#x5173;&#x7CFB;&#x7C7B;&#x578B;</td>
+<td style="text-align:center">联系</td>
+<td style="text-align:center">菱形</td>
+<td style="text-align:center">两端写上关系类型</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li><strong>&#x5173;&#x7CFB;&#x7C7B;&#x578B;</strong>&#xFF1A;1:1&#x578B;&#xFF0C;n:1&#x578B;&#xFF0C;n:m&#x578B;</li>
+<li><strong>关系类型</strong>：1:1型，n:1型，n:m型</li>
 </ul>
 <img src="./images/2023-08-03-18-41-image.png">
 <hr>
-<h3 class="mume-header" id="uml%E5%9B%BE">UML&#x56FE;</h3>
-
+<h3 id="uml图">UML图 </h3>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x5206;&#x7C7B;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">分类</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x4F8B;&#x56FE;</td>
-<td style="text-align:center">&#x7528;&#x6237;&#x89D2;&#x5EA6;&#xFF0C;&#x6307;&#x5B9A;&#x5404;&#x529F;&#x80FD;&#x7684;&#x64CD;&#x4F5C;&#x8005;</td>
+<td style="text-align:center">例图</td>
+<td style="text-align:center">用户角度，指定各功能的操作者</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x9759;&#x6001;&#x56FE;</td>
-<td style="text-align:center">&#x5305;&#x62EC;&#x7C7B;&#x56FE;&#x3001;&#x5BF9;&#x8C61;&#x56FE;&#x3001;&#x805A;&#x5408;&#x7B49;</td>
+<td style="text-align:center">静态图</td>
+<td style="text-align:center">包括类图、对象图、聚合等</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x884C;&#x4E3A;&#x56FE;</td>
-<td style="text-align:center">&#x63CF;&#x8FF0;&#x52A8;&#x6001;&#x6A21;&#x578B;&#x548C;&#x7EC4;&#x6210;&#x5BF9;&#x8C61;&#x95F4;&#x7684;&#x4EA4;&#x4E92;&#x5173;&#x7CFB;</td>
+<td style="text-align:center">行为图</td>
+<td style="text-align:center">描述动态模型和组成对象间的交互关系</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x4EA4;&#x4E92;&#x56FE;</td>
-<td style="text-align:center">&#x63CF;&#x8FF0;&#x5BF9;&#x8C61;&#x95F4;&#x7684;&#x4EA4;&#x4E92;&#x5173;&#x7CFB;</td>
+<td style="text-align:center">交互图</td>
+<td style="text-align:center">描述对象间的交互关系</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x5B9E;&#x73B0;&#x56FE;</td>
-<td style="text-align:center">&#x5404;&#x4EE3;&#x7801;&#x90E8;&#x4EF6;&#x7269;&#x7406;&#x7ED3;&#x6784;&#x548C;&#x5404;&#x90E8;&#x4EF6;&#x4E4B;&#x95F4;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;</td>
+<td style="text-align:center">实现图</td>
+<td style="text-align:center">各代码部件物理结构和各部件之间的依赖关系</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h3 class="mume-header" id="%E8%A7%84%E8%8C%83%E5%8C%96%E7%90%86%E8%AE%BA">&#x89C4;&#x8303;&#x5316;&#x7406;&#x8BBA;</h3>
-
-<p><strong>&#x6982;&#x5FF5;</strong>&#xFF1A;&#x901A;&#x8FC7;&#x5206;&#x89E3;&#x6539;&#x9020;&#x903B;&#x8F91;&#x6A21;&#x578B;&#x7684;&#x5173;&#x7CFB;&#x6A21;&#x5F0F;&#x3002;</p>
+<h3 id="规范化理论">规范化理论 </h3>
+<p><strong>概念</strong>：通过分解改造逻辑模型的关系模式。</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x672F;&#x8BED;</th>
-<th style="text-align:center">&#x8868;&#x793A;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">术语</th>
+<th style="text-align:center">表示</th>
+<th style="text-align:center">说明</th>
+<th style="text-align:center">例</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x51FD;&#x6570;&#x4F9D;&#x8D56;</td>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>&#x2192;</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A&#x2192;B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2192;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
-<td style="text-align:center">&#x6BCF;&#x4E2A;A&#x503C;&#xFF0C;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x552F;&#x4E00;&#x7684;B&#x503C;&#x4E0E;&#x4E4B;&#x5BF9;&#x5E94;</td>
-</tr>
-<tr>
-<td style="text-align:center">&#x5B8C;&#x5168;&#x51FD;&#x6570;&#x4F9D;&#x8D56;</td>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mspace width="1em"></mspace><munder accentunder="true"><mi>f</mi><mo stretchy="true">&#x2192;</mo></munder><mspace width="1em"></mspace><mi>B</mi></mrow><annotation encoding="application/x-tex">A\quad\underrightarrow{f}\quad B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4109em;vertical-align:-0.7164em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:1em;"></span><span class="mord accentunder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span class="svg-align" style="top:-2.2836em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
--16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
- 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
- 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
--40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
--12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
- 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.7164em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
-<td style="text-align:center">B&#x4F9D;&#x8D56;&#x4E8E;&#x5168;&#x90E8;A&#x7684;&#x503C;</td>
-</tr>
-<tr>
-<td style="text-align:center">&#x90E8;&#x5206;&#x51FD;&#x6570;&#x4F9D;&#x8D56;</td>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mspace width="1em"></mspace><munder accentunder="true"><mi>p</mi><mo stretchy="true">&#x2192;</mo></munder><mspace width="1em"></mspace><mi>B</mi></mrow><annotation encoding="application/x-tex">A\quad\underrightarrow{p}\quad B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3998em;vertical-align:-0.7164em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:1em;"></span><span class="mord accentunder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span class="svg-align" style="top:-2.2836em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
--16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
- 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
- 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
--40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
--12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
- 151.7 139 205zm0 0v40h399900v-40z"/></svg></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span></span></span></span><span class="vlist-s">&#x200B;</span></span><span class="vlist-r"><span class="vlist" style="height:0.7164em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
-<td style="text-align:center">B&#x4F9D;&#x8D56;&#x4E8E;A&#x7684;&#x771F;&#x5B50;&#x96C6;</td>
-</tr>
-<tr>
-<td style="text-align:center">&#x4F20;&#x9012;&#x51FD;&#x6570;&#x4F9D;&#x8D56;</td>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>&#x2192;</mo><mi>B</mi><mtext>&#xFF0C;</mtext><mi>B</mi><mo>&#x2192;</mo><mi>C</mi><mtext>&#x65F6;&#xFF0C;</mtext><mi>A</mi><mo>&#x2192;</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">A&#x2192;B&#xFF0C;B&#x2192;C&#x65F6;&#xFF0C;A&#x2192;C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2192;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord cjk_fallback">&#xFF0C;</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2192;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord cjk_fallback">&#x65F6;&#xFF0C;</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2192;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></td>
+<td style="text-align:center">函数依赖</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">A→B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+<td style="text-align:center">每个A值都有唯一B值与之对应</td>
 <td style="text-align:center">\</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x975E;&#x5E73;&#x51E1;&#x51FD;&#x6570;&#x4F9D;&#x8D56;</td>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>&#x2192;</mo><mi>B</mi><mtext>&#x65F6;&#xFF0C;</mtext><mi>B</mi><mtext>&#x2284;</mtext><mi>A</mi></mrow><annotation encoding="application/x-tex">A&#x2192;B&#x65F6;&#xFF0C;B&#x2284;A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">&#x2192;</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord cjk_fallback">&#x65F6;&#xFF0C;</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord">&#x2284;</span><span class="mord mathnormal">A</span></span></span></span></td>
-<td style="text-align:center">B&#x975E;A&#x7684;&#x5B50;&#x96C6;</td>
+<td style="text-align:center">完全函数依赖</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mspace width="1em"></mspace><munder accentunder="true"><mi>f</mi><mo stretchy="true">→</mo></munder><mspace width="1em"></mspace><mi>B</mi></mrow><annotation encoding="application/x-tex">A\quad\underrightarrow{f}\quad B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4109em;vertical-align:-0.7164em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:1em;"></span><span class="mord accentunder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6944em;"><span class="svg-align" style="top:-2.2836em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10764em;">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7164em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+<td style="text-align:center">B值依赖于全部A值</td>
+<td style="text-align:center">学号→选课</td>
+</tr>
+<tr>
+<td style="text-align:center">部分函数依赖</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mspace width="1em"></mspace><munder accentunder="true"><mi>p</mi><mo stretchy="true">→</mo></munder><mspace width="1em"></mspace><mi>B</mi></mrow><annotation encoding="application/x-tex">A\quad\underrightarrow{p}\quad B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3998em;vertical-align:-0.7164em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:1em;"></span><span class="mord accentunder"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.4306em;"><span class="svg-align" style="top:-2.2836em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="height:0.522em;min-width:0.888em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.522em" viewBox="0 0 400000 522" preserveAspectRatio="xMaxYMin slice"><path d="M0 241v40h399891c-47.3 35.3-84 78-110 128
+-16.7 32-27.7 63.7-33 95 0 1.3-.2 2.7-.5 4-.3 1.3-.5 2.3-.5 3 0 7.3 6.7 11 20
+ 11 8 0 13.2-.8 15.5-2.5 2.3-1.7 4.2-5.5 5.5-11.5 2-13.3 5.7-27 11-41 14.7-44.7
+ 39-84.5 73-119.5s73.7-60.2 119-75.5c6-2 9-5.7 9-11s-3-9-9-11c-45.3-15.3-85
+-40.5-119-75.5s-58.3-74.8-73-119.5c-4.7-14-8.3-27.3-11-40-1.3-6.7-3.2-10.8-5.5
+-12.5-2.3-1.7-7.5-2.5-15.5-2.5-14 0-21 3.7-21 11 0 2 2 10.3 6 25 20.7 83.3 67
+ 151.7 139 205zm0 0v40h399900v-40z"></path></svg></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">p</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7164em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:1em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></td>
+<td style="text-align:center">B值依赖于A值的真子集</td>
+<td style="text-align:center">(学号,姓名)→选课</td>
+</tr>
+<tr>
+<td style="text-align:center">传递函数依赖</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>B</mi><mtext>，且</mtext><mi>B</mi><mo>→</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">A→B，且B→C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord cjk_fallback">，且</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span></td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>C</mi></mrow><annotation encoding="application/x-tex">A→C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span></span></span>是传递依赖</td>
+<td style="text-align:center">学号→选课→教师</td>
+</tr>
+<tr>
+<td style="text-align:center">非平凡函数依赖</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>B</mi><mtext>，且</mtext><mi>B</mi><mtext>⊄</mtext><mi>A</mi></mrow><annotation encoding="application/x-tex">A→B，且B⊄A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord cjk_fallback">，且</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord">⊄</span><span class="mord mathnormal">A</span></span></span></span></td>
+<td style="text-align:center">B值依赖且非来源于A值</td>
+<td style="text-align:center">学号→选课</td>
+</tr>
+<tr>
+<td style="text-align:center">平凡函数依赖</td>
+<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>→</mo><mi>B</mi><mtext>，且</mtext><mi>B</mi><mo>⊆</mo><mi>A</mi></mrow><annotation encoding="application/x-tex">A→B，且B⊆A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.136em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord cjk_fallback">，且</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">A</span></span></span></span></td>
+<td style="text-align:center">B值依赖且来源于A值</td>
+<td style="text-align:center">学号→同桌</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x8303;&#x5F0F;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">范式</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x7B2C;&#x4E00;&#x8303;&#x5F0F;&#xFF0C;1NF</td>
-<td style="text-align:center">&#x5173;&#x7CFB;&#x6A21;&#x5F0F;&#x4E0D;&#x53EF;&#x76F4;&#x63A5;&#x518D;&#x5206;</td>
+<td style="text-align:center">第一范式，1NF</td>
+<td style="text-align:center">关系模式不可直接再分</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x7B2C;&#x4E8C;&#x8303;&#x5F0F;&#xFF0C;2NF</td>
-<td style="text-align:center">&#x6D88;&#x9664;&#x975E;&#x4E3B;&#x5C5E;&#x6027;&#x7684;&#x90E8;&#x5206;&#x51FD;&#x6570;&#x4F9D;&#x8D56;</td>
+<td style="text-align:center">第二范式，2NF</td>
+<td style="text-align:center">消除非主属性的部分函数依赖</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x7B2C;&#x4E09;&#x8303;&#x5F0F;&#xFF0C;3NF</td>
-<td style="text-align:center">&#x6D88;&#x9664;&#x975E;&#x4E3B;&#x5C5E;&#x6027;&#x7684;&#x4F20;&#x9012;&#x51FD;&#x6570;&#x4F9D;&#x8D56;</td>
+<td style="text-align:center">第三范式，3NF</td>
+<td style="text-align:center">消除非主属性的传递函数依赖</td>
 </tr>
 <tr>
-<td style="text-align:center">BC&#x8303;&#x5F0F;&#xFF0C;BCNF</td>
-<td style="text-align:center">&#x6D88;&#x9664;&#x4E3B;&#x5C5E;&#x6027;&#x7684;&#x90E8;&#x5206;&#x548C;&#x4F20;&#x9012;&#x51FD;&#x6570;&#x4F9D;&#x8D56;</td>
+<td style="text-align:center">BC范式，BCNF</td>
+<td style="text-align:center">消除主属性的部分和传递函数依赖</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x7B2C;&#x56DB;&#x8303;&#x5F0F;&#xFF0C;4NF</td>
-<td style="text-align:center">&#x6D88;&#x9664;&#x975E;&#x5E73;&#x51E1;&#x4E14;&#x975E;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x7684;&#x591A;&#x503C;&#x4F9D;&#x8D56;</td>
+<td style="text-align:center">第四范式，4NF</td>
+<td style="text-align:center">消除非平凡且非函数依赖的多值依赖</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x7B2C;&#x4E94;&#x8303;&#x5F0F;&#xFF0C;5NF</td>
-<td style="text-align:center">&#x6D88;&#x9664;&#x4E0D;&#x662F;&#x7531;&#x5019;&#x9009;&#x7801;&#x6240;&#x8574;&#x542B;&#x7684;&#x8FDE;&#x63A5;&#x4F9D;&#x8D56;</td>
+<td style="text-align:center">第五范式，5NF</td>
+<td style="text-align:center">消除不是由候选码所蕴含的连接依赖</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x6062;&#x590D;&#x65F6;&#x4E0E;&#x5206;&#x89E3;&#x524D;&#x7684;&#x6570;&#x636E;&#x4FDD;&#x6301;&#x4E00;&#x81F4;&#xFF0C;&#x5206;&#x89E3;&#x540E;&#x51FD;&#x6570;&#x4F9D;&#x8D56;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#x3002;</li>
+<li>恢复时与分解前的数据保持一致，分解后函数依赖保持不变。</li>
 </ul>
 <hr>
-<h2 class="mume-header" id="sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95">SQL&#x57FA;&#x7840;&#x8BED;&#x6CD5;</h2>
+<h2 id="sql基础语法">SQL基础语法 </h2>
+<h3 id="ddl">DDL </h3>
+<p><strong>概念</strong>：date description language数据描述语言，用以数据库和表格的增删改查。</p>
+<h4 id="数据库ddl">数据库DDL </h4>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-database">database</span> 数据库名<span class="token punctuation">;</span>
 
-<h3 class="mume-header" id="ddl">DDL</h3>
+<span class="token keyword keyword-use">use</span> 数据库名<span class="token punctuation">;</span>
 
-<p><strong>&#x6982;&#x5FF5;</strong>&#xFF1A;date description language&#x6570;&#x636E;&#x63CF;&#x8FF0;&#x8BED;&#x8A00;&#xFF0C;&#x7528;&#x4EE5;&#x6570;&#x636E;&#x5E93;&#x548C;&#x8868;&#x683C;&#x7684;&#x589E;&#x5220;&#x6539;&#x67E5;&#x3002;</p>
-<h4 class="mume-header" id="%E6%95%B0%E6%8D%AE%E5%BA%93ddl">&#x6570;&#x636E;&#x5E93;DDL</h4>
-
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-database">database</span> &#x6570;&#x636E;&#x5E93;&#x540D;<span class="token punctuation">;</span>
-
-<span class="token keyword keyword-use">use</span> &#x6570;&#x636E;&#x5E93;&#x540D;<span class="token punctuation">;</span>
-
-<span class="token keyword keyword-drop">drop</span> &#x6570;&#x636E;&#x5E93;&#x540D;<span class="token punctuation">;</span>
-</pre><hr>
-<h4 class="mume-header" id="%E8%A1%A8%E6%A0%BCddl">&#x8868;&#x683C;DDL</h4>
-
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-table">table</span> &#x8868;&#x540D;<span class="token punctuation">(</span>
-    &#x5C5E;&#x6027;&#x540D;<span class="token number">1</span> &#x6570;&#x636E;&#x7C7B;&#x578B;<span class="token punctuation">,</span>
-    &#x5C5E;&#x6027;&#x540D;<span class="token number">2</span> &#x6570;&#x636E;&#x7C7B;&#x578B; &#x5B8C;&#x6574;&#x6027;&#x7EA6;&#x675F; &#x5B8C;&#x6574;&#x6027;&#x7EA6;&#x675F;<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>
+<span class="token keyword keyword-drop">drop</span> 数据库名<span class="token punctuation">;</span>
+</code></pre><hr>
+<h4 id="表格ddl">表格DDL </h4>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-table">table</span> 表名<span class="token punctuation">(</span>
+    属性名<span class="token number">1</span> 数据类型<span class="token punctuation">,</span>
+    属性名<span class="token number">2</span> 数据类型 完整性约束 完整性约束<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>
-    &#x8868;&#x683C;&#x5B8C;&#x6574;&#x6027;&#x7EA6;&#x675F;<span class="token punctuation">(</span>&#x5C5E;&#x6027;&#x540D;<span class="token number">1</span><span class="token punctuation">,</span>&#x5C5E;&#x6027;&#x540D;<span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+    表格完整性约束<span class="token punctuation">(</span>属性名<span class="token number">1</span><span class="token punctuation">,</span>属性名<span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-table">table</span> &#x8868;&#x540D; <span class="token keyword keyword-add">add</span> &#x5C5E;&#x6027;&#x540D; &#x6570;&#x636E;&#x7C7B;&#x578B; &#x5B8C;&#x6574;&#x6027;&#x7EA6;&#x675F;<span class="token punctuation">;</span>
+<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-table">table</span> 表名 <span class="token keyword keyword-add">add</span> 属性名 数据类型 完整性约束<span class="token punctuation">;</span>
 
-<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-table">table</span> &#x8868;&#x540D; <span class="token keyword keyword-drop">drop</span> <span class="token keyword keyword-column">column</span> &#x5C5E;&#x6027;&#x540D;<span class="token punctuation">;</span>
+<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-table">table</span> 表名 <span class="token keyword keyword-drop">drop</span> <span class="token keyword keyword-column">column</span> 属性名<span class="token punctuation">;</span>
 
-<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-table">table</span> &#x8868;&#x540D; <span class="token keyword keyword-drop">drop</span> &#x5B8C;&#x6574;&#x6027;&#x7EA6;&#x675F;<span class="token punctuation">(</span>&#x5C5E;&#x6027;&#x540D;<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-table">table</span> 表名 <span class="token keyword keyword-drop">drop</span> 完整性约束<span class="token punctuation">(</span>属性名<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-table">table</span> &#x8868;&#x540D; <span class="token keyword keyword-add">add</span> &#x5B8C;&#x6574;&#x6027;&#x7EA6;&#x675F;<span class="token punctuation">(</span>&#x5C5E;&#x6027;&#x540D;<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-table">table</span> 表名 <span class="token keyword keyword-add">add</span> 完整性约束<span class="token punctuation">(</span>属性名<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-table">table</span> &#x8868;&#x540D; <span class="token keyword keyword-modify">modify</span> &#x5C5E;&#x6027;&#x540D; &#x6570;&#x636E;&#x7C7B;&#x578B; &#x5B8C;&#x6574;&#x6027;&#x7EA6;&#x675F;<span class="token punctuation">;</span>
+<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-table">table</span> 表名 <span class="token keyword keyword-modify">modify</span> 属性名 数据类型 完整性约束<span class="token punctuation">;</span>
 
-<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-table">table</span> &#x8868;&#x540D; <span class="token keyword keyword-rename">rename</span> <span class="token keyword keyword-to">to</span> &#x65B0;&#x8868;&#x540D;<span class="token punctuation">;</span>
+<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-table">table</span> 表名 <span class="token keyword keyword-rename">rename</span> <span class="token keyword keyword-to">to</span> 新表名<span class="token punctuation">;</span>
 
-<span class="token keyword keyword-drop">drop</span> <span class="token keyword keyword-table">table</span> &#x8868;&#x540D;<span class="token punctuation">;</span>
-</pre><table>
+<span class="token keyword keyword-drop">drop</span> <span class="token keyword keyword-table">table</span> 表名<span class="token punctuation">;</span>
+</code></pre><table>
 <thead>
 <tr>
-<th style="text-align:center">&#x6570;&#x636E;&#x7C7B;&#x578B;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">tinyint</td>
-<td style="text-align:center">1B&#x6574;&#x6570;</td>
+<td style="text-align:center">1B整数</td>
 </tr>
 <tr>
 <td style="text-align:center">smallint</td>
-<td style="text-align:center">2B&#x6574;&#x6570;</td>
+<td style="text-align:center">2B整数</td>
 </tr>
 <tr>
 <td style="text-align:center">mediumint</td>
-<td style="text-align:center">3B&#x6574;&#x6570;</td>
+<td style="text-align:center">3B整数</td>
 </tr>
 <tr>
 <td style="text-align:center">int</td>
-<td style="text-align:center">4B&#x6574;&#x6570;</td>
+<td style="text-align:center">4B整数</td>
 </tr>
 <tr>
 <td style="text-align:center">bigint</td>
-<td style="text-align:center">8B&#x6574;&#x6570;</td>
+<td style="text-align:center">8B整数</td>
 </tr>
 <tr>
 <td style="text-align:center">int unsigned</td>
-<td style="text-align:center">&#x65E0;&#x7B26;&#x53F7;4B&#x6574;&#x6570;</td>
+<td style="text-align:center">无符号4B整数</td>
 </tr>
 <tr>
 <td style="text-align:center">float</td>
-<td style="text-align:center">&#x5355;&#x7CBE;&#x6D6E;&#x70B9;&#x6570;</td>
+<td style="text-align:center">单精浮点数</td>
 </tr>
 <tr>
 <td style="text-align:center">double</td>
-<td style="text-align:center">&#x53CC;&#x7CBE;&#x6D6E;&#x70B9;&#x6570;</td>
+<td style="text-align:center">双精浮点数</td>
 </tr>
 <tr>
 <td style="text-align:center">real</td>
-<td style="text-align:center">&#x9ED8;&#x8BA4;double</td>
+<td style="text-align:center">默认double</td>
 </tr>
 <tr>
 <td style="text-align:center">decimal(M,D)</td>
-<td style="text-align:center">&#x5B9A;&#x70B9;&#x6570;</td>
+<td style="text-align:center">定点数</td>
 </tr>
 <tr>
 <td style="text-align:center">bit(M)</td>
-<td style="text-align:center">&#x4E8C;&#x8FDB;&#x5236;&#xFF0C;&#x6BD4;&#x7279;&#x6570;</td>
+<td style="text-align:center">二进制，比特数</td>
 </tr>
 <tr>
 <td style="text-align:center">binary(M)</td>
-<td style="text-align:center">&#x4E8C;&#x8FDB;&#x5236;&#xFF0C;&#x5B57;&#x8282;&#x6570;</td>
+<td style="text-align:center">二进制，字节数</td>
 </tr>
 <tr>
 <td style="text-align:center">varbinary(M)</td>
-<td style="text-align:center">&#x53EF;&#x53D8;&#x4E8C;&#x8FDB;&#x5236;&#xFF0C;&#x5B57;&#x8282;&#x6570;</td>
+<td style="text-align:center">可变二进制，字节数</td>
 </tr>
 <tr>
 <td style="text-align:center">blob(M)</td>
-<td style="text-align:center">&#x4E8C;&#x8FDB;&#x5236;&#x5927;&#x5BF9;&#x8C61;&#xFF0C;&#x5B58;&#x56FE;&#x7247;&#x3001;&#x97F3;&#x9891;&#x7B49;&#x6587;&#x4EF6;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x6570;&#x636E;&#x6D41;</td>
+<td style="text-align:center">二进制大对象，存图片、音频等文件的二进制数据流</td>
 </tr>
 <tr>
 <td style="text-align:center">year</td>
-<td style="text-align:center">&#x8868;&#x793A;YYYY</td>
+<td style="text-align:center">表示YYYY</td>
 </tr>
 <tr>
 <td style="text-align:center">data</td>
-<td style="text-align:center">&#x8868;&#x793A;YYYY-MM-DD</td>
+<td style="text-align:center">表示YYYY-MM-DD</td>
 </tr>
 <tr>
 <td style="text-align:center">datatime</td>
-<td style="text-align:center">&#x8868;&#x793A;YYYY-MM-DD HH:MM:SS</td>
+<td style="text-align:center">表示YYYY-MM-DD HH:MM:SS</td>
 </tr>
 <tr>
 <td style="text-align:center">timestamp</td>
-<td style="text-align:center">&#x4ECE;1970&#x5E74;1&#x6708;1&#x65E5;8&#x70B9;&#x5F00;&#x59CB;&#x7684;&#x65F6;&#x95F4;&#x6233;</td>
+<td style="text-align:center">从1970年1月1日8点开始的时间戳</td>
 </tr>
 <tr>
 <td style="text-align:center">char(M)</td>
-<td style="text-align:center">&#x5B57;&#x7B26;&#x578B;</td>
+<td style="text-align:center">字符型</td>
 </tr>
 <tr>
 <td style="text-align:center">varchar(M)</td>
-<td style="text-align:center">&#x53EF;&#x53D8;&#x5B57;&#x7B26;&#x578B;</td>
+<td style="text-align:center">可变字符型</td>
 </tr>
 <tr>
 <td style="text-align:center">enum</td>
-<td style="text-align:center">&#x679A;&#x4E3E;&#x578B;</td>
+<td style="text-align:center">枚举型</td>
 </tr>
 <tr>
 <td style="text-align:center">set</td>
-<td style="text-align:center">&#x96C6;&#x5408;&#x578B;</td>
+<td style="text-align:center">集合型</td>
 </tr>
 <tr>
 <td style="text-align:center">json</td>
-<td style="text-align:center">json&#x5B57;&#x7B26;&#x4E32;</td>
+<td style="text-align:center">json字符串</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x5B8C;&#x6574;&#x6027;&#x7EA6;&#x675F;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">完整性约束</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">primary key</td>
-<td style="text-align:center">&#x4E3B;&#x952E;</td>
+<td style="text-align:center">主键</td>
 </tr>
 <tr>
 <td style="text-align:center">not null</td>
-<td style="text-align:center">&#x975E;&#x7A7A;&#x9650;&#x5236;</td>
+<td style="text-align:center">非空限制</td>
 </tr>
 <tr>
 <td style="text-align:center">unique</td>
-<td style="text-align:center">&#x552F;&#x4E00;&#x9650;&#x5236;</td>
+<td style="text-align:center">唯一限制</td>
 </tr>
 <tr>
-<td style="text-align:center">check(&#x5C5E;&#x6027;&#x540D;&lt;=56)</td>
-<td style="text-align:center">&#x53D6;&#x503C;&#x9650;&#x5236;</td>
+<td style="text-align:center">check(属性名&lt;=56)</td>
+<td style="text-align:center">取值限制</td>
 </tr>
 <tr>
-<td style="text-align:center">auto_increment=&#x521D;&#x59CB;&#x503C;</td>
-<td style="text-align:center">&#x81EA;&#x52A8;&#x6309;&#x521D;&#x59CB;&#x503C;&#x81EA;&#x589E;</td>
+<td style="text-align:center">auto_increment=初始值</td>
+<td style="text-align:center">自动按初始值自增</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h3 class="mume-header" id="dql">DQL</h3>
-
-<p><strong>&#x6982;&#x5FF5;</strong>&#xFF1A;data query language&#xFF0C;&#x6570;&#x636E;&#x67E5;&#x8BE2;&#x8BED;&#x8A00;&#xFF0C;&#x5BF9;&#x8868;&#x683C;&#x4E2D;&#x5143;&#x7EC4;&#x5B9E;&#x4F8B;&#x7684;&#x67E5;&#x8BE2;&#x64CD;&#x4F5C;&#x3002;</p>
-<h4 class="mume-header" id="%E5%8D%95%E8%A1%A8dql">&#x5355;&#x8868;DQL</h4>
-
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-select">select</span> <span class="token keyword keyword-distinct">distinct</span> &#x5C5E;&#x6027;&#x540D;<span class="token number">1</span> <span class="token keyword keyword-as">as</span> &#x5C5E;&#x6027;&#x522B;&#x540D;<span class="token punctuation">,</span>&#x5C5E;&#x6027;&#x540D;<span class="token number">2</span><span class="token punctuation">,</span>&#x5C5E;&#x6027;&#x540D;<span class="token number">3.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token keyword keyword-from">from</span> &#x8868;&#x540D;
-<span class="token keyword keyword-where">where</span> &#x7B5B;&#x9009;&#x6761;&#x4EF6;
-<span class="token keyword keyword-group">group</span> <span class="token keyword keyword-by">by</span> &#x5C5E;&#x6027;&#x540D;
-<span class="token keyword keyword-having">having</span> &#x5206;&#x7EC4;&#x6761;&#x4EF6;
-<span class="token keyword keyword-order">order</span> <span class="token keyword keyword-by">by</span> &#x5C5E;&#x6027;&#x540D; <span class="token keyword keyword-desc">desc</span><span class="token punctuation">,</span>&#x5C5E;&#x6027;&#x540D;<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token keyword keyword-limit">limit</span> &#x7ED3;&#x679C;&#x5C55;&#x793A;&#x8D77;&#x59CB;&#x884C;<span class="token punctuation">,</span>&#x6BCF;&#x9875;&#x5C55;&#x793A;&#x6570;<span class="token punctuation">;</span>
-</pre><table>
+<h3 id="dql">DQL </h3>
+<p><strong>概念</strong>：data query language，数据查询语言，对表格中元组实例的查询操作。</p>
+<h4 id="单表dql">单表DQL </h4>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-select">select</span> <span class="token keyword keyword-distinct">distinct</span> 属性名<span class="token number">1</span> <span class="token keyword keyword-as">as</span> 属性别名<span class="token punctuation">,</span>属性名<span class="token number">2</span><span class="token punctuation">,</span>属性名<span class="token number">3.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword keyword-from">from</span> 表名
+<span class="token keyword keyword-where">where</span> 筛选条件
+<span class="token keyword keyword-group">group</span> <span class="token keyword keyword-by">by</span> 属性名
+<span class="token keyword keyword-having">having</span> 分组条件
+<span class="token keyword keyword-order">order</span> <span class="token keyword keyword-by">by</span> 属性名 <span class="token keyword keyword-desc">desc</span><span class="token punctuation">,</span>属性名<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword keyword-limit">limit</span> 结果展示起始行<span class="token punctuation">,</span>每页展示数<span class="token punctuation">;</span>
+</code></pre><table>
 <thead>
 <tr>
-<th style="text-align:center">&#x53EF;&#x7701;&#x7565;&#x5173;&#x952E;&#x8BCD;</th>
-<th style="text-align:center">&#x610F;&#x4E49;</th>
+<th style="text-align:center">可省略关键词</th>
+<th style="text-align:center">意义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">distinct</td>
-<td style="text-align:center">&#x7ED3;&#x679C;&#x53BB;&#x91CD;</td>
+<td style="text-align:center">结果去重</td>
 </tr>
 <tr>
 <td style="text-align:center">as</td>
-<td style="text-align:center">&#x5C5E;&#x6027;&#x8D77;&#x522B;&#x540D;</td>
+<td style="text-align:center">属性起别名</td>
 </tr>
 <tr>
 <td style="text-align:center">desc</td>
-<td style="text-align:center">&#x6539;&#x964D;&#x5E8F;</td>
+<td style="text-align:center">改降序</td>
 </tr>
 <tr>
 <td style="text-align:center">from</td>
-<td style="text-align:center">&#x5143;&#x7EC4;&#x7B5B;&#x9009;&#x6761;&#x4EF6;</td>
+<td style="text-align:center">元组筛选条件</td>
 </tr>
 <tr>
 <td style="text-align:center">group by</td>
-<td style="text-align:center">&#x4EE5;&#x67D0;&#x5C5E;&#x6027;&#x540D;&#x5206;&#x7EC4;</td>
+<td style="text-align:center">以某属性名分组</td>
 </tr>
 <tr>
 <td style="text-align:center">having</td>
-<td style="text-align:center">&#x7B5B;&#x9009;&#x53EF;&#x5206;&#x7EC4;&#x7684;&#x5C5E;&#x6027;&#x540D;</td>
+<td style="text-align:center">筛选可分组的属性名</td>
 </tr>
 <tr>
 <td style="text-align:center">order by</td>
-<td style="text-align:center">&#x4EE5;&#x591A;&#x7EA7;&#x5C5E;&#x6027;&#x4E3A;&#x6BD4;&#x5BF9;&#xFF0C;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</td>
+<td style="text-align:center">以多级属性为比对，进行排序</td>
 </tr>
 <tr>
 <td style="text-align:center">limit</td>
-<td style="text-align:center">&#x5355;&#x9875;&#x5C55;&#x793A;</td>
+<td style="text-align:center">单页展示</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x6761;&#x4EF6;&#x8F85;&#x52A9;&#x5173;&#x952E;&#x8BCD;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">条件辅助关键词</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">and</td>
-<td style="text-align:center">&#x4E0E;</td>
+<td style="text-align:center">与</td>
 </tr>
 <tr>
 <td style="text-align:center">or</td>
-<td style="text-align:center">&#x6216;</td>
+<td style="text-align:center">或</td>
 </tr>
 <tr>
 <td style="text-align:center">not</td>
-<td style="text-align:center">&#x975E;</td>
+<td style="text-align:center">非</td>
 </tr>
 <tr>
 <td style="text-align:center">xor</td>
-<td style="text-align:center">&#x5F02;&#x6216;</td>
+<td style="text-align:center">异或</td>
 </tr>
 <tr>
 <td style="text-align:center">between</td>
-<td style="text-align:center">&#x5728;...&#x4E4B;&#x95F4;</td>
+<td style="text-align:center">在...之间</td>
 </tr>
 <tr>
 <td style="text-align:center">in</td>
-<td style="text-align:center">&#x7B26;&#x5408;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x4EFB;&#x4E00;&#x4E2A;</td>
+<td style="text-align:center">符合集合中的任一个</td>
 </tr>
 <tr>
 <td style="text-align:center">like</td>
-<td style="text-align:center">&#x6A21;&#x7CCA;&#x5339;&#x914D;&#xFF1A;&#x591A;&#x4F4D;%&#xA0; &#xA0; &#x5355;&#x4F4D;_&#xA0; &#xA0; &#x9664;&#x4E86;ESCAPE</td>
+<td style="text-align:center">模糊匹配：多位%&nbsp; &nbsp; 单位_&nbsp; &nbsp; 除了ESCAPE</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h4 class="mume-header" id="%E5%A4%9A%E8%A1%A8dql">&#x591A;&#x8868;DQL</h4>
+<h4 id="多表dql">多表DQL </h4>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-select">select</span> <span class="token operator">*</span> <span class="token keyword keyword-from">from</span> 表一<span class="token punctuation">,</span>表二<span class="token punctuation">;</span>    <span class="token comment">//笛卡尔积，隐式内连接</span>
 
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-select">select</span> <span class="token operator">*</span> <span class="token keyword keyword-from">from</span> &#x8868;&#x4E00;<span class="token punctuation">,</span>&#x8868;&#x4E8C;<span class="token punctuation">;</span>    <span class="token comment">//&#x7B1B;&#x5361;&#x5C14;&#x79EF;&#xFF0C;&#x9690;&#x5F0F;&#x5185;&#x8FDE;&#x63A5;</span>
+<span class="token keyword keyword-select">select</span> 表一<span class="token punctuation">.</span>属性名<span class="token punctuation">,</span>表二<span class="token punctuation">.</span>属性名
+<span class="token keyword keyword-from">from</span> 表一<span class="token punctuation">,</span>表二
+<span class="token keyword keyword-where">where</span> 等值条件<span class="token punctuation">;</span>    <span class="token comment">//等值连接，隐式内连接</span>
 
-<span class="token keyword keyword-select">select</span> &#x8868;&#x4E00;<span class="token punctuation">.</span>&#x5C5E;&#x6027;&#x540D;<span class="token punctuation">,</span>&#x8868;&#x4E8C;<span class="token punctuation">.</span>&#x5C5E;&#x6027;&#x540D;
-<span class="token keyword keyword-from">from</span> &#x8868;&#x4E00;<span class="token punctuation">,</span>&#x8868;&#x4E8C;
-<span class="token keyword keyword-where">where</span> &#x7B49;&#x503C;&#x6761;&#x4EF6;<span class="token punctuation">;</span>    <span class="token comment">//&#x7B49;&#x503C;&#x8FDE;&#x63A5;&#xFF0C;&#x9690;&#x5F0F;&#x5185;&#x8FDE;&#x63A5;</span>
+<span class="token keyword keyword-select">select</span> 表一<span class="token punctuation">.</span>属性名<span class="token punctuation">,</span>表二<span class="token punctuation">.</span>属性名
+<span class="token keyword keyword-from">from</span> 表一 <span class="token keyword keyword-join">join</span> 表二 <span class="token keyword keyword-on">on</span> 等值条件
+<span class="token keyword keyword-where">where</span> 筛选条件<span class="token punctuation">;</span>    <span class="token comment">//显示内连接</span>
 
-<span class="token keyword keyword-select">select</span> &#x8868;&#x4E00;<span class="token punctuation">.</span>&#x5C5E;&#x6027;&#x540D;<span class="token punctuation">,</span>&#x8868;&#x4E8C;<span class="token punctuation">.</span>&#x5C5E;&#x6027;&#x540D;
-<span class="token keyword keyword-from">from</span> &#x8868;&#x4E00; <span class="token keyword keyword-join">join</span> &#x8868;&#x4E8C; <span class="token keyword keyword-on">on</span> &#x7B49;&#x503C;&#x6761;&#x4EF6;
-<span class="token keyword keyword-where">where</span> &#x7B5B;&#x9009;&#x6761;&#x4EF6;<span class="token punctuation">;</span>    <span class="token comment">//&#x663E;&#x793A;&#x5185;&#x8FDE;&#x63A5;</span>
+<span class="token keyword keyword-select">select</span> 表一<span class="token punctuation">.</span>属性名<span class="token punctuation">,</span>表二<span class="token punctuation">.</span>属性名
+<span class="token keyword keyword-from">from</span> 表一 <span class="token keyword keyword-left">left</span> <span class="token keyword keyword-join">join</span> 表二 <span class="token keyword keyword-on">on</span> 等值条件
+<span class="token keyword keyword-where">where</span> 筛选条件<span class="token punctuation">;</span>    <span class="token comment">//显示左连接</span>
 
-<span class="token keyword keyword-select">select</span> &#x8868;&#x4E00;<span class="token punctuation">.</span>&#x5C5E;&#x6027;&#x540D;<span class="token punctuation">,</span>&#x8868;&#x4E8C;<span class="token punctuation">.</span>&#x5C5E;&#x6027;&#x540D;
-<span class="token keyword keyword-from">from</span> &#x8868;&#x4E00; <span class="token keyword keyword-left">left</span> <span class="token keyword keyword-join">join</span> &#x8868;&#x4E8C; <span class="token keyword keyword-on">on</span> &#x7B49;&#x503C;&#x6761;&#x4EF6;
-<span class="token keyword keyword-where">where</span> &#x7B5B;&#x9009;&#x6761;&#x4EF6;<span class="token punctuation">;</span>    <span class="token comment">//&#x663E;&#x793A;&#x5DE6;&#x8FDE;&#x63A5;</span>
+<span class="token keyword keyword-select">select</span> 表一<span class="token punctuation">.</span>属性名<span class="token punctuation">,</span>表二<span class="token punctuation">.</span>属性名
+<span class="token keyword keyword-from">from</span> 表一 <span class="token keyword keyword-right">right</span> <span class="token keyword keyword-join">join</span> 表二 <span class="token keyword keyword-on">on</span> 等值条件
+<span class="token keyword keyword-where">where</span> 筛选条件<span class="token punctuation">;</span>    <span class="token comment">//显示右连接</span>
+</code></pre><hr>
+<h4 id="嵌套dql">嵌套DQL </h4>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-select">select</span> <span class="token operator">*</span> <span class="token keyword keyword-from">from</span> 表名 <span class="token keyword keyword-where">where</span> 属性名 <span class="token operator">=</span> <span class="token punctuation">(</span>标量子查询DQL语句<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword keyword-select">select</span> &#x8868;&#x4E00;<span class="token punctuation">.</span>&#x5C5E;&#x6027;&#x540D;<span class="token punctuation">,</span>&#x8868;&#x4E8C;<span class="token punctuation">.</span>&#x5C5E;&#x6027;&#x540D;
-<span class="token keyword keyword-from">from</span> &#x8868;&#x4E00; <span class="token keyword keyword-right">right</span> <span class="token keyword keyword-join">join</span> &#x8868;&#x4E8C; <span class="token keyword keyword-on">on</span> &#x7B49;&#x503C;&#x6761;&#x4EF6;
-<span class="token keyword keyword-where">where</span> &#x7B5B;&#x9009;&#x6761;&#x4EF6;<span class="token punctuation">;</span>    <span class="token comment">//&#x663E;&#x793A;&#x53F3;&#x8FDE;&#x63A5;</span>
-</pre><hr>
-<h4 class="mume-header" id="%E5%B5%8C%E5%A5%97dql">&#x5D4C;&#x5957;DQL</h4>
+<span class="token keyword keyword-select">select</span> <span class="token operator">*</span> <span class="token keyword keyword-from">from</span> 表名 <span class="token keyword keyword-where">where</span> 属性名 <span class="token operator">in</span> <span class="token punctuation">(</span>列子查询DQL语句<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-select">select</span> <span class="token operator">*</span> <span class="token keyword keyword-from">from</span> &#x8868;&#x540D; <span class="token keyword keyword-where">where</span> &#x5C5E;&#x6027;&#x540D; <span class="token operator">=</span> <span class="token punctuation">(</span>&#x6807;&#x91CF;&#x5B50;&#x67E5;&#x8BE2;DQL&#x8BED;&#x53E5;<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-select">select</span> <span class="token operator">*</span> <span class="token keyword keyword-from">from</span> 表名 <span class="token keyword keyword-where">where</span> <span class="token punctuation">(</span>属性名<span class="token punctuation">,</span>属性名<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span>行子查询DQL语句<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword keyword-select">select</span> <span class="token operator">*</span> <span class="token keyword keyword-from">from</span> &#x8868;&#x540D; <span class="token keyword keyword-where">where</span> &#x5C5E;&#x6027;&#x540D; <span class="token operator">in</span> <span class="token punctuation">(</span>&#x5217;&#x5B50;&#x67E5;&#x8BE2;DQL&#x8BED;&#x53E5;<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-select">select</span> <span class="token operator">*</span> <span class="token keyword keyword-from">from</span> （表子查询DQL语句） <span class="token keyword keyword-where">where</span> 条件<span class="token punctuation">;</span>
 
-<span class="token keyword keyword-select">select</span> <span class="token operator">*</span> <span class="token keyword keyword-from">from</span> &#x8868;&#x540D; <span class="token keyword keyword-where">where</span> <span class="token punctuation">(</span>&#x5C5E;&#x6027;&#x540D;<span class="token punctuation">,</span>&#x5C5E;&#x6027;&#x540D;<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span>&#x884C;&#x5B50;&#x67E5;&#x8BE2;DQL&#x8BED;&#x53E5;<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">(</span>子查询DQL语句<span class="token punctuation">)</span> <span class="token keyword keyword-UNION">UNION</span> <span class="token punctuation">(</span>子查询DQL语句<span class="token punctuation">)</span>    <span class="token comment">//并集</span>
+</code></pre><hr>
+<h3 id="dml">DML </h3>
+<p><strong>概念</strong>：data manipulation language，数据操作语言，对表格元组的增删改操作。</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-insert">insert</span> <span class="token keyword keyword-into">into</span> 表名 <span class="token punctuation">(</span>属性名<span class="token number">1</span><span class="token punctuation">,</span>属性名<span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token keyword keyword-values">values</span> <span class="token punctuation">(</span>值<span class="token number">1</span><span class="token punctuation">,</span>值<span class="token number">2.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword keyword-select">select</span> <span class="token operator">*</span> <span class="token keyword keyword-from">from</span> &#xFF08;&#x8868;&#x5B50;&#x67E5;&#x8BE2;DQL&#x8BED;&#x53E5;&#xFF09; <span class="token keyword keyword-where">where</span> &#x6761;&#x4EF6;<span class="token punctuation">;</span>
+<span class="token keyword keyword-update">update</span> 表名 <span class="token keyword keyword-set">set</span> 属性名<span class="token operator">=</span>值 <span class="token keyword keyword-where">where</span> 条件<span class="token punctuation">;</span>
 
-<span class="token punctuation">(</span>&#x5B50;&#x67E5;&#x8BE2;DQL&#x8BED;&#x53E5;<span class="token punctuation">)</span> <span class="token keyword keyword-UNION">UNION</span> <span class="token punctuation">(</span>&#x5B50;&#x67E5;&#x8BE2;DQL&#x8BED;&#x53E5;<span class="token punctuation">)</span>    <span class="token comment">//&#x5E76;&#x96C6;</span>
-</pre><hr>
-<h3 class="mume-header" id="dml">DML</h3>
+<span class="token keyword keyword-delete">delete</span> <span class="token keyword keyword-from">from</span> 表名 <span class="token keyword keyword-where">where</span> 条件<span class="token punctuation">;</span> 
 
-<p><strong>&#x6982;&#x5FF5;</strong>&#xFF1A;data manipulation language&#xFF0C;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#x8BED;&#x8A00;&#xFF0C;&#x5BF9;&#x8868;&#x683C;&#x5143;&#x7EC4;&#x7684;&#x589E;&#x5220;&#x6539;&#x64CD;&#x4F5C;&#x3002;</p>
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-insert">insert</span> <span class="token keyword keyword-into">into</span> &#x8868;&#x540D; <span class="token punctuation">(</span>&#x5C5E;&#x6027;&#x540D;<span class="token number">1</span><span class="token punctuation">,</span>&#x5C5E;&#x6027;&#x540D;<span class="token number">2</span><span class="token punctuation">,</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token keyword keyword-values">values</span> <span class="token punctuation">(</span>&#x503C;<span class="token number">1</span><span class="token punctuation">,</span>&#x503C;<span class="token number">2.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-truncate">truncate</span> 表名<span class="token punctuation">;</span>    <span class="token comment">//相当于drop后create，速度比delete块。</span>
+</code></pre><hr>
+<h3 id="dcl">DCL </h3>
+<p><strong>概念</strong>：data control language，数据控制语言，用户管理，权限管理等安全性操作</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-user">user</span> <span class="token string">'用户名'</span><span class="token variable">@'主机名'</span>    <span class="token comment">//主机名可用%，进行模糊匹配</span>
+identified <span class="token keyword keyword-by">by</span> 密码<span class="token punctuation">;</span>
 
-<span class="token keyword keyword-update">update</span> &#x8868;&#x540D; <span class="token keyword keyword-set">set</span> &#x5C5E;&#x6027;&#x540D;<span class="token operator">=</span>&#x503C; <span class="token keyword keyword-where">where</span> &#x6761;&#x4EF6;<span class="token punctuation">;</span>
+<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-user">user</span> <span class="token string">'用户名'</span><span class="token variable">@'主机名'</span>
+identified <span class="token keyword keyword-with">with</span> mysql_native_password <span class="token keyword keyword-by">by</span> 新密码<span class="token punctuation">;</span>
 
-<span class="token keyword keyword-delete">delete</span> <span class="token keyword keyword-from">from</span> &#x8868;&#x540D; <span class="token keyword keyword-where">where</span> &#x6761;&#x4EF6;<span class="token punctuation">;</span> 
+<span class="token keyword keyword-drop">drop</span> <span class="token keyword keyword-user">user</span> <span class="token string">'用户名'</span><span class="token variable">@'主机名'</span><span class="token punctuation">;</span>
 
-<span class="token keyword keyword-truncate">truncate</span> &#x8868;&#x540D;<span class="token punctuation">;</span>    <span class="token comment">//&#x76F8;&#x5F53;&#x4E8E;drop&#x540E;create&#xFF0C;&#x901F;&#x5EA6;&#x6BD4;delete&#x5757;&#x3002;</span>
-</pre><hr>
-<h3 class="mume-header" id="dcl">DCL</h3>
+<span class="token keyword keyword-show">show</span> <span class="token keyword keyword-grant">grant</span> <span class="token keyword keyword-for">for</span> <span class="token string">'用户名'</span><span class="token variable">@'主机名'</span><span class="token punctuation">;</span>
 
-<p><strong>&#x6982;&#x5FF5;</strong>&#xFF1A;data control language&#xFF0C;&#x6570;&#x636E;&#x63A7;&#x5236;&#x8BED;&#x8A00;&#xFF0C;&#x7528;&#x6237;&#x7BA1;&#x7406;&#xFF0C;&#x6743;&#x9650;&#x7BA1;&#x7406;&#x7B49;&#x5B89;&#x5168;&#x6027;&#x64CD;&#x4F5C;</p>
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-user">user</span> <span class="token string">&apos;&#x7528;&#x6237;&#x540D;&apos;</span><span class="token variable">@&apos;&#x4E3B;&#x673A;&#x540D;&apos;</span>    <span class="token comment">//&#x4E3B;&#x673A;&#x540D;&#x53EF;&#x7528;%&#xFF0C;&#x8FDB;&#x884C;&#x6A21;&#x7CCA;&#x5339;&#x914D;</span>
-identified <span class="token keyword keyword-by">by</span> &#x5BC6;&#x7801;<span class="token punctuation">;</span>
+<span class="token keyword keyword-grant">grant</span> 权限<span class="token punctuation">,</span>权限<span class="token punctuation">(</span>属性名<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword keyword-on">on</span> <span class="token keyword keyword-table">table</span> 名
+<span class="token keyword keyword-to">to</span> <span class="token string">'用户名'</span><span class="token variable">@'主机名'</span>
+<span class="token keyword keyword-with">with</span> <span class="token keyword keyword-grant">grant</span> <span class="token keyword keyword-option">option</span><span class="token punctuation">;</span>    <span class="token comment">//可选，被授予者可以授予其他人</span>
 
-<span class="token keyword keyword-alter">alter</span> <span class="token keyword keyword-user">user</span> <span class="token string">&apos;&#x7528;&#x6237;&#x540D;&apos;</span><span class="token variable">@&apos;&#x4E3B;&#x673A;&#x540D;&apos;</span>
-identified <span class="token keyword keyword-with">with</span> mysql_native_password <span class="token keyword keyword-by">by</span> &#x65B0;&#x5BC6;&#x7801;<span class="token punctuation">;</span>
-
-<span class="token keyword keyword-drop">drop</span> <span class="token keyword keyword-user">user</span> <span class="token string">&apos;&#x7528;&#x6237;&#x540D;&apos;</span><span class="token variable">@&apos;&#x4E3B;&#x673A;&#x540D;&apos;</span><span class="token punctuation">;</span>
-
-<span class="token keyword keyword-show">show</span> <span class="token keyword keyword-grant">grant</span> <span class="token keyword keyword-for">for</span> <span class="token string">&apos;&#x7528;&#x6237;&#x540D;&apos;</span><span class="token variable">@&apos;&#x4E3B;&#x673A;&#x540D;&apos;</span><span class="token punctuation">;</span>
-
-<span class="token keyword keyword-grant">grant</span> &#x6743;&#x9650;<span class="token punctuation">,</span>&#x6743;&#x9650;<span class="token punctuation">(</span>&#x5C5E;&#x6027;&#x540D;<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token keyword keyword-on">on</span> <span class="token keyword keyword-table">table</span> &#x540D;
-<span class="token keyword keyword-to">to</span> <span class="token string">&apos;&#x7528;&#x6237;&#x540D;&apos;</span><span class="token variable">@&apos;&#x4E3B;&#x673A;&#x540D;&apos;</span>
-<span class="token keyword keyword-with">with</span> <span class="token keyword keyword-grant">grant</span> <span class="token keyword keyword-option">option</span><span class="token punctuation">;</span>    <span class="token comment">//&#x53EF;&#x9009;&#xFF0C;&#x88AB;&#x6388;&#x4E88;&#x8005;&#x53EF;&#x4EE5;&#x6388;&#x4E88;&#x5176;&#x4ED6;&#x4EBA;</span>
-
-<span class="token keyword keyword-revoke">revoke</span> &#x6743;&#x9650;<span class="token punctuation">,</span>&#x6743;&#x9650;<span class="token punctuation">(</span>&#x5C5E;&#x6027;&#x540D;<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>&#x3001;
-<span class="token keyword keyword-on">on</span> <span class="token keyword keyword-table">table</span> &#x8868;&#x540D;
-<span class="token keyword keyword-from">from</span> <span class="token string">&apos;&#x7528;&#x6237;&#x540D;&apos;</span><span class="token variable">@&apos;&#x4E3B;&#x673A;&#x540D;&apos;</span><span class="token punctuation">;</span>
-</pre><table>
+<span class="token keyword keyword-revoke">revoke</span> 权限<span class="token punctuation">,</span>权限<span class="token punctuation">(</span>属性名<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>、
+<span class="token keyword keyword-on">on</span> <span class="token keyword keyword-table">table</span> 表名
+<span class="token keyword keyword-from">from</span> <span class="token string">'用户名'</span><span class="token variable">@'主机名'</span><span class="token punctuation">;</span>
+</code></pre><table>
 <thead>
 <tr>
-<th style="text-align:center">&#x6743;&#x9650;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">权限</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">replication slave</td>
-<td style="text-align:center">&#x5168;&#x90E8;&#x6743;&#x9650;</td>
+<td style="text-align:center">全部权限</td>
 </tr>
 <tr>
-<td style="text-align:center">insert&#x3001;delete&#x3001;updata&#x3001;select...</td>
-<td style="text-align:center">&#x4E2A;&#x522B;&#x589E;&#x5220;&#x6539;&#x67E5;&#x7B49;&#x6743;&#x9650;</td>
+<td style="text-align:center">insert、delete、updata、select...</td>
+<td style="text-align:center">个别增删改查等权限</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h2 class="mume-header" id="sql%E6%89%A9%E5%B1%95%E8%AF%AD%E6%B3%95">SQL&#x6269;&#x5C55;&#x8BED;&#x6CD5;</h2>
+<h2 id="sql扩展语法">SQL扩展语法 </h2>
+<h3 id="视图">视图 </h3>
+<p><strong>概念</strong>：依据查询结果创建视图，可以提高数据的安全性、独立性。</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-view">view</span> 视图名 <span class="token keyword keyword-as">as</span> DQL语句<span class="token punctuation">;</span>
 
-<h3 class="mume-header" id="%E8%A7%86%E5%9B%BE">&#x89C6;&#x56FE;</h3>
+<span class="token keyword keyword-create">create</span> <span class="token keyword keyword-view">view</span> 视图名 <span class="token keyword keyword-as">as</span> DQL语句 <span class="token keyword keyword-with">with</span> <span class="token keyword keyword-check">check</span> <span class="token keyword keyword-option">option</span><span class="token punctuation">;</span>    <span class="token comment">//更新，保持一致</span>
 
-<p><strong>&#x6982;&#x5FF5;</strong>&#xFF1A;&#x4F9D;&#x636E;&#x67E5;&#x8BE2;&#x7ED3;&#x679C;&#x521B;&#x5EFA;&#x89C6;&#x56FE;&#xFF0C;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x6570;&#x636E;&#x7684;&#x5B89;&#x5168;&#x6027;&#x3001;&#x72EC;&#x7ACB;&#x6027;&#x3002;</p>
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-view">view</span> &#x89C6;&#x56FE;&#x540D; <span class="token keyword keyword-as">as</span> DQL&#x8BED;&#x53E5;<span class="token punctuation">;</span>
+<span class="token keyword keyword-create">create</span> <span class="token keyword keyword-view">view</span> 视图名 <span class="token keyword keyword-as">as</span> DQL语句 <span class="token keyword keyword-with">with</span> <span class="token keyword keyword-local">local</span> <span class="token keyword keyword-check">check</span> <span class="token keyword keyword-option">option</span><span class="token punctuation">;</span>    <span class="token comment">//多级视图不传递</span>
 
-<span class="token keyword keyword-create">create</span> <span class="token keyword keyword-view">view</span> &#x89C6;&#x56FE;&#x540D; <span class="token keyword keyword-as">as</span> DQL&#x8BED;&#x53E5; <span class="token keyword keyword-with">with</span> <span class="token keyword keyword-check">check</span> <span class="token keyword keyword-option">option</span><span class="token punctuation">;</span>    <span class="token comment">//&#x66F4;&#x65B0;&#xFF0C;&#x4FDD;&#x6301;&#x4E00;&#x81F4;</span>
+<span class="token keyword keyword-create">create</span> <span class="token keyword keyword-view">view</span> 视图名 <span class="token keyword keyword-as">as</span> DQL语句 <span class="token keyword keyword-with">with</span> <span class="token keyword keyword-cascaded">cascaded</span> <span class="token keyword keyword-check">check</span> <span class="token keyword keyword-option">option</span><span class="token punctuation">;</span><span class="token comment">//多级视图更新传递---</span>
+</code></pre><h3 id="索引">索引 </h3>
+<p><strong>概念</strong>：建立索引可以提高SQL语句执行速度，索引是B+树结构。</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-index">index</span> 索引名 <span class="token keyword keyword-on">on</span> 表名<span class="token punctuation">(</span>属性名 <span class="token keyword keyword-desc">desc</span><span class="token punctuation">,</span>属性<span class="token punctuation">)</span>
 
-<span class="token keyword keyword-create">create</span> <span class="token keyword keyword-view">view</span> &#x89C6;&#x56FE;&#x540D; <span class="token keyword keyword-as">as</span> DQL&#x8BED;&#x53E5; <span class="token keyword keyword-with">with</span> <span class="token keyword keyword-local">local</span> <span class="token keyword keyword-check">check</span> <span class="token keyword keyword-option">option</span><span class="token punctuation">;</span>    <span class="token comment">//&#x591A;&#x7EA7;&#x89C6;&#x56FE;&#x4E0D;&#x4F20;&#x9012;</span>
+<span class="token keyword keyword-create">create</span> <span class="token keyword keyword-index">index</span> 索引名 <span class="token keyword keyword-on">on</span> 表名<span class="token punctuation">(</span>属性名<span class="token punctuation">(</span>前缀数<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">//前缀索引</span>
 
-<span class="token keyword keyword-create">create</span> <span class="token keyword keyword-view">view</span> &#x89C6;&#x56FE;&#x540D; <span class="token keyword keyword-as">as</span> DQL&#x8BED;&#x53E5; <span class="token keyword keyword-with">with</span> <span class="token keyword keyword-cascaded">cascaded</span> <span class="token keyword keyword-check">check</span> <span class="token keyword keyword-option">option</span><span class="token punctuation">;</span><span class="token comment">//&#x591A;&#x7EA7;&#x89C6;&#x56FE;&#x66F4;&#x65B0;&#x4F20;&#x9012;---</span>
-</pre><h3 class="mume-header" id="%E7%B4%A2%E5%BC%95">&#x7D22;&#x5F15;</h3>
+<span class="token keyword keyword-show">show</span> <span class="token keyword keyword-index">index</span> <span class="token keyword keyword-from">from</span> 表名<span class="token punctuation">;</span>
 
-<p><strong>&#x6982;&#x5FF5;</strong>&#xFF1A;&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;SQL&#x8BED;&#x53E5;&#x6267;&#x884C;&#x901F;&#x5EA6;&#xFF0C;&#x7D22;&#x5F15;&#x662F;B+&#x6811;&#x7ED3;&#x6784;&#x3002;</p>
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-index">index</span> &#x7D22;&#x5F15;&#x540D; <span class="token keyword keyword-on">on</span> &#x8868;&#x540D;<span class="token punctuation">(</span>&#x5C5E;&#x6027;&#x540D; <span class="token keyword keyword-desc">desc</span><span class="token punctuation">,</span>&#x5C5E;&#x6027;<span class="token punctuation">)</span>
-
-<span class="token keyword keyword-create">create</span> <span class="token keyword keyword-index">index</span> &#x7D22;&#x5F15;&#x540D; <span class="token keyword keyword-on">on</span> &#x8868;&#x540D;<span class="token punctuation">(</span>&#x5C5E;&#x6027;&#x540D;<span class="token punctuation">(</span>&#x524D;&#x7F00;&#x6570;<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">//&#x524D;&#x7F00;&#x7D22;&#x5F15;</span>
-
-<span class="token keyword keyword-show">show</span> <span class="token keyword keyword-index">index</span> <span class="token keyword keyword-from">from</span> &#x8868;&#x540D;<span class="token punctuation">;</span>
-
-<span class="token keyword keyword-drop">drop</span> <span class="token keyword keyword-index">index</span> &#x7D22;&#x5F15;&#x540D; <span class="token keyword keyword-on">on</span> &#x8868;&#x540D;<span class="token punctuation">;</span>
-</pre><table>
+<span class="token keyword keyword-drop">drop</span> <span class="token keyword keyword-index">index</span> 索引名 <span class="token keyword keyword-on">on</span> 表名<span class="token punctuation">;</span>
+</code></pre><table>
 <thead>
 <tr>
-<th>&#x672F;&#x8BED;</th>
-<th>&#x8BF4;&#x660E;</th>
+<th>术语</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>&#x805A;&#x7C07;&#x7D22;&#x5F15;cluster</td>
-<td>&#x81EA;&#x52A8;&#x5728;&#x4E3B;&#x952E;&#x5EFA;&#x7ACB;&#xFF0C;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#x662F;&#x4E00;&#x884C;&#x7684;&#x5168;&#x90E8;&#x6570;&#x636E;&#xFF0C;&#x65E0;&#x9700;&#x56DE;&#x8868;&#x67E5;&#x8BE2;</td>
+<td>聚簇索引cluster</td>
+<td>自动在主键建立，叶子结点是一行的全部数据，无需回表查询</td>
 </tr>
 <tr>
-<td>&#x8F85;&#x52A9;&#x7D22;&#x5F15;</td>
-<td>&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#x53EA;&#x6709;&#x4E3B;&#x952E;&#x7684;&#x503C;&#xFF0C;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x56DE;&#x8868;&#x67E5;&#x8BE2;</td>
+<td>辅助索引</td>
+<td>叶子结点只有主键的值，可能需要回表查询</td>
 </tr>
 </tbody>
 </table>
 <ul>
 <li>
-<p>&#x56DE;&#x8868;&#x67E5;&#x8BE2;&#xFF1A;&#x5728;&#x8F85;&#x52A9;&#x7D22;&#x5F15;&#x627E;&#x4E0D;&#x5230;&#x5168;&#x90E8;&#x6240;&#x9700;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x518D;&#x5230;&#x805A;&#x7C07;&#x7D22;&#x5F15;&#x8FDB;&#x884C;&#x67E5;&#x627E;</p>
+<p>回表查询：在辅助索引找不到全部所需数据，而再到聚簇索引进行查找</p>
 </li>
 <li>
-<p>&#x8986;&#x76D6;&#x67E5;&#x8BE2;&#xFF1A;&#x65E0;&#x9700;&#x56DE;&#x8868;&#xFF0C;&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;&#x7684;1-n&#x4E2A;&#x5C5E;&#x6027;&#x540D;&#x5DF2;&#x7ECF;&#x5305;&#x542B;&#x5168;&#x90E8;&#x6240;&#x9700;&#x6570;&#x636E;&#x3002;</p>
+<p>覆盖查询：无需回表，建立索引的1-n个属性名已经包含全部所需数据。</p>
 </li>
 <li>
-<p>&#x8054;&#x5408;&#x7D22;&#x5F15;&#xFF1A;&#x5BF9;&#x591A;&#x4E2A;&#x5C5E;&#x6027;&#x8054;&#x5408;&#x5EFA;&#x7ACB;&#x7D22;&#x5F15;</p>
+<p>联合索引：对多个属性联合建立索引</p>
 </li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>&#x7D22;&#x5F15;&#x5931;&#x6548;</th>
+<th>索引失效</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>&#x5728;&#x7D22;&#x5F15;&#x5217;&#x4E0A;&#x8FDB;&#x884C;&#x8FD0;&#x7B97;&#x64CD;&#x4F5C;</td>
+<td>在索引列上进行运算操作</td>
 </tr>
 <tr>
-<td>&#x5B57;&#x7B26;&#x4E32;&#x4E0D;&#x52A0;&#x5355;&#x5F15;&#x53F7;</td>
+<td>字符串不加单引号</td>
 </tr>
 <tr>
-<td>&#x5934;&#x90E8;&#x4F7F;&#x7528;&#x6A21;&#x7CCA;&#x67E5;&#x8BE2;</td>
+<td>头部使用模糊查询</td>
 </tr>
 <tr>
-<td>or&#x8FDE;&#x63A5;&#x7684;&#x4E24;&#x7AEF;&#x6709;&#x4E00;&#x7AEF;&#x6CA1;&#x6709;&#x7D22;&#x5F15;</td>
+<td>or连接的两端有一端没有索引</td>
 </tr>
 <tr>
-<td>&#x5F53;&#x524D;&#x67E5;&#x8BE2;&#x7684;&#x6570;&#x636E;&#x5360;&#x7EDD;&#x5927;&#x90E8;&#x5206;</td>
+<td>当前查询的数据占绝大部分</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x8054;&#x5408;&#x7D22;&#x5F15;&#x7684;<strong>&#x6700;&#x5DE6;&#x524D;&#x7F00;&#x6CD5;&#x5219;</strong>&#xFF1A;&#x8DF3;&#x8FC7;&#x6700;&#x5DE6;&#x5C5E;&#x6027;&#xFF0C;&#x7D22;&#x5F15;&#x5168;&#x90E8;&#x5931;&#x6548;&#xFF0C;&#x8DF3;&#x8FC7;&#x4E2D;&#x95F4;&#x5C5E;&#x6027;&#xFF0C;&#x7D22;&#x5F15;&#x90E8;&#x5206;&#x5931;&#x6548;&#xFF0C;&#x7528;&gt; &lt;&#x90E8;&#x5206;&#x5931;&#x6548;&#xFF0C;&#x7528;&gt;= &lt;=&#x4E0D;&#x4F1A;&#x5931;&#x6548;&#x3002;</li>
+<li>联合索引的<strong>最左前缀法则</strong>：跳过最左属性，索引全部失效，跳过中间属性，索引部分失效，用&gt; &lt;部分失效，用&gt;= &lt;=不会失效。</li>
 </ul>
 <table>
 <thead>
 <tr>
-<th>SQL&#x63D0;&#x793A;</th>
-<th>&#x8BF4;&#x660E;</th>
+<th>SQL提示</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>use index(&#x7D22;&#x5F15;&#x540D;)</td>
-<td><strong>&#x5EFA;&#x8BAE;</strong>&#x4F7F;&#x7528;&#x67D0;&#x7D22;&#x5F15;&#x67E5;&#x8BE2;</td>
+<td>use index(索引名)</td>
+<td><strong>建议</strong>使用某索引查询</td>
 </tr>
 <tr>
-<td>ignore index(&#x7D22;&#x5F15;&#x540D;)</td>
-<td><strong>&#x5FFD;&#x89C6;</strong>&#x67D0;&#x7D22;&#x5F15;&#x67E5;&#x8BE2;</td>
+<td>ignore index(索引名)</td>
+<td><strong>忽视</strong>某索引查询</td>
 </tr>
 <tr>
-<td>force index(&#x7D22;&#x5F15;&#x540D;)</td>
-<td><strong>&#x5F3A;&#x5236;</strong>&#x4F7F;&#x7528;&#x67D0;&#x7D22;&#x5F15;&#x67E5;&#x8BE2;</td>
+<td>force index(索引名)</td>
+<td><strong>强制</strong>使用某索引查询</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x7528;&#x5728;DQL&#x7684;from &#x8868;&#x540D;&#x540E;&#x9762;&#x3002;</li>
+<li>用在DQL的from 表名后面。</li>
 </ul>
 <hr>
-<h3 class="mume-header" id="%E5%8F%98%E9%87%8F">&#x53D8;&#x91CF;</h3>
+<h3 id="变量">变量 </h3>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-show">show</span> <span class="token keyword keyword-session">session</span> variables<span class="token punctuation">;</span>    <span class="token comment">//系统变量，查看全部局部</span>
+<span class="token keyword keyword-show">show</span> <span class="token keyword keyword-global">global</span> variables<span class="token punctuation">;</span>    <span class="token comment">//系统变量，查看全部全局</span>
 
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-show">show</span> <span class="token keyword keyword-session">session</span> variables<span class="token punctuation">;</span>    <span class="token comment">//&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;&#xFF0C;&#x67E5;&#x770B;&#x5168;&#x90E8;&#x5C40;&#x90E8;</span>
-<span class="token keyword keyword-show">show</span> <span class="token keyword keyword-global">global</span> variables<span class="token punctuation">;</span>    <span class="token comment">//&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;&#xFF0C;&#x67E5;&#x770B;&#x5168;&#x90E8;&#x5168;&#x5C40;</span>
+<span class="token keyword keyword-show">show</span> <span class="token keyword keyword-global">global</span> variables <span class="token operator">like</span> 模糊匹配词<span class="token punctuation">;</span>    <span class="token comment">//系统变量，模糊匹配</span>
 
-<span class="token keyword keyword-show">show</span> <span class="token keyword keyword-global">global</span> variables <span class="token operator">like</span> &#x6A21;&#x7CCA;&#x5339;&#x914D;&#x8BCD;<span class="token punctuation">;</span>    <span class="token comment">//&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;&#xFF0C;&#x6A21;&#x7CCA;&#x5339;&#x914D;</span>
+<span class="token keyword keyword-show">show</span> @<span class="token variable">@global.</span>变量名<span class="token punctuation">;</span>    <span class="token comment">//系统变量，具体查询</span>
 
-<span class="token keyword keyword-show">show</span> @<span class="token variable">@global.</span>&#x53D8;&#x91CF;&#x540D;<span class="token punctuation">;</span>    <span class="token comment">//&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;&#xFF0C;&#x5177;&#x4F53;&#x67E5;&#x8BE2;</span>
+<span class="token keyword keyword-set">set</span> <span class="token keyword keyword-global">global</span> 变量名 <span class="token operator">=</span> 值<span class="token punctuation">;</span>    <span class="token comment">//系统变量，赋值</span>
 
-<span class="token keyword keyword-set">set</span> <span class="token keyword keyword-global">global</span> &#x53D8;&#x91CF;&#x540D; <span class="token operator">=</span> &#x503C;<span class="token punctuation">;</span>    <span class="token comment">//&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;&#xFF0C;&#x8D4B;&#x503C;</span>
+<span class="token keyword keyword-set">set</span> @变量名 <span class="token operator">=</span> 值<span class="token punctuation">;</span>    <span class="token comment">//用户变量，定义赋值</span>
 
-<span class="token keyword keyword-set">set</span> @&#x53D8;&#x91CF;&#x540D; <span class="token operator">=</span> &#x503C;<span class="token punctuation">;</span>    <span class="token comment">//&#x7528;&#x6237;&#x53D8;&#x91CF;&#xFF0C;&#x5B9A;&#x4E49;&#x8D4B;&#x503C;</span>
+<span class="token keyword keyword-declare">declare</span> 变量名 变量类型 <span class="token keyword keyword-default">default</span> 默认值<span class="token punctuation">;</span>    <span class="token comment">//局部变量，定义</span>
 
-<span class="token keyword keyword-declare">declare</span> &#x53D8;&#x91CF;&#x540D; &#x53D8;&#x91CF;&#x7C7B;&#x578B; <span class="token keyword keyword-default">default</span> &#x9ED8;&#x8BA4;&#x503C;<span class="token punctuation">;</span>    <span class="token comment">//&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x5B9A;&#x4E49;</span>
+<span class="token keyword keyword-set">set</span> 变量名 <span class="token operator">=</span> 值<span class="token punctuation">;</span>    <span class="token comment">//局部变量，赋值</span>
+</code></pre><hr>
+<h3 id="游标">游标 </h3>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-declare">declare</span> 游标名 <span class="token keyword keyword-cursor">cursor</span> <span class="token keyword keyword-for">for</span> DQL语句<span class="token punctuation">;</span>
 
-<span class="token keyword keyword-set">set</span> &#x53D8;&#x91CF;&#x540D; <span class="token operator">=</span> &#x503C;<span class="token punctuation">;</span>    <span class="token comment">//&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x8D4B;&#x503C;</span>
-</pre><hr>
-<h3 class="mume-header" id="%E6%B8%B8%E6%A0%87">&#x6E38;&#x6807;</h3>
+<span class="token keyword keyword-open">open</span> 游标名<span class="token punctuation">;</span>
 
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-declare">declare</span> &#x6E38;&#x6807;&#x540D; <span class="token keyword keyword-cursor">cursor</span> <span class="token keyword keyword-for">for</span> DQL&#x8BED;&#x53E5;<span class="token punctuation">;</span>
+<span class="token keyword keyword-fetch">fetch</span> 游标名 <span class="token keyword keyword-into">into</span> <span class="token number">1</span>到n个变量<span class="token punctuation">;</span>
 
-<span class="token keyword keyword-open">open</span> &#x6E38;&#x6807;&#x540D;<span class="token punctuation">;</span>
-
-<span class="token keyword keyword-fetch">fetch</span> &#x6E38;&#x6807;&#x540D; <span class="token keyword keyword-into">into</span> <span class="token number">1</span>&#x5230;n&#x4E2A;&#x53D8;&#x91CF;<span class="token punctuation">;</span>
-
-<span class="token keyword keyword-close">close</span> &#x6E38;&#x6807;&#x540D;<span class="token punctuation">;</span>
-</pre><hr>
-<h3 class="mume-header" id="%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B">&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;</h3>
-
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-procedure">procedure</span> &#x8FC7;&#x7A0B;&#x540D;<span class="token punctuation">(</span>&#x51FA;&#x8FDB;&#x7C7B;&#x578B; &#x5F62;&#x53C2; &#x53D8;&#x91CF;&#x7C7B;&#x578B;<span class="token punctuation">)</span>
+<span class="token keyword keyword-close">close</span> 游标名<span class="token punctuation">;</span>
+</code></pre><hr>
+<h3 id="存储过程">存储过程 </h3>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-procedure">procedure</span> 过程名<span class="token punctuation">(</span>出进类型 形参 变量类型<span class="token punctuation">)</span>
 <span class="token keyword keyword-begin">begin</span>
-    &#x8FC7;&#x7A0B;&#x4F53;<span class="token punctuation">;</span>
+    过程体<span class="token punctuation">;</span>
 <span class="token keyword keyword-end">end</span><span class="token punctuation">;</span>
 
-<span class="token keyword keyword-call">call</span> &#x8FC7;&#x7A0B;&#x540D;<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-call">call</span> 过程名<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword keyword-show">show</span> <span class="token keyword keyword-create">create</span> <span class="token keyword keyword-procedure">procedure</span> &#x8FC7;&#x7A0B;&#x540D;<span class="token punctuation">;</span>
+<span class="token keyword keyword-show">show</span> <span class="token keyword keyword-create">create</span> <span class="token keyword keyword-procedure">procedure</span> 过程名<span class="token punctuation">;</span>
 
-<span class="token keyword keyword-show">show</span> <span class="token operator">*</span> <span class="token keyword keyword-from">from</span> information_schema<span class="token punctuation">.</span>routines <span class="token keyword keyword-where">where</span> routines_schema <span class="token operator">=</span> <span class="token string">&apos;&#x8868;&#x540D;&apos;</span><span class="token punctuation">;</span>
-</pre><ul>
+<span class="token keyword keyword-show">show</span> <span class="token operator">*</span> <span class="token keyword keyword-from">from</span> information_schema<span class="token punctuation">.</span>routines <span class="token keyword keyword-where">where</span> routines_schema <span class="token operator">=</span> <span class="token string">'表名'</span><span class="token punctuation">;</span>
+</code></pre><ul>
 <li>
-<p>&#x547D;&#x4EE4;&#x884C;&#x5199;&#x7684;&#x8BDD;&#x9700;&#x8981;&#x5B9A;&#x4E49;&#x7ED3;&#x675F;&#x7B26;&#xFF1A;delimiter $</p>
+<p>命令行写的话需要定义结束符：delimiter $</p>
 </li>
 <li>
-<p>&#x51FA;&#x8FDB;&#x7C7B;&#x578B;&#xFF1A;&#x8FDB;in&#x3001;&#x51FA;out&#x3001;&#x51FA;&#x8FDB;inout</p>
+<p>出进类型：进in、出out、出进inout</p>
 </li>
 </ul>
 <hr>
-<h3 class="mume-header" id="%E5%AD%98%E5%82%A8%E5%87%BD%E6%95%B0">&#x5B58;&#x50A8;&#x51FD;&#x6570;</h3>
-
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-function">function</span> &#x51FD;&#x6570;&#x540D;<span class="token punctuation">(</span>&#x5F62;&#x53C2; &#x53D8;&#x91CF;&#x7C7B;&#x578B;<span class="token punctuation">)</span> <span class="token keyword keyword-returns">returns</span> &#x53D8;&#x91CF;&#x7C7B;&#x578B; <span class="token keyword keyword-deterministic">deterministic</span>
+<h3 id="存储函数">存储函数 </h3>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-function">function</span> 函数名<span class="token punctuation">(</span>形参 变量类型<span class="token punctuation">)</span> <span class="token keyword keyword-returns">returns</span> 变量类型 <span class="token keyword keyword-deterministic">deterministic</span>
 <span class="token keyword keyword-begin">begin</span>
-    &#x51FD;&#x6570;&#x4F53;<span class="token punctuation">;</span>
-<span class="token keyword keyword-return">return</span> &#x8FD4;&#x56DE;&#x503C;<span class="token punctuation">;</span>
+    函数体<span class="token punctuation">;</span>
+<span class="token keyword keyword-return">return</span> 返回值<span class="token punctuation">;</span>
 <span class="token keyword keyword-end">end</span><span class="token punctuation">;</span>
 
-<span class="token keyword keyword-call">call</span> &#x51FD;&#x6570;&#x540D;<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre><hr>
-<h3 class="mume-header" id="sql%E5%87%BD%E6%95%B0">SQL&#x51FD;&#x6570;</h3>
-
+<span class="token keyword keyword-call">call</span> 函数名<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><hr>
+<h3 id="sql函数">SQL函数 </h3>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x5B57;&#x7B26;&#x4E32;&#x51FD;&#x6570;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">字符串函数</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">concat(str1,str2,...)</td>
-<td style="text-align:center">&#x5B57;&#x7B26;&#x4E32;&#x62FC;&#x63A5;</td>
+<td style="text-align:center">字符串拼接</td>
 </tr>
 <tr>
 <td style="text-align:center">lower(str)</td>
-<td style="text-align:center">&#x5168;&#x8F6C;&#x5C0F;&#x5199;</td>
+<td style="text-align:center">全转小写</td>
 </tr>
 <tr>
 <td style="text-align:center">upper(str)</td>
-<td style="text-align:center">&#x5168;&#x8F6C;&#x5927;&#x5199;</td>
+<td style="text-align:center">全转大写</td>
 </tr>
 <tr>
 <td style="text-align:center">lpad(str,n,pad)</td>
-<td style="text-align:center">&#x5DE6;&#x586B;&#x5145;pad&#x81F3;&#x603B;n&#x4E2A;&#x5B57;&#x7B26;</td>
+<td style="text-align:center">左填充pad至总n个字符</td>
 </tr>
 <tr>
 <td style="text-align:center">rpad(str,n,pad)</td>
-<td style="text-align:center">&#x53F3;&#x586B;&#x5145;pad&#x81F3;&#x603B;n&#x4E2A;&#x5B57;&#x7B26;</td>
+<td style="text-align:center">右填充pad至总n个字符</td>
 </tr>
 <tr>
 <td style="text-align:center">trim(str)</td>
-<td style="text-align:center">&#x53BB;&#x9664;&#x9996;&#x5C3E;&#x7A7A;&#x683C;</td>
+<td style="text-align:center">去除首尾空格</td>
 </tr>
 <tr>
 <td style="text-align:center">substring(str,start,len)</td>
-<td style="text-align:center">&#x622A;&#x53D6;&#x5B57;&#x7B26;&#x4E32;</td>
+<td style="text-align:center">截取字符串</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x6570;&#x5B66;&#x51FD;&#x6570;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">数学函数</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">ceil(n)</td>
-<td style="text-align:center">&#x5411;&#x4E0A;&#x53D6;&#x6574;</td>
+<td style="text-align:center">向上取整</td>
 </tr>
 <tr>
 <td style="text-align:center">floor(n)</td>
-<td style="text-align:center">&#x5411;&#x4E0B;&#x53D6;&#x6574;</td>
+<td style="text-align:center">向下取整</td>
 </tr>
 <tr>
 <td style="text-align:center">mod(n,m)</td>
@@ -1127,347 +878,337 @@ identified <span class="token keyword keyword-with">with</span> mysql_native_pas
 </tr>
 <tr>
 <td style="text-align:center">rand()</td>
-<td style="text-align:center">&#x751F;&#x6210;0-1&#x968F;&#x673A;&#x6570;</td>
+<td style="text-align:center">生成0-1随机数</td>
 </tr>
 <tr>
 <td style="text-align:center">round(n,m)</td>
-<td style="text-align:center">&#x4FDD;&#x7559;m&#x4E3A;&#x5C0F;&#x6570;</td>
+<td style="text-align:center">保留m为小数</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x65E5;&#x671F;&#x51FD;&#x6570;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">日期函数</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">curdata()</td>
-<td style="text-align:center">&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x5E74;&#x6708;&#x65E5;</td>
+<td style="text-align:center">获取当前年月日</td>
 </tr>
 <tr>
 <td style="text-align:center">curtime()</td>
-<td style="text-align:center">&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x65F6;&#x95F4;</td>
+<td style="text-align:center">获取当前时间</td>
 </tr>
 <tr>
 <td style="text-align:center">now()</td>
-<td style="text-align:center">&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x7684;&#x5E74;&#x6708;&#x65E5;&#x65F6;&#x95F4;</td>
+<td style="text-align:center">获取当前的年月日时间</td>
 </tr>
 <tr>
 <td style="text-align:center">year(data)</td>
-<td style="text-align:center">&#x83B7;&#x53D6;&#x6307;&#x5B9A;data&#x7684;YYYY</td>
+<td style="text-align:center">获取指定data的YYYY</td>
 </tr>
 <tr>
 <td style="text-align:center">month(data)</td>
-<td style="text-align:center">&#x83B7;&#x53D6;&#x6307;&#x5B9A;data&#x7684;MM</td>
+<td style="text-align:center">获取指定data的MM</td>
 </tr>
 <tr>
 <td style="text-align:center">day(data)</td>
-<td style="text-align:center">&#x83B7;&#x53D6;&#x6307;&#x5B9A;data&#x7684;DD</td>
+<td style="text-align:center">获取指定data的DD</td>
 </tr>
 <tr>
 <td style="text-align:center">data_add(data,interval 70 day)</td>
-<td style="text-align:center">&#x8BA1;&#x7B97;data70&#x5929;&#x524D;&#x7684;&#x65E5;&#x671F;</td>
+<td style="text-align:center">计算data70天前的日期</td>
 </tr>
 <tr>
 <td style="text-align:center">datadiff(data1,data2)</td>
-<td style="text-align:center">&#x83B7;&#x53D6;&#x95F4;&#x9694;&#x5929;&#x6570;&#xFF0C;&#x524D;&#x51CF;&#x540E;</td>
+<td style="text-align:center">获取间隔天数，前减后</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x6D41;&#x7A0B;&#x51FD;&#x6570;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">流程函数</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">if(value,t,f)</td>
-<td style="text-align:center">&#x4E09;&#x76EE;&#x8FD0;&#x7B97;&#x7B26;</td>
+<td style="text-align:center">三目运算符</td>
 </tr>
 <tr>
 <td style="text-align:center">ifnull(value1,value2)</td>
-<td style="text-align:center">&#x5224;&#x7A7A;value1&#xFF0C;&#x975E;&#x7A7A;value1&#xFF0C;&#x7A7A;value2</td>
+<td style="text-align:center">判空value1，非空value1，空value2</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h3 class="mume-header" id="%E5%88%A4%E6%96%AD%E8%AF%AD%E5%8F%A5">&#x5224;&#x65AD;&#x8BED;&#x53E5;</h3>
-
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-if">if</span> &#x6761;&#x4EF6; 
-    <span class="token keyword keyword-then">then</span> &#x5185;&#x5BB9;<span class="token punctuation">;</span>
-    <span class="token keyword keyword-elseif">elseif</span> &#x6761;&#x4EF6; <span class="token keyword keyword-then">then</span> &#x5185;&#x5BB9;<span class="token punctuation">;</span>
+<h3 id="判断语句">判断语句 </h3>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-if">if</span> 条件 
+    <span class="token keyword keyword-then">then</span> 内容<span class="token punctuation">;</span>
+    <span class="token keyword keyword-elseif">elseif</span> 条件 <span class="token keyword keyword-then">then</span> 内容<span class="token punctuation">;</span>
 <span class="token keyword keyword-end">end</span> <span class="token keyword keyword-if">if</span><span class="token punctuation">;</span>
 
 <span class="token keyword keyword-case">case</span>
-    <span class="token keyword keyword-when">when</span> &#x6761;&#x4EF6; <span class="token keyword keyword-then">then</span> &#x503C;<span class="token punctuation">;</span>
-    <span class="token keyword keyword-when">when</span> &#x6761;&#x4EF6; <span class="token keyword keyword-then">then</span> &#x503C;<span class="token punctuation">;</span>
+    <span class="token keyword keyword-when">when</span> 条件 <span class="token keyword keyword-then">then</span> 值<span class="token punctuation">;</span>
+    <span class="token keyword keyword-when">when</span> 条件 <span class="token keyword keyword-then">then</span> 值<span class="token punctuation">;</span>
 <span class="token keyword keyword-end">end</span> <span class="token keyword keyword-case">case</span><span class="token punctuation">;</span>
-</pre><hr>
-<h3 class="mume-header" id="%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5">&#x5FAA;&#x73AF;&#x8BED;&#x53E5;</h3>
-
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-while">while</span> &#x6761;&#x4EF6;
-    <span class="token keyword keyword-do">do</span> &#x5FAA;&#x73AF;&#x4F53;<span class="token punctuation">;</span>
+</code></pre><hr>
+<h3 id="循环语句">循环语句 </h3>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-while">while</span> 条件
+    <span class="token keyword keyword-do">do</span> 循环体<span class="token punctuation">;</span>
 <span class="token keyword keyword-end">end</span> <span class="token keyword keyword-while">while</span><span class="token punctuation">;</span>
 
-<span class="token keyword keyword-repeat">repeat</span> &#x5FAA;&#x73AF;&#x4F53;<span class="token punctuation">;</span>
-until &#x6761;&#x4EF6; <span class="token keyword keyword-end">end</span> <span class="token keyword keyword-repeat">repeat</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-repeat">repeat</span> 循环体<span class="token punctuation">;</span>
+until 条件 <span class="token keyword keyword-end">end</span> <span class="token keyword keyword-repeat">repeat</span><span class="token punctuation">;</span>
 
-&#x540D;&#x79F0;:<span class="token keyword keyword-loop">loop</span> &#x5FAA;&#x73AF;&#x4F53;<span class="token punctuation">;</span>
-<span class="token keyword keyword-end">end</span> <span class="token keyword keyword-loop">loop</span> &#x540D;&#x79F0;<span class="token punctuation">;</span>
-</pre><ul>
-<li>leave&#xFF1A;&#x9000;&#x51FA;&#x5FAA;&#x73AF;break&#xFF0C;iterate&#xFF1A;&#x8FDB;&#x5165;&#x4E0B;&#x8F6E;&#x5FAA;&#x73AF;continue</li>
+名称:<span class="token keyword keyword-loop">loop</span> 循环体<span class="token punctuation">;</span>
+<span class="token keyword keyword-end">end</span> <span class="token keyword keyword-loop">loop</span> 名称<span class="token punctuation">;</span>
+</code></pre><ul>
+<li>leave：退出循环break，iterate：进入下轮循环continue</li>
 </ul>
 <hr>
-<h3 class="mume-header" id="%E8%A7%A6%E5%8F%91%E5%99%A8">&#x89E6;&#x53D1;&#x5668;</h3>
-
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-trigger">trigger</span> &#x89E6;&#x53D1;&#x5668;&#x540D; before <span class="token keyword keyword-SQL">SQL</span>&#x5173;&#x952E;&#x5B57; <span class="token keyword keyword-on">on</span> &#x8868;&#x540D; <span class="token keyword keyword-for each row">for each row</span>
+<h3 id="触发器">触发器 </h3>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-create">create</span> <span class="token keyword keyword-trigger">trigger</span> 触发器名 before <span class="token keyword keyword-SQL">SQL</span>关键字 <span class="token keyword keyword-on">on</span> 表名 <span class="token keyword keyword-for each row">for each row</span>
 <span class="token keyword keyword-begin">begin</span>
-    &#x89E6;&#x53D1;&#x5668;&#x4F53;<span class="token punctuation">;</span>
+    触发器体<span class="token punctuation">;</span>
 <span class="token keyword keyword-end">end</span><span class="token punctuation">;</span> 
 
 <span class="token keyword keyword-show">show</span> <span class="token keyword keyword-trigger">trigger</span><span class="token punctuation">;</span>
 
-<span class="token keyword keyword-drop">drop</span> <span class="token keyword keyword-trigger">trigger</span> &#x89E6;&#x53D1;&#x5668;&#x540D;<span class="token punctuation">;</span>
-</pre><ul>
+<span class="token keyword keyword-drop">drop</span> <span class="token keyword keyword-trigger">trigger</span> 触发器名<span class="token punctuation">;</span>
+</code></pre><ul>
 <li>
-<p>before&#x4E4B;&#x524D;&#xFF0C;after&#x4E4B;&#x540E;</p>
+<p>before之前，after之后</p>
 </li>
 <li>
-<p>sql&#x5173;&#x952E;&#x5B57;&#xFF1A;insert&#x3001;delete&#x3001;updata&#x3001;select...</p>
+<p>sql关键字：insert、delete、updata、select...</p>
 </li>
 <li>
-<p>&#x662F;&#x65E5;&#x5FD7;&#x539F;&#x7406;</p>
+<p>是日志原理</p>
 </li>
 </ul>
 <hr>
-<h2 class="mume-header" id="%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90">&#x6027;&#x80FD;&#x5206;&#x6790;</h2>
-
-<p>&#x67E5;&#x8BE2;&#x5F53;&#x524D;&#x6570;&#x636E;&#x5E93;&#x5404;&#x64CD;&#x4F5C;&#x9891;&#x7387;</p>
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-show">show</span> <span class="token keyword keyword-global">global</span> <span class="token keyword keyword-status">status</span> <span class="token operator">like</span> <span class="token string">&apos;com_______&apos;</span><span class="token punctuation">;</span>    <span class="token comment">//7&#x4E3A;&#x6570;&#x5360;&#x4F4D;&#x7B26;</span>
-</pre><ul>
-<li>status&#xFF1A;&#x7CFB;&#x7EDF;&#x72B6;&#x6001;&#xFF0C;variables&#xFF1A;sql&#x7CFB;&#x7EDF;&#x53D8;&#x91CF;</li>
+<h2 id="性能分析">性能分析 </h2>
+<p>查询当前数据库各操作频率</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-show">show</span> <span class="token keyword keyword-global">global</span> <span class="token keyword keyword-status">status</span> <span class="token operator">like</span> <span class="token string">'com_______'</span><span class="token punctuation">;</span>    <span class="token comment">//7为数占位符</span>
+</code></pre><ul>
+<li>status：系统状态，variables：sql系统变量</li>
 </ul>
-<p>&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;</p>
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-set">set</span> slow_query_log <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>    <span class="token comment">//&#x6253;&#x5F00;&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;</span>
-<span class="token keyword keyword-set">set</span> long_query_time <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>    <span class="token comment">//&#x957F;&#x67E5;&#x8BE2;&#x65F6;&#x95F4;&#x8FBE;&#x5230;&#x51E0;s&#xFF0C;&#x8BB0;&#x5165;&#x65E5;&#x5FD7;</span>
-</pre><p>&#x67E5;&#x770B;&#x6240;&#x6709;&#x8BED;&#x53E5;&#x8017;&#x65F6;</p>
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-select">select</span> @<span class="token variable">@have_profiling</span><span class="token punctuation">;</span>    <span class="token comment">//&#x662F;&#x5426;&#x652F;&#x6301;profiles</span>
-<span class="token keyword keyword-select">select</span> @<span class="token variable">@profiling</span><span class="token punctuation">;</span>    <span class="token comment">//&#x67E5;&#x8BE2;profiles&#x53C2;&#x6570;</span>
-<span class="token keyword keyword-set">set</span> profiling <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>    <span class="token comment">//&#x6253;&#x5F00;profiles</span>
+<p>慢查询日志</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-set">set</span> slow_query_log <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>    <span class="token comment">//打开慢查询日志</span>
+<span class="token keyword keyword-set">set</span> long_query_time <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>    <span class="token comment">//长查询时间达到几s，记入日志</span>
+</code></pre><p>查看所有语句耗时</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-select">select</span> @<span class="token variable">@have_profiling</span><span class="token punctuation">;</span>    <span class="token comment">//是否支持profiles</span>
+<span class="token keyword keyword-select">select</span> @<span class="token variable">@profiling</span><span class="token punctuation">;</span>    <span class="token comment">//查询profiles参数</span>
+<span class="token keyword keyword-set">set</span> profiling <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>    <span class="token comment">//打开profiles</span>
 
 <span class="token keyword keyword-show">show</span> profiles<span class="token punctuation">;</span>
-<span class="token keyword keyword-show">show</span> profiles <span class="token keyword keyword-for">for</span> query &#x5E8F;&#x53F7;<span class="token punctuation">;</span>
-<span class="token keyword keyword-show">show</span> profiles cpu <span class="token keyword keyword-for">for</span> query &#x5E8F;&#x53F7;<span class="token punctuation">;</span>
-</pre><p>&#x67E5;&#x770B;&#x6267;&#x884C;&#x8BA1;&#x5212;</p>
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-explain">explain</span> &#x88AB;&#x5206;&#x6790;&#x8BED;&#x53E5;<span class="token punctuation">;</span>
-</pre><hr>
-<h2 class="mume-header" id="%E4%BA%8B%E5%8A%A1">&#x4E8B;&#x52A1;</h2>
-
-<h3 class="mume-header" id="%E4%BA%8B%E5%8A%A1%E7%89%B9%E6%80%A7">&#x4E8B;&#x52A1;&#x7279;&#x6027;</h3>
-
+<span class="token keyword keyword-show">show</span> profiles <span class="token keyword keyword-for">for</span> query 序号<span class="token punctuation">;</span>
+<span class="token keyword keyword-show">show</span> profiles cpu <span class="token keyword keyword-for">for</span> query 序号<span class="token punctuation">;</span>
+</code></pre><p>查看执行计划</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-explain">explain</span> 被分析语句<span class="token punctuation">;</span>
+</code></pre><hr>
+<h2 id="事务">事务 </h2>
+<h3 id="事务特性">事务特性 </h3>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x4E8B;&#x52A1;&#x7279;&#x6027;</th>
-<th style="text-align:center">&#x8868;&#x793A;</th>
+<th style="text-align:center">事务特性</th>
+<th style="text-align:center">表示</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x539F;&#x5B50;&#x6027;</td>
+<td style="text-align:center">原子性</td>
 <td style="text-align:center">A</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x4E00;&#x81F4;&#x6027;</td>
+<td style="text-align:center">一致性</td>
 <td style="text-align:center">C</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x9694;&#x79BB;&#x6027;</td>
+<td style="text-align:center">隔离性</td>
 <td style="text-align:center">I</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x6301;&#x4E45;&#x6027;</td>
+<td style="text-align:center">持久性</td>
 <td style="text-align:center">D</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>ACD&#x5B9E;&#x73B0;&#x4F9D;&#x8D56;&#x4E8E;&#x91CD;&#x505A;&#x65E5;&#x5FD7;redo log&#xFF0C;&#x64A4;&#x9500;&#x65E5;&#x5FD7;undo log</li>
+<li>ACD实现依赖于重做日志redo log，撤销日志undo log</li>
 </ul>
 <hr>
-<h3 class="mume-header" id="%E4%BA%8B%E5%8A%A1%E8%BF%87%E7%A8%8B">&#x4E8B;&#x52A1;&#x8FC7;&#x7A0B;</h3>
+<h3 id="事务过程">事务过程 </h3>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-start">start</span> <span class="token keyword keyword-transaction">transaction</span><span class="token punctuation">;</span>    <span class="token comment">//事务开始</span>
 
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-start">start</span> <span class="token keyword keyword-transaction">transaction</span><span class="token punctuation">;</span>    <span class="token comment">//&#x4E8B;&#x52A1;&#x5F00;&#x59CB;</span>
+<span class="token keyword keyword-begin">begin</span><span class="token punctuation">;</span>    <span class="token comment">//同上</span>
 
-<span class="token keyword keyword-begin">begin</span><span class="token punctuation">;</span>    <span class="token comment">//&#x540C;&#x4E0A;</span>
+<span class="token keyword keyword-commit">commit</span><span class="token punctuation">;</span>    <span class="token comment">//事务提交</span>
 
-<span class="token keyword keyword-commit">commit</span><span class="token punctuation">;</span>    <span class="token comment">//&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;</span>
-
-<span class="token keyword keyword-rollback">rollback</span><span class="token punctuation">;</span>    <span class="token comment">//&#x4E8B;&#x52A1;&#x56DE;&#x6EDA;</span>
-</pre><hr>
-<h3 class="mume-header" id="%E4%BA%8B%E5%8A%A1%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98">&#x4E8B;&#x52A1;&#x5E76;&#x53D1;&#x95EE;&#x9898;</h3>
-
+<span class="token keyword keyword-rollback">rollback</span><span class="token punctuation">;</span>    <span class="token comment">//事务回滚</span>
+</code></pre><hr>
+<h3 id="事务并发问题">事务并发问题 </h3>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x4E8B;&#x52A1;&#x5E76;&#x53D1;&#x6267;&#x884C;&#x4EA7;&#x751F;&#x95EE;&#x9898;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">事务并发执行产生问题</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x810F;&#x8BFB;</td>
-<td style="text-align:center">&#x8BFB;&#x5230;&#x5176;&#x4ED6;&#x4E8B;&#x52A1;&#x672A;&#x63D0;&#x4EA4;&#x7684;&#x6570;&#x636E;</td>
+<td style="text-align:center">脏读</td>
+<td style="text-align:center">读到其他事务未提交的数据</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;</td>
-<td style="text-align:center">&#x540C;&#x4E00;&#x4E8B;&#x52A1;&#xFF0C;&#x4E24;&#x6B21;&#x67E5;&#x8BE2;&#x6570;&#x636E;&#x4E0D;&#x540C;</td>
+<td style="text-align:center">不可重复读</td>
+<td style="text-align:center">同一事务，两次查询数据不同</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x5E7B;&#x8BFB;</td>
-<td style="text-align:center">&#x67E5;&#x7684;&#x65F6;&#x5019;&#x6CA1;&#x6709;&#xFF0C;&#x63D2;&#x5165;&#x5374;&#x6709;&#x800C;&#x65E0;&#x6CD5;&#x63D2;&#x5165;</td>
+<td style="text-align:center">幻读</td>
+<td style="text-align:center">查的时候没有，插入却有而无法插入</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h3 class="mume-header" id="%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E4%B8%8Emvcc">&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x4E0E;MVCC</h3>
+<h3 id="事务隔离与mvcc">事务隔离与MVCC </h3>
+<p><strong>概念</strong>：通过事务隔离，解决并发问题</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token keyword keyword-select">select</span> @<span class="token variable">@transaction_isolation</span><span class="token punctuation">;</span>
 
-<p><strong>&#x6982;&#x5FF5;</strong>&#xFF1A;&#x901A;&#x8FC7;&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#xFF0C;&#x89E3;&#x51B3;&#x5E76;&#x53D1;&#x95EE;&#x9898;</p>
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword keyword-select">select</span> @<span class="token variable">@transaction_isolation</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-set">set</span> <span class="token keyword keyword-global">global</span> <span class="token keyword keyword-transaction">transaction</span> <span class="token keyword keyword-isolation">isolation</span> <span class="token keyword keyword-level">level</span> 隔离级别<span class="token punctuation">;</span>
 
-<span class="token keyword keyword-set">set</span> <span class="token keyword keyword-global">global</span> <span class="token keyword keyword-transaction">transaction</span> <span class="token keyword keyword-isolation">isolation</span> <span class="token keyword keyword-level">level</span> &#x9694;&#x79BB;&#x7EA7;&#x522B;<span class="token punctuation">;</span>
-
-<span class="token keyword keyword-set">set</span> <span class="token keyword keyword-session">session</span> <span class="token keyword keyword-transaction">transaction</span> <span class="token keyword keyword-isolation">isolation</span> <span class="token keyword keyword-level">level</span> &#x9694;&#x79BB;&#x7EA7;&#x522B;<span class="token punctuation">;</span>
-</pre><table>
+<span class="token keyword keyword-set">set</span> <span class="token keyword keyword-session">session</span> <span class="token keyword keyword-transaction">transaction</span> <span class="token keyword keyword-isolation">isolation</span> <span class="token keyword keyword-level">level</span> 隔离级别<span class="token punctuation">;</span>
+</code></pre><table>
 <thead>
 <tr>
-<th style="text-align:center">&#x9694;&#x79BB;&#x7EA7;&#x522B;</th>
-<th style="text-align:center">&#x89E3;&#x51B3;</th>
-<th style="text-align:center">&#x6027;&#x80FD;</th>
+<th style="text-align:center">隔离级别</th>
+<th style="text-align:center">解决</th>
+<th style="text-align:center">性能</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">read uncommitted</td>
 <td style="text-align:center">\</td>
-<td style="text-align:center">&#x9AD8;</td>
+<td style="text-align:center">高</td>
 </tr>
 <tr>
 <td style="text-align:center">read committed</td>
-<td style="text-align:center">&#x810F;&#x8BFB;</td>
-<td style="text-align:center">&#x8F83;&#x9AD8;</td>
+<td style="text-align:center">脏读</td>
+<td style="text-align:center">较高</td>
 </tr>
 <tr>
 <td style="text-align:center">repeatable read</td>
-<td style="text-align:center">&#x810F;&#x8BFB;&#x3001;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;</td>
-<td style="text-align:center">&#x8F83;&#x4F4E;</td>
+<td style="text-align:center">脏读、不可重复读</td>
+<td style="text-align:center">较低</td>
 </tr>
 <tr>
 <td style="text-align:center">serializable</td>
-<td style="text-align:center">&#x810F;&#x8BFB;&#x3001;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x5EA6;&#x3001;&#x5E7B;&#x8BFB;</td>
-<td style="text-align:center">&#x4F4E;</td>
+<td style="text-align:center">脏读、不可重复度、幻读</td>
+<td style="text-align:center">低</td>
 </tr>
 </tbody>
 </table>
 <ul>
 <li>
-<p>&#x53EF;&#x91CD;&#x590D;&#x8BFB;&#x4F9D;&#x8D56;&#x4E8E;&#xFF0C;&#x5728;&#x7B2C;&#x4E00;&#x6B21;&#x8BFB;&#x65F6;&#xFF0C;&#x751F;&#x6210;&#x7684;&#x5FEB;&#x7167;&#x8BFB;&#x6587;&#x4EF6;</p>
+<p>可重复读依赖于，在第一次读时，生成的快照读文件</p>
 </li>
 <li>
-<p>&#x4E8B;&#x52A1;&#x9694;&#x79BB;&#x4E2D;read committed&#x3001;repeatable read&#x5E95;&#x5C42;&#x539F;&#x7406;&#x662F;MVCC</p>
+<p>事务隔离中read committed、repeatable read底层原理是MVCC</p>
 </li>
 </ul>
 <hr>
-<p><strong>MVCC&#x6982;&#x5FF5;</strong>&#xFF1A;&#x591A;&#x7248;&#x672C;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#xFF0C;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x591A;&#x4E2A;&#x7248;&#x672C;&#xFF0C;&#x4F7F;&#x8BFB;&#x5199;&#x6CA1;&#x6709;&#x51B2;&#x7A81;&#x3002;</p>
-<p><strong>&#x57FA;&#x4E8E;</strong>&#xFF1A;undolog&#x3001;&#x7248;&#x672C;&#x94FE;&#x3001;readview</p>
+<p><strong>MVCC概念</strong>：多版本并发控制，维护一个数据多个版本，使读写没有冲突。</p>
+<p><strong>基于</strong>：undolog、版本链、readview</p>
 <img src="./images/2023-08-03-19-54-image.png">
 <table>
 <thead>
 <tr>
-<th style="text-align:center">readview&#x8BB0;&#x5F55;&#x5185;&#x5BB9;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">readview记录内容</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">m_ids</td>
-<td style="text-align:center">&#x6D3B;&#x8DC3;&#x4E8B;&#x52A1;id</td>
+<td style="text-align:center">活跃事务id</td>
 </tr>
 <tr>
 <td style="text-align:center">min_trx_id</td>
-<td style="text-align:center">&#x6D3B;&#x8DC3;&#x4E8B;&#x52A1;&#x4E2D;&#x7684;&#x6700;&#x5C0F;&#x4E8B;&#x52A1;id</td>
+<td style="text-align:center">活跃事务中的最小事务id</td>
 </tr>
 <tr>
 <td style="text-align:center">max_trx_id</td>
-<td style="text-align:center">&#x6D3B;&#x8DC3;&#x4E8B;&#x52A1;&#x7684;&#x4E0B;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;id</td>
+<td style="text-align:center">活跃事务的下一个事务id</td>
 </tr>
 <tr>
 <td style="text-align:center">creator_trx_id</td>
-<td style="text-align:center">&#x672C;&#x4E8B;&#x52A1;id</td>
+<td style="text-align:center">本事务id</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x8BFB;&#x5199;&#x63A7;&#x5236;&#x5224;&#x65AD;</th>
-<th style="text-align:center">&#x63A7;&#x5236;&#x5185;&#x5BB9;</th>
+<th style="text-align:center">读写控制判断</th>
+<th style="text-align:center">控制内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">trx_id == creator_trx_id</td>
-<td style="text-align:center">&#x53EF;&#x8BBF;&#x95EE;&#x6B64;&#x7248;&#x672C;</td>
+<td style="text-align:center">可访问此版本</td>
 </tr>
 <tr>
 <td style="text-align:center">trx_id &lt; min_trx_id</td>
-<td style="text-align:center">&#x53EF;&#x8BBF;&#x95EE;&#x6B64;&#x7248;&#x672C;</td>
+<td style="text-align:center">可访问此版本</td>
 </tr>
 <tr>
 <td style="text-align:center">trx_id &gt; max_trx_id</td>
-<td style="text-align:center">&#x4E0D;&#x53EF;&#x8BBF;&#x95EE;&#x6B64;&#x7248;&#x672C;</td>
+<td style="text-align:center">不可访问此版本</td>
 </tr>
 <tr>
 <td style="text-align:center">min_trx_id &lt; trx_id &lt; max_trx_id</td>
-<td style="text-align:center">&#x82E5;&#x5728;m_ids&#x4E2D;&#x4E0D;&#x53EF;&#x8BBF;&#x95EE;&#xFF0C;&#x5426;&#x5219;&#x53EF;&#x8BBF;&#x95EE;</td>
+<td style="text-align:center">若在m_ids中不可访问，否则可访问</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h3 class="mume-header" id="%E5%B0%81%E9%94%81">&#x5C01;&#x9501;</h3>
-
-<p><strong>&#x6982;&#x5FF5;</strong>&#xFF1A;&#x4E8B;&#x52A1;&#x6267;&#x884C;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x5BF9;&#x8868;&#x52A0;&#x9501;&#xFF0C;&#x89E3;&#x51B3;&#x5E76;&#x53D1;&#x95EE;&#x9898;</p>
+<h3 id="封锁">封锁 </h3>
+<p><strong>概念</strong>：事务执行操作时，对表加锁，解决并发问题</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x4E24;&#x79CD;&#x9501;</th>
-<th style="text-align:center">&#x7B80;&#x8BB0;</th>
-<th style="text-align:center">&#x522B;&#x540D;</th>
-<th style="text-align:center">&#x5141;&#x8BB8;&#x5176;&#x4ED6;&#x4E8B;&#x52A1;&#x4E00;&#x8D77;</th>
-<th style="text-align:center">&#x7981;&#x6B62;&#x5176;&#x4ED6;&#x4E8B;&#x52A1;&#x4E00;&#x8D77;</th>
-<th style="text-align:center">&#x53EF;&#x53E0;&#x52A0;&#x9501;</th>
+<th style="text-align:center">两种锁</th>
+<th style="text-align:center">简记</th>
+<th style="text-align:center">别名</th>
+<th style="text-align:center">允许其他事务一起</th>
+<th style="text-align:center">禁止其他事务一起</th>
+<th style="text-align:center">可叠加锁</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x6392;&#x5B83;&#x9501;</td>
+<td style="text-align:center">排它锁</td>
 <td style="text-align:center">X</td>
-<td style="text-align:center">&#x5199;&#x9501;</td>
+<td style="text-align:center">写锁</td>
 <td style="text-align:center">\</td>
-<td style="text-align:center">&#x8BFB;&#x3001;&#x5199;</td>
+<td style="text-align:center">读、写</td>
 <td style="text-align:center">\</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x5171;&#x4EAB;&#x9501;</td>
+<td style="text-align:center">共享锁</td>
 <td style="text-align:center">S</td>
-<td style="text-align:center">&#x8BFB;&#x9501;</td>
-<td style="text-align:center">&#x8BFB;</td>
-<td style="text-align:center">&#x5199;</td>
+<td style="text-align:center">读锁</td>
+<td style="text-align:center">读</td>
+<td style="text-align:center">写</td>
 <td style="text-align:center">S</td>
 </tr>
 </tbody>
@@ -1475,188 +1216,181 @@ until &#x6761;&#x4EF6; <span class="token keyword keyword-end">end</span> <span 
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x4E09;&#x7EA7;&#x5C01;&#x9501;&#x534F;&#x8BAE;</th>
-<th style="text-align:center">&#x57FA;&#x7840;</th>
-<th style="text-align:center">&#x4F55;&#x65F6;&#x52A0;&#x9501;</th>
-<th style="text-align:center">&#x52A0;&#x4EC0;&#x4E48;&#x9501;</th>
-<th style="text-align:center">&#x4F55;&#x65F6;&#x91CA;&#x653E;</th>
-<th style="text-align:center">&#x89E3;&#x51B3;&#x95EE;&#x9898;</th>
+<th style="text-align:center">三级封锁协议</th>
+<th style="text-align:center">基础</th>
+<th style="text-align:center">何时加锁</th>
+<th style="text-align:center">加什么锁</th>
+<th style="text-align:center">何时释放</th>
+<th style="text-align:center">解决问题</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">1&#x7EA7;&#x5C01;&#x9501;&#x534F;&#x8BAE;</td>
+<td style="text-align:center">1级封锁协议</td>
 <td style="text-align:center">\</td>
-<td style="text-align:center">&#x5199;</td>
+<td style="text-align:center">写</td>
 <td style="text-align:center">X</td>
-<td style="text-align:center">&#x5199;&#x5B8C;</td>
+<td style="text-align:center">写完</td>
 <td style="text-align:center">\</td>
 </tr>
 <tr>
-<td style="text-align:center">2&#x7EA7;&#x5C01;&#x9501;&#x534F;&#x8BAE;</td>
-<td style="text-align:center">1&#x7EA7;&#x5C01;&#x9501;</td>
-<td style="text-align:center">&#x8BFB;</td>
+<td style="text-align:center">2级封锁协议</td>
+<td style="text-align:center">1级封锁</td>
+<td style="text-align:center">读</td>
 <td style="text-align:center">S</td>
-<td style="text-align:center">&#x8BFB;&#x5B8C;</td>
-<td style="text-align:center">&#x810F;&#x8BFB;</td>
+<td style="text-align:center">读完</td>
+<td style="text-align:center">脏读</td>
 </tr>
 <tr>
-<td style="text-align:center">3&#x7EA7;&#x5C01;&#x9501;&#x534F;&#x8BAE;</td>
-<td style="text-align:center">1&#x7EA7;&#x5C01;&#x9501;</td>
-<td style="text-align:center">&#x8BFB;</td>
+<td style="text-align:center">3级封锁协议</td>
+<td style="text-align:center">1级封锁</td>
+<td style="text-align:center">读</td>
 <td style="text-align:center">S</td>
-<td style="text-align:center">&#x4E8B;&#x52A1;&#x5B8C;&#x6210;</td>
-<td style="text-align:center">&#x810F;&#x8BFB;&#x3001;&#x4E0D;&#x53EF;&#x91CD;&#x590D;&#x8BFB;</td>
+<td style="text-align:center">事务完成</td>
+<td style="text-align:center">脏读、不可重复读</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x4E24;&#x6BB5;&#x9501;&#x534F;&#x8BAE;&#xFF1A;&#x4E8B;&#x52A1;&#x5F00;&#x59CB;&#x5230;&#x63D0;&#x4EA4;&#x524D;&#x90FD;&#x662F;&#x52A0;&#x9501;&#x9636;&#x6BB5;&#xFF0C;&#x53EA;&#x80FD;&#x53E0;&#x52A0;&#x9501;&#xFF0C;&#x4E8B;&#x52A1;&#x63D0;&#x4EA4;&#x65F6;&#x5C5E;&#x4E8E;&#x89E3;&#x9501;&#x9636;&#x6BB5;&#xFF0C;&#x4E0D;&#x80FD;&#x518D;&#x8FDB;&#x53E0;&#x52A0;&#x9501;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>两段锁协议：事务开始到提交前都是加锁阶段，只能叠加锁，事务提交时属于解锁阶段，不能再进叠加锁操作。</li>
 </ul>
-<pre data-role="codeBlock" data-info="sql" class="language-sql">flush <span class="token keyword keyword-tables">tables</span> <span class="token keyword keyword-with">with</span> <span class="token keyword keyword-read">read</span> <span class="token keyword keyword-lock">lock</span><span class="token punctuation">;</span>    <span class="token comment">//&#x5168;&#x5C40;&#x52A0;&#x5171;&#x4EAB;&#x9501;</span>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code>flush <span class="token keyword keyword-tables">tables</span> <span class="token keyword keyword-with">with</span> <span class="token keyword keyword-read">read</span> <span class="token keyword keyword-lock">lock</span><span class="token punctuation">;</span>    <span class="token comment">//全局加共享锁</span>
 
-<span class="token keyword keyword-unlock">unlock</span> <span class="token keyword keyword-tables">tables</span><span class="token punctuation">;</span>    <span class="token comment">//&#x5168;&#x5C40;&#x89E3;&#x5171;&#x4EAB;&#x9501;</span>
+<span class="token keyword keyword-unlock">unlock</span> <span class="token keyword keyword-tables">tables</span><span class="token punctuation">;</span>    <span class="token comment">//全局解共享锁</span>
 
-<span class="token keyword keyword-lock">lock</span> <span class="token keyword keyword-table">table</span> &#x8868;&#x540D; <span class="token keyword keyword-read">read</span><span class="token punctuation">;</span>    <span class="token comment">//&#x8868;&#x52A0;&#x5171;&#x4EAB;&#x9501;</span>
+<span class="token keyword keyword-lock">lock</span> <span class="token keyword keyword-table">table</span> 表名 <span class="token keyword keyword-read">read</span><span class="token punctuation">;</span>    <span class="token comment">//表加共享锁</span>
 
-<span class="token keyword keyword-lock">lock</span> <span class="token keyword keyword-table">table</span> &#x8868;&#x540D; <span class="token keyword keyword-write">write</span><span class="token punctuation">;</span>    <span class="token comment">//&#x8868;&#x52A0;&#x6392;&#x4ED6;&#x9501;</span>
+<span class="token keyword keyword-lock">lock</span> <span class="token keyword keyword-table">table</span> 表名 <span class="token keyword keyword-write">write</span><span class="token punctuation">;</span>    <span class="token comment">//表加排他锁</span>
 
-DQL&#x8BED;&#x53E5; <span class="token keyword keyword-lock">lock</span> <span class="token operator">in</span> <span class="token keyword keyword-share">share</span> <span class="token keyword keyword-mode">mode</span>    <span class="token comment">//&#x884C;&#x52A0;&#x5171;&#x4EAB;&#x9501;&#x67E5;&#x8BE2;</span>
+DQL语句 <span class="token keyword keyword-lock">lock</span> <span class="token operator">in</span> <span class="token keyword keyword-share">share</span> <span class="token keyword keyword-mode">mode</span>    <span class="token comment">//行加共享锁查询</span>
 
-DQL&#x8BED;&#x53E5; <span class="token keyword keyword-for">for</span> <span class="token keyword keyword-share">share</span>    <span class="token comment">//&#x884C;&#x52A0;&#x5171;&#x4EAB;&#x9501;&#x67E5;&#x8BE2;</span>
+DQL语句 <span class="token keyword keyword-for">for</span> <span class="token keyword keyword-share">share</span>    <span class="token comment">//行加共享锁查询</span>
 
-DQL&#x8BED;&#x53E5; <span class="token keyword keyword-for">for</span> <span class="token keyword keyword-update">update</span>    <span class="token comment">//&#x884C;&#x52A0;&#x6392;&#x5B83;&#x9501;&#x67E5;&#x8BE2;</span>
-</pre><ul>
-<li>&#x6839;&#x636E;&#x9501;&#x7684;&#x8303;&#x56F4;&#x5206;&#x7C7B;&#xFF1A;&#x5168;&#x5C40;&#x9501;&#x3001;&#x8868;&#x9501;&#x3001;&#x884C;&#x9501;&#x3001;&#x95F4;&#x9699;&#x9501;</li>
+DQL语句 <span class="token keyword keyword-for">for</span> <span class="token keyword keyword-update">update</span>    <span class="token comment">//行加排它锁查询</span>
+</code></pre><ul>
+<li>根据锁的范围分类：全局锁、表锁、行锁、间隙锁</li>
 </ul>
 <hr>
-<h2 class="mume-header" id="%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%8C%87%E4%BB%A4">&#x5BA2;&#x6237;&#x7AEF;&#x6307;&#x4EE4;</h2>
-
-<p><strong>&#x6982;&#x5FF5;</strong>&#xFF1A;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x7684;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x4E0B;&#x6267;&#x884C;&#x7684;&#x8BED;&#x53E5;&#x3002;</p>
-<pre data-role="codeBlock" data-info="sql" class="language-sql">mysql <span class="token operator">-</span>h &#x4E3B;&#x673A; <span class="token operator">-</span>P <span class="token number">3306</span> <span class="token operator">-</span>u &#x7528;&#x6237;&#x540D; <span class="token operator">-</span>p &#x5BC6;&#x7801; &#x6570;&#x636E;&#x5E93;&#x540D; <span class="token operator">-</span>e <span class="token string">&apos;SQL&#x8BED;&#x53E5;&apos;</span>
+<h2 id="客户端指令">客户端指令 </h2>
+<p><strong>概念</strong>：在命令行的工作目录下执行的语句。</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code>mysql <span class="token operator">-</span>h 主机 <span class="token operator">-</span>P <span class="token number">3306</span> <span class="token operator">-</span>u 用户名 <span class="token operator">-</span>p 密码 数据库名 <span class="token operator">-</span>e <span class="token string">'SQL语句'</span>
 
 mysqladmin <span class="token comment">--help</span>
 
-mysqladmin <span class="token operator">-</span>u &#x7528;&#x6237;&#x540D; <span class="token operator">-</span>p &#x5BC6;&#x7801; <span class="token keyword keyword-create">create</span> &#x6570;&#x636E;&#x5E93;&#x540D;
+mysqladmin <span class="token operator">-</span>u 用户名 <span class="token operator">-</span>p 密码 <span class="token keyword keyword-create">create</span> 数据库名
 
-mysqlshow <span class="token operator">-</span>u &#x7528;&#x6237;&#x540D; <span class="token operator">-</span>p &#x5BC6;&#x7801; &#x6570;&#x636E;&#x5E93;&#x540D; <span class="token comment">--count -i</span>
+mysqlshow <span class="token operator">-</span>u 用户名 <span class="token operator">-</span>p 密码 数据库名 <span class="token comment">--count -i</span>
 
-mysqlimport <span class="token operator">-</span>u &#x7528;&#x6237;&#x540D; <span class="token operator">-</span>p &#x5BC6;&#x7801; &#x6570;&#x636E;&#x5E93;&#x540D; txt&#x6587;&#x4EF6;&#x8DEF;&#x5F84;
+mysqlimport <span class="token operator">-</span>u 用户名 <span class="token operator">-</span>p 密码 数据库名 txt文件路径
 
-<span class="token comment">//&#x5907;&#x4EFD;</span>
-mysqldump <span class="token comment">--single-transaction -u&#x7528;&#x6237;&#x540D; -p&#x5BC6;&#x7801; &#x6570;&#x636E;&#x5E93;&#x540D; &gt; &#x8DEF;&#x5F84;</span>
+<span class="token comment">//备份</span>
+mysqldump <span class="token comment">--single-transaction -u用户名 -p密码 数据库名 &gt; 路径</span>
 
-<span class="token comment">//&#x5907;&#x4EFD;&#x6587;&#x4EF6;&#x5BFC;&#x5165;&#xFF0C;&#x5728;sql&#x5185;&#x7684;&#xFF0C;&#x6570;&#x636E;&#x5E93;&#x4E0B;&#x6267;&#x884C;&#x7684;&#x8BED;&#x53E5;</span>
-source &#x8DEF;&#x5F84;
-</pre><hr>
-<h2 class="mume-header" id="%E6%95%85%E9%9A%9C%E4%B8%8E%E5%A4%87%E4%BB%BD">&#x6545;&#x969C;&#x4E0E;&#x5907;&#x4EFD;</h2>
-
-<p>&#x6545;&#x969C;&#x5206;&#x7C7B;&#xFF1A;&#x4E8B;&#x52A1;&#x6545;&#x969C;&#x3001;&#x7CFB;&#x7EDF;&#x6545;&#x969C;&#x3001;&#x4ECB;&#x8D28;&#x6545;&#x969C;</p>
-<p>&#x4ECE;&#x4EC0;&#x4E48;&#x5730;&#x65B9;&#x6062;&#x590D;&#xFF1A;&#x8F6C;&#x50A8;/&#x5907;&#x4EFD;&#x3001;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x8F6C;&#x50A8;&#x5206;&#x7C7B;&#xFF1A;&#x9759;&#x6001;&#x8F6C;&#x50A8;&#x3001;&#x52A8;&#x6001;&#x8F6C;&#x50A8;&#x3001;&#x6D77;&#x91CF;&#x8F6C;&#x50A8;&#x3001;&#x589E;&#x91CF;&#x8F6C;&#x50A8;</p>
-<p>&#x6570;&#x636E;&#x5E93;&#x590D;&#x5236;&#x5206;&#x7C7B;&#xFF1A;&#x5BF9;&#x7B49;&#x590D;&#x5236;&#xFF0C;&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#xFF0C;&#x7EA7;&#x8054;&#x590D;&#x5236;</p>
-<p>&#x6570;&#x636E;&#x5E93;&#x955C;&#x50CF;&#xFF1A;&#x5173;&#x952E;&#x6570;&#x636E;&#x590D;&#x5236;&#xFF0C;&#x80FD;&#x5B9E;&#x73B0;&#x540C;&#x65F6;&#x8BFB;&#x5199;</p>
+<span class="token comment">//备份文件导入，在sql内的，数据库下执行的语句</span>
+source 路径
+</code></pre><hr>
+<h2 id="故障与备份">故障与备份 </h2>
+<p>故障分类：事务故障、系统故障、介质故障</p>
+<p>从什么地方恢复：转储/备份、日志文件转储分类：静态转储、动态转储、海量转储、增量转储</p>
+<p>数据库复制分类：对等复制，主从复制，级联复制</p>
+<p>数据库镜像：关键数据复制，能实现同时读写</p>
 <hr>
-<h3 class="mume-header" id="%E6%97%A5%E5%BF%97">&#x65E5;&#x5FD7;</h3>
-
+<h3 id="日志">日志 </h3>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x5206;&#x7C7B;</th>
-<th style="text-align:center">sql&#x53D8;&#x91CF;</th>
-<th style="text-align:center">&#x8BB0;&#x5F55;&#x60C5;&#x51B5;</th>
+<th style="text-align:center">分类</th>
+<th style="text-align:center">sql变量</th>
+<th style="text-align:center">记录情况</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x9519;&#x8BEF;&#x65E5;&#x5FD7;</td>
+<td style="text-align:center">错误日志</td>
 <td style="text-align:center">log_error</td>
-<td style="text-align:center">&#x6267;&#x884C;&#x9519;&#x8BEF;</td>
+<td style="text-align:center">执行错误</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x4E8C;&#x8FDB;&#x5236;&#x65E5;&#x5FD7;</td>
+<td style="text-align:center">二进制日志</td>
 <td style="text-align:center">log_bin</td>
-<td style="text-align:center">&#x6240;&#x6709;&#x53D8;&#x5316;</td>
+<td style="text-align:center">所有变化</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;</td>
+<td style="text-align:center">查询日志</td>
 <td style="text-align:center">general_log</td>
-<td style="text-align:center">&#x67E5;&#x8BE2;</td>
+<td style="text-align:center">查询</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x6162;&#x67E5;&#x8BE2;&#x65E5;&#x5FD7;</td>
+<td style="text-align:center">慢查询日志</td>
 <td style="text-align:center">slow_query_log</td>
-<td style="text-align:center">&#x6162;&#x6267;&#x884C;</td>
+<td style="text-align:center">慢执行</td>
 </tr>
 </tbody>
 </table>
 <hr>
-<h3 class="mume-header" id="%E4%B8%BB%E4%BB%8E%E9%85%8D%E7%BD%AE">&#x4E3B;&#x4ECE;&#x914D;&#x7F6E;</h3>
-
-<p>&#x9632;&#x706B;&#x5899;&#x914D;&#x7F6E;</p>
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token comment">//Linux&#x5F00;&#x653E;&#x9632;&#x706B;&#x5899;&#x7AEF;&#x53E3;</span>
+<h3 id="主从配置">主从配置 </h3>
+<p>防火墙配置</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token comment">//Linux开放防火墙端口</span>
 firewall <span class="token operator">-</span>cmd <span class="token comment">--zone=public --add-port=3306/tcp --permanent</span>
 firewall <span class="token operator">-</span>cmd <span class="token comment">--reload</span>
 
-<span class="token comment">//Linux&#x76F4;&#x63A5;&#x5173;&#x95ED;&#x9632;&#x706B;&#x5899;</span>
+<span class="token comment">//Linux直接关闭防火墙</span>
 systemctl stop firewalld
 
 systemctl disabled firewalld
 
-<span class="token comment">//Linux&#x67E5;&#x770B;mysql&#x8FDB;&#x7A0B;&#x72B6;&#x6001;</span>
+<span class="token comment">//Linux查看mysql进程状态</span>
 systemctl statue mysqld
-</pre><p>&#x4E3B;&#x5E93;&#x914D;&#x7F6E;</p>
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token comment">//Linux&#x6587;&#x4EF6;/etc/my.cnf&#x4E0B;&#x914D;&#x7F6E;&#x589E;&#x52A0;</span>
-server<span class="token operator">-</span>id&#xFF1D;<span class="token number">1</span>
-<span class="token keyword keyword-read">read</span><span class="token operator">-</span>only&#xFF1D;<span class="token number">0</span>
-<span class="token comment">//Linux&#x91CD;&#x542F;mysql&#x670D;&#x52A1;&#x5668;</span>
+</code></pre><p>主库配置</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token comment">//Linux文件/etc/my.cnf下配置增加</span>
+server<span class="token operator">-</span>id＝<span class="token number">1</span>
+<span class="token keyword keyword-read">read</span><span class="token operator">-</span>only＝<span class="token number">0</span>
+<span class="token comment">//Linux重启mysql服务器</span>
 systemctl restart mysqld
-<span class="token comment">//sql&#x521B;&#x5EFA;&#x8FDC;&#x7A0B;&#x8FDE;&#x63A5;&#x7528;&#x6237;&#xFF0C;&#x6388;&#x6743;&#xFF0C;&#x67E5;&#x770B;&#x5750;&#x6807;</span>
-<span class="token keyword keyword-create">create</span> <span class="token keyword keyword-user">user</span> <span class="token string">&apos;&#x7528;&#x6237;&#x540D;&apos;</span><span class="token variable">@&apos;%&apos;</span> indentified <span class="token keyword keyword-with">with</span> mysql_native_password <span class="token keyword keyword-by">by</span> <span class="token string">&apos;&#x5BC6;&#x7801;&apos;</span><span class="token punctuation">;</span>
-<span class="token keyword keyword-grant">grant</span> <span class="token keyword keyword-replication">replication</span> slave <span class="token keyword keyword-on">on</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword keyword-to">to</span> <span class="token string">&apos;&#x7528;&#x6237;&#x540D;&apos;</span><span class="token variable">@&apos;%&apos;</span><span class="token punctuation">;</span>
-<span class="token comment">//Linux&#x67E5;&#x770B;&#x4E3B;&#x5E93;&#x72B6;&#x6001;</span>
+<span class="token comment">//sql创建远程连接用户，授权，查看坐标</span>
+<span class="token keyword keyword-create">create</span> <span class="token keyword keyword-user">user</span> <span class="token string">'用户名'</span><span class="token variable">@'%'</span> indentified <span class="token keyword keyword-with">with</span> mysql_native_password <span class="token keyword keyword-by">by</span> <span class="token string">'密码'</span><span class="token punctuation">;</span>
+<span class="token keyword keyword-grant">grant</span> <span class="token keyword keyword-replication">replication</span> slave <span class="token keyword keyword-on">on</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword keyword-to">to</span> <span class="token string">'用户名'</span><span class="token variable">@'%'</span><span class="token punctuation">;</span>
+<span class="token comment">//Linux查看主库状态</span>
 <span class="token keyword keyword-show">show</span> master statue
-</pre><p>&#x4ECE;&#x5E93;&#x914D;&#x7F6E;</p>
-<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token comment">//Linux&#x6587;&#x4EF6;/etc/my.cnf&#x4E0B;&#x914D;&#x7F6E;&#x589E;&#x52A0;</span>
-server<span class="token operator">-</span>id&#xFF1D;<span class="token number">2</span>
-<span class="token keyword keyword-read">read</span><span class="token operator">-</span>only&#xFF1D;<span class="token number">1</span>
-<span class="token comment">//Linux&#x91CD;&#x542F;mysql&#x670D;&#x52A1;&#x5668;</span>
+</code></pre><p>从库配置</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql sql"><code><span class="token comment">//Linux文件/etc/my.cnf下配置增加</span>
+server<span class="token operator">-</span>id＝<span class="token number">2</span>
+<span class="token keyword keyword-read">read</span><span class="token operator">-</span>only＝<span class="token number">1</span>
+<span class="token comment">//Linux重启mysql服务器</span>
 systemctl restart mysqld
-<span class="token operator">/</span>Linux&#x8FDE;&#x63A5;&#x4E3B;&#x5E93;&#xFF0C;&#x5F00;&#x542F;&#x540C;&#x6B65;
+<span class="token operator">/</span>Linux连接主库，开启同步
 change source <span class="token keyword keyword-to">to</span> source_host<span class="token operator">/</span>_user<span class="token operator">/</span>_password<span class="token operator">/</span>_log_file<span class="token operator">/</span>_log_pos
 <span class="token keyword keyword-start">start</span> replica
-<span class="token comment">//Linux&#x67E5;&#x770B;&#x4ECE;&#x5E93;&#x72B6;&#x6001;</span>
+<span class="token comment">//Linux查看从库状态</span>
 <span class="token keyword keyword-show">show</span> replica statue
-</pre><hr>
-<h2 class="mume-header" id="%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8">&#x5206;&#x5E93;&#x5206;&#x8868;</h2>
-
-<p><strong>&#x6982;&#x5FF5;</strong>&#xFF1A;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6570;&#x636E;&#x5206;&#x5E03;&#x5728;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x5668;</p>
+</code></pre><hr>
+<h2 id="分库分表">分库分表 </h2>
+<p><strong>概念</strong>：一个数据库的数据分布在多个服务器</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x5206;&#x7C7B;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;&#xFF0C;</th>
+<th style="text-align:center">分类</th>
+<th style="text-align:center">说明，</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">&#x5782;&#x76F4;&#x5206;&#x7247;</td>
-<td style="text-align:center">&#x4EE5;&#x8868;&#x4E3A;&#x5206;&#x7247;&#x4F9D;&#x636E;</td>
+<td style="text-align:center">垂直分片</td>
+<td style="text-align:center">以表为分片依据</td>
 </tr>
 <tr>
-<td style="text-align:center">&#x6C34;&#x5E73;&#x5206;&#x7247;</td>
-<td style="text-align:center">&#x4EE5;&#x5143;&#x7EC4;&#x4E3A;&#x5206;&#x7247;&#x4F9D;&#x636E;</td>
+<td style="text-align:center">水平分片</td>
+<td style="text-align:center">以元组为分片依据</td>
 </tr>
 </tbody>
 </table>
 <ul>
-<li>&#x53EF;&#x4F7F;&#x7528;<strong>Mycat</strong>&#xFF1A;&#x7528;java&#x7F16;&#x5199;&#x7684;MySQL&#x4E2D;&#x95F4;&#x4EF6;</li>
+<li>可使用<strong>Mycat</strong>：用java编写的MySQL中间件</li>
 </ul>
 
       </div>
       <script src="./nav.js"></script>
       
-    
-    
     
     
     

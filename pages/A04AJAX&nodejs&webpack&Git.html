@@ -9,19 +9,23 @@
       
       
       <style>
-      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em!important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em!important;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em!important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px/2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
 /* Please visit the URL below for more information: */
 /*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
 
       </style>
-      
-    </head>
-    <body for="html-export">
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
       <div class="crossnote markdown-preview  ">
-      <h1 align="center">AJAX&amp;nodejs&amp;webpack&amp;Git</h1>
-<div align="right">最近更新时间：2023-09-30</div>
-<h2 class="crossnote-header" id="%E4%BB%8B%E7%BB%8D">介绍</h2>
-
+      
+<h1 align="center">AJAX&amp;nodejs&amp;webpack&amp;Git</h1>
+<div align="right">最近更新时间：2024-01-04</div>
+<h2 id="介绍">介绍 </h2>
 <table>
 <thead>
 <tr>
@@ -49,10 +53,8 @@
 </tbody>
 </table>
 <hr>
-<h2 class="crossnote-header" id="ajax">AJAX</h2>
-
-<h3 class="crossnote-header" id="http%E6%8A%A5%E6%96%87">HTTP报文</h3>
-
+<h2 id="ajax">AJAX </h2>
+<h3 id="http报文">HTTP报文 </h3>
 <table style="text-align:center">
     <tbody><tr>
         <th>HTTP请求报文组成</th><th>重要值</th><th>含义</th>
@@ -221,14 +223,13 @@
 </tbody>
 </table>
 <p><strong>formdata文件制作</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> fd <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> fd <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">FormData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 fd<span class="token punctuation">.</span><span class="token method function property-access">append</span><span class="token punctuation">(</span><span class="token string">"键名"</span><span class="token punctuation">,</span>“图片对象”<span class="token punctuation">)</span>
 fd<span class="token punctuation">.</span><span class="token method function property-access">append</span><span class="token punctuation">(</span><span class="token string">"键名"</span><span class="token punctuation">,</span>“其他信息”<span class="token punctuation">)</span>
-</pre><hr>
-<h3 class="crossnote-header" id="xmlhttprequest%E7%B1%BB">XMLHttpRequest类</h3>
-
+</code></pre><hr>
+<h3 id="xmlhttprequest类">XMLHttpRequest类 </h3>
 <p><strong>概念</strong>：内置js类，实现http报文发送和接收，实际按照后端写的AJAX文档进行请求。</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-let">let</span> xhr <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-let">let</span> xhr <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 xhr<span class="token punctuation">.</span><span class="token method function property-access">open</span><span class="token punctuation">(</span><span class="token string">'get'</span><span class="token punctuation">,</span><span class="token string">'www.123.com'</span><span class="token punctuation">)</span>    <span class="token comment">//设置请求行</span>
 xhr<span class="token punctuation">.</span><span class="token method function property-access">setRequestHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span><span class="token string">'text/plain'</span><span class="token punctuation">)</span>    <span class="token comment">//设置请求头</span>
 xhr<span class="token punctuation">.</span><span class="token method function property-access">send</span><span class="token punctuation">(</span><span class="token string">'请求体内容'</span><span class="token punctuation">)</span>    <span class="token comment">//设置请求体内容并发送</span>
@@ -241,10 +242,9 @@ xhr<span class="token punctuation">.</span><span class="token method function pr
         <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>xhr<span class="token punctuation">.</span><span class="token property-access">response</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</pre><h3 class="crossnote-header" id="promise%E7%B1%BB">Promise类</h3>
-
+</code></pre><h3 id="promise类">Promise类 </h3>
 <p><strong>概念</strong>：内置js类，异步任务管理工具</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-let">let</span> promise <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span>reject</span><span class="token punctuation">)</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span> <span class="token comment">//初始状态为padding</span>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-let">let</span> promise <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span>reject</span><span class="token punctuation">)</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span> <span class="token comment">//初始状态为padding</span>
     <span class="token keyword keyword-let">let</span> xhr <span class="token operator">=</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     xhr<span class="token punctuation">.</span><span class="token method function property-access">open</span><span class="token punctuation">(</span><span class="token string">'get'</span><span class="token punctuation">,</span><span class="token string">'www.123.com'</span><span class="token punctuation">)</span>
     xhr<span class="token punctuation">.</span><span class="token method function property-access">setRequestHeader</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span><span class="token string">'text/plain'</span><span class="token punctuation">)</span>
@@ -265,16 +265,19 @@ promise<span class="token punctuation">.</span><span class="token method functio
 promise<span class="token punctuation">.</span><span class="token keyword control-flow keyword-catch">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span> <span class="token comment">//状态rejected才执行，error为promiseResult</span>
     <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">dir</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> 
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</pre><ul>
+</code></pre><ul>
 <li>
 <p><code>promise.promiseState</code>的<strong>三种状态</strong>：<code>padding、fulfilled、rejected</code></p>
 </li>
 <li>
 <p><code>promise.promiseResult</code>存传入函数的参数，并传入<code>then/catch</code>函数。</p>
 </li>
+<li>
+<p>同时请求的语法：<code>Promise.all([请求1,请求2,请求3])</code></p>
+</li>
 </ul>
 <p><strong>手写promise类</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-class">class</span> <span class="token class-name">MyPromise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-class">class</span> <span class="token class-name">MyPromise</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     promiseState <span class="token operator">=</span> <span class="token string">'padding'</span><span class="token comment">//三种状态</span>
     result <span class="token operator">=</span> <span class="token keyword nil keyword-undefined">undefined</span><span class="token comment">//正确、错误两状态结果都存在这</span>
     #handlers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token comment">//延时触发存储</span>
@@ -366,14 +369,13 @@ promise<span class="token punctuation">.</span><span class="token keyword contro
         <span class="token function">resolve</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>    <span class="token comment">//返非P实例，作为新实例的res</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><hr>
-<h3 class="crossnote-header" id="axios%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93">axios第三方库</h3>
-
+</code></pre><hr>
+<h3 id="axios第三方库">axios第三方库 </h3>
 <p><strong>概念</strong>：第三方js库，封装了XMLhttpRequest类和Promise类，提供使用方便的接口。</p>
 <p><strong>库安装</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm i axios
-</pre><p><strong>用法</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> axios <span class="token operator">=</span> require（<span class="token string">"axios"</span>）
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm i axios
+</code></pre><p><strong>用法</strong></p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> axios <span class="token operator">=</span> require（<span class="token string">"axios"</span>）
 <span class="token function">axios</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token literal-property property">url</span><span class="token operator">:</span><span class="token string">'www.123.com'</span><span class="token punctuation">,</span>
     <span class="token literal-property property">params</span><span class="token operator">:</span><span class="token punctuation">{</span>    <span class="token comment">//查询参数</span>
@@ -388,7 +390,7 @@ promise<span class="token punctuation">.</span><span class="token keyword contro
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword control-flow keyword-catch">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span>
     请求失败执行内容
 <span class="token punctuation">}</span>
-</pre><ul>
+</code></pre><ul>
 <li>
 <p>查询参数自动转换写入url</p>
 </li>
@@ -400,7 +402,7 @@ promise<span class="token punctuation">.</span><span class="token keyword contro
 </li>
 </ul>
 <p><strong>简写模式</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript">axios<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'url'</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code>axios<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'url'</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
     <span class="token literal-property property">params</span><span class="token operator">:</span><span class="token punctuation">{</span>
         <span class="token literal-property property">属性</span><span class="token operator">:</span>值<span class="token punctuation">,</span>
         <span class="token literal-property property">属性</span><span class="token operator">:</span>值<span class="token punctuation">,</span>
@@ -408,13 +410,13 @@ promise<span class="token punctuation">.</span><span class="token keyword contro
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 axios<span class="token punctuation">.</span><span class="token method function property-access">post</span><span class="token punctuation">(</span><span class="token string">'url'</span><span class="token punctuation">,</span>请求体内容<span class="token punctuation">)</span>
-</pre><p><strong>基地址</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token comment">//默认axios函数的基地址</span>
+</code></pre><p><strong>基地址</strong></p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token comment">//默认axios函数的基地址</span>
 axios<span class="token punctuation">.</span><span class="token property-access">defaults</span><span class="token punctuation">.</span><span class="token property-access">baseURL</span> <span class="token operator">=</span> <span class="token string">'URL'</span>
 <span class="token comment">//新建axios函数，专门的基地址</span>
 <span class="token keyword keyword-const">const</span> axios1 <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token method function property-access">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token literal-property property">baseURL</span><span class="token operator">:</span><span class="token string">'URL'</span><span class="token punctuation">}</span><span class="token punctuation">)</span>    
-</pre><p><strong>请求拦截器</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript">axios<span class="token punctuation">.</span><span class="token property-access">interceptors</span><span class="token punctuation">.</span><span class="token property-access">request</span><span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span>
+</code></pre><p><strong>请求拦截器</strong></p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code>axios<span class="token punctuation">.</span><span class="token property-access">interceptors</span><span class="token punctuation">.</span><span class="token property-access">request</span><span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span>
     <span class="token parameter">config</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token comment">//config是axios函数参数</span>
         公共请求配置 <span class="token comment">//如配置公共请求头config.headers=</span>
         <span class="token keyword control-flow keyword-return">return</span> config
@@ -422,8 +424,8 @@ axios<span class="token punctuation">.</span><span class="token property-access"
         <span class="token keyword control-flow keyword-return">return</span> <span class="token known-class-name class-name">Promise</span><span class="token punctuation">.</span><span class="token method function property-access">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">)</span>
-</pre><p><strong>响应拦截器</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript">axios<span class="token punctuation">.</span><span class="token property-access">interceptors</span><span class="token punctuation">.</span><span class="token property-access">response</span><span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span>
+</code></pre><p><strong>响应拦截器</strong></p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code>axios<span class="token punctuation">.</span><span class="token property-access">interceptors</span><span class="token punctuation">.</span><span class="token property-access">response</span><span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span>
     <span class="token parameter">response</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token comment">//response是响应体内容</span>
         公共响应处理 <span class="token comment">//如配置公共响应处理response=JSON.parse(response)</span>
         <span class="token keyword control-flow keyword-return">return</span> response
@@ -431,12 +433,11 @@ axios<span class="token punctuation">.</span><span class="token property-access"
         <span class="token keyword control-flow keyword-return">return</span> <span class="token known-class-name class-name">Promise</span><span class="token punctuation">.</span><span class="token method function property-access">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">)</span>
-</pre><hr>
-<h3 class="crossnote-header" id="%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E5%9C%B0%E7%8B%B1%E4%B8%8E%E5%BC%82%E6%AD%A5%E7%AE%A1%E7%90%86">回调函数地狱与异步管理</h3>
-
+</code></pre><hr>
+<h3 id="回调函数地狱与异步管理">回调函数地狱与异步管理 </h3>
 <p><strong>概念</strong>：回调函数嵌套回调函数，一直嵌套下去，造成问题：耦合性严重，外部无法捕获内部异常。解决方法：promise链式调用，async和await关键字。</p>
 <p><strong>promise链式调用</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript">axios<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span>www<span class="token punctuation">.</span><span class="token number">123</span><span class="token punctuation">.</span><span class="token property-access">com</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code>axios<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span>www<span class="token punctuation">.</span><span class="token number">123</span><span class="token punctuation">.</span><span class="token property-access">com</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span>
     <span class="token keyword control-flow keyword-return">return</span> axios<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span>www<span class="token punctuation">.</span><span class="token number">234</span><span class="token punctuation">.</span><span class="token property-access">com</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span>
     <span class="token keyword control-flow keyword-return">return</span> axios<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span>www<span class="token punctuation">.</span><span class="token number">345</span><span class="token punctuation">.</span><span class="token property-access">com</span><span class="token punctuation">)</span>
@@ -445,7 +446,7 @@ axios<span class="token punctuation">.</span><span class="token property-access"
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword control-flow keyword-catch">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span>
     <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">dir</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token comment">//捕获即为对应失败层</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</pre><ul>
+</code></pre><ul>
 <li>
 <p>假设最外层失败了，后面的then全部不会执行，所以捕获的就是最外层的失败。</p>
 </li>
@@ -454,7 +455,7 @@ axios<span class="token punctuation">.</span><span class="token property-access"
 </li>
 </ul>
 <p><strong>async和await关键字</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-async">async</span> <span class="token keyword keyword-function">function</span> <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-async">async</span> <span class="token keyword keyword-function">function</span> <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword keyword-let">let</span> promise <span class="token operator">=</span> <span class="token keyword control-flow keyword-await">await</span> axios<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span>www<span class="token punctuation">.</span><span class="token number">123</span><span class="token punctuation">.</span><span class="token property-access">com</span><span class="token punctuation">)</span>
     <span class="token keyword keyword-let">let</span> promise2 <span class="token operator">=</span> promise<span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token parameter">result</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span>
         <span class="token keyword control-flow keyword-return">return</span> <span class="token keyword control-flow keyword-await">await</span> axios<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span>www<span class="token punctuation">.</span><span class="token number">234</span><span class="token punctuation">.</span><span class="token property-access">com</span><span class="token punctuation">)</span>
@@ -469,8 +470,8 @@ axios<span class="token punctuation">.</span><span class="token property-access"
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span class="token function">fun</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</pre><p><strong>Generator生成器函数</strong>：js自带的异步解决工具，按区划分代码，调用next方法会接着执行一个区域，是promise链式调用到async的过渡工具，可以说其语法糖是async。</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-function">function</span><span class="token operator">*</span> <span class="token function"><span class="token maybe-class-name">MyGenerator</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token comment">//function*是生成器函数定义</span>
+</code></pre><p><strong>Generator生成器函数</strong>：js自带的异步解决工具，按区划分代码，调用next方法会接着执行一个区域，是promise链式调用到async的过渡工具，可以说其语法糖是async。</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-function">function</span><span class="token operator">*</span> <span class="token function"><span class="token maybe-class-name">MyGenerator</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token comment">//function*是生成器函数定义</span>
     <span class="token keyword control-flow keyword-yield">yield</span> <span class="token function">axios</span><span class="token punctuation">(</span><span class="token string">'www.123.com'</span><span class="token punctuation">)</span>
     <span class="token keyword control-flow keyword-yield">yield</span> <span class="token function">axios</span><span class="token punctuation">(</span><span class="token string">'www.345.com'</span><span class="token punctuation">)</span>
     <span class="token keyword control-flow keyword-yield">yield</span> <span class="token function">axios</span><span class="token punctuation">(</span><span class="token string">'www.456.com'</span><span class="token punctuation">)</span>
@@ -488,11 +489,10 @@ axios<span class="token punctuation">.</span><span class="token property-access"
         <span class="token keyword control-flow keyword-return">return</span> mygenerator<span class="token punctuation">.</span><span class="token method function property-access">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access">value</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre><hr>
-<h3 class="crossnote-header" id="fetch%E7%B1%BB">fetch类</h3>
-
+</code></pre><hr>
+<h3 id="fetch类">fetch类 </h3>
 <p><strong>概念</strong>：js自带的轻量版axios请求函数</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token punctuation">(</span><span class="token keyword keyword-async">async</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token punctuation">(</span><span class="token keyword keyword-async">async</span> <span class="token keyword keyword-function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword keyword-const">const</span> res <span class="token operator">=</span> <span class="token keyword control-flow keyword-await">await</span> <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'www.123.com?age=100'</span><span class="token punctuation">,</span><span class="token punctuation">{</span>
         <span class="token literal-property property">methods</span><span class="token operator">:</span><span class="token string">'post'</span><span class="token punctuation">,</span>
         <span class="token literal-property property">headers</span><span class="token operator">:</span><span class="token keyword keyword-new">new</span> <span class="token class-name">Headers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">append</span><span class="token punctuation">(</span>
@@ -506,9 +506,8 @@ axios<span class="token punctuation">.</span><span class="token property-access"
         <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">请求失败，状态码为：</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>res<span class="token operator">/</span>status<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre><hr>
-<h3 class="crossnote-header" id="js%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6">JS执行机制</h3>
-
+</code></pre><hr>
+<h3 id="js执行机制">JS执行机制 </h3>
 <table>
 <thead>
 <tr>
@@ -539,32 +538,27 @@ axios<span class="token punctuation">.</span><span class="token property-access"
 </li>
 </ul>
 <hr>
-<h2 class="crossnote-header" id="nodejs">nodejs</h2>
-
-<h3 class="crossnote-header" id="%E6%A8%A1%E5%9D%97">模块</h3>
-
+<h2 id="nodejs">nodejs </h2>
+<h3 id="模块">模块 </h3>
 <p><strong>概念</strong>：可供导入到另一个js文件的，一个js文件就是一个模块。</p>
-<h4 class="crossnote-header" id="%E9%BB%98%E8%AE%A4%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA">默认导入导出</h4>
-
+<h4 id="默认导入导出">默认导入导出 </h4>
 <p><strong>定义导出的默认标准</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript">module<span class="token punctuation">.</span><span class="token property-access">exports</span> <span class="token operator">=</span> 被导入的对象
-</pre><p><strong>导入的默认标准</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> object <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'路径'</span><span class="token punctuation">)</span> <span class="token comment">//导入</span>
-</pre><hr>
-<h4 class="crossnote-header" id="ecmascript%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA">ECMAScript导入导出</h4>
-
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code>module<span class="token punctuation">.</span><span class="token property-access">exports</span> <span class="token operator">=</span> 被导入的对象
+</code></pre><p><strong>导入的默认标准</strong></p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> object <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'路径'</span><span class="token punctuation">)</span> <span class="token comment">//导入</span>
+</code></pre><hr>
+<h4 id="ecmascript导入导出">ECMAScript导入导出 </h4>
 <p><strong>在package.json文件中写入</strong></p>
-<pre data-role="codeBlock" data-info="json" class="language-json json"><span class="token punctuation">{</span><span class="token property">"type"</span><span class="token operator">:</span><span class="token string">"module"</span><span class="token punctuation">}</span>
-</pre><p><strong>定义导出的ECMAScript标准</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword module keyword-export">export</span> 被具名导入的对象
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span><span class="token property">"type"</span><span class="token operator">:</span><span class="token string">"module"</span><span class="token punctuation">}</span>
+</code></pre><p><strong>定义导出的ECMAScript标准</strong></p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword module keyword-export">export</span> 被具名导入的对象
 <span class="token keyword module keyword-export">export</span> 被具名导入的对象
 <span class="token keyword module keyword-export">export</span> <span class="token keyword module keyword-default">default</span> 被默认导入的对象
-</pre><p><strong>导入的ECMAScript标准</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword module keyword-import">import</span> <span class="token imports">object</span> <span class="token keyword module keyword-from">from</span> <span class="token string">"路径"</span> <span class="token comment">//默认导入</span>
+</code></pre><p><strong>导入的ECMAScript标准</strong></p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword module keyword-import">import</span> <span class="token imports">object</span> <span class="token keyword module keyword-from">from</span> <span class="token string">"路径"</span> <span class="token comment">//默认导入</span>
 <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span>同导出时的对象名<span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">"路径"</span> <span class="token comment">//具名导入</span>
-</pre><hr>
-<h3 class="crossnote-header" id="%E6%A8%A1%E5%9D%97%E5%8C%85">模块包</h3>
-
+</code></pre><hr>
+<h3 id="模块包">模块包 </h3>
 <p><strong>概念</strong>：一整个nodejs项目文件就是一个模块包。项目文件可能有许多的js文件和其他文件，但只能有唯一的js入口文件。</p>
 <table>
 <thead>
@@ -589,23 +583,22 @@ axios<span class="token punctuation">.</span><span class="token property-access"
 </tbody>
 </table>
 <p><strong>nodejs项目初始化</strong>：会生成package.json文件</p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm init -y
-</pre><p><strong>第三方模块包的安装卸载</strong>（全局模块包：封装了全局命令的模块包）</p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm i 包名    //普通模块包
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm init -y
+</code></pre><p><strong>第三方模块包的安装卸载</strong>（全局模块包：封装了全局命令的模块包）</p>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm i 包名    //普通模块包
 npm i 包名 -g    //全局模块包
 npm i 包名 --save-dev    //开发用模块包,简写-D
 npm i 包名 --save    //普通模块包，简写-S，可省略
 npm uni 包名
 npm uni 包名 -g
-</pre><p><strong>安装依赖</strong>：直接拉去git远程仓库的项目，为了传输效率，忽略上传其依赖模块。安装依赖时，自动按package-lock.json对应版本的模块包下载全部。</p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm i
-</pre><p><strong>项目运行、js文件运行</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">node js入口文件
-</pre><p><strong>自定义命令的运行</strong>：自定义命令配置在package.json的<code>script:{"自定义命令":"执行"}</code></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm run 自定义命令
-</pre><hr>
-<h3 class="crossnote-header" id="%E5%86%85%E7%BD%AE%E6%A8%A1%E5%9D%97">内置模块</h3>
-
+</code></pre><p><strong>安装依赖</strong>：直接拉去git远程仓库的项目，为了传输效率，忽略上传其依赖模块。安装依赖时，自动按package-lock.json对应版本的模块包下载全部。</p>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm i
+</code></pre><p><strong>项目运行、js文件运行</strong></p>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>node js入口文件
+</code></pre><p><strong>自定义命令的运行</strong>：自定义命令配置在package.json的<code>script:{"自定义命令":"执行"}</code></p>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm run 自定义命令
+</code></pre><hr>
+<h3 id="内置模块">内置模块 </h3>
 <p><strong>概念</strong>：内置的官方模块包，无需安装，但需引入。</p>
 <table>
 <thead>
@@ -638,15 +631,13 @@ npm uni 包名 -g
 </tbody>
 </table>
 <hr>
-<h4 class="crossnote-header" id="fs%E6%A8%A1%E5%9D%97%E5%8C%85">fs模块包</h4>
-
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span>
+<h4 id="fs模块包">fs模块包 </h4>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> fs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'fs'</span><span class="token punctuation">)</span>
 fs<span class="token punctuation">.</span><span class="token method function property-access">writeFile</span><span class="token punctuation">(</span><span class="token string">'路径'</span><span class="token punctuation">,</span><span class="token string">'写入内容'</span><span class="token punctuation">,</span><span class="token parameter">error</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 fs<span class="token punctuation">.</span><span class="token method function property-access">readFile</span><span class="token punctuation">(</span><span class="token string">'路径'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">error<span class="token punctuation">,</span>data</span><span class="token punctuation">)</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-</pre><hr>
-<h4 class="crossnote-header" id="http%E6%A8%A1%E5%9D%97%E5%8C%85">http模块包</h4>
-
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span>
+</code></pre><hr>
+<h4 id="http模块包">http模块包 </h4>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> http <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'http'</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-const">const</span> web <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token method function property-access">createServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 web<span class="token punctuation">.</span><span class="token method function property-access">on</span><span class="token punctuation">(</span><span class="token string">'request'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">.</span><span class="token property-access">response</span></span><span class="token punctuation">)</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span>
     <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span>
@@ -655,7 +646,7 @@ web<span class="token punctuation">.</span><span class="token method function pr
 web<span class="token punctuation">.</span><span class="token method function property-access">listen</span><span class="token punctuation">(</span><span class="token number">80</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span>
     <span class="token console class-name">console</span><span class="token punctuation">.</span><span class="token method function property-access">log</span><span class="token punctuation">(</span><span class="token string">'web服务启动成功'</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
-</pre><table>
+</code></pre><table>
 <thead>
 <tr>
 <th style="text-align:center">request对象实例成员</th>
@@ -703,8 +694,7 @@ web<span class="token punctuation">.</span><span class="token method function pr
 <li>允许跨域,，设置响应头键值对：<code>‘Access-Control-Allow-Origin’：‘*’</code></li>
 </ul>
 <hr>
-<h3 class="crossnote-header" id="%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97%E5%8C%85">第三方模块包</h3>
-
+<h3 id="第三方模块包">第三方模块包 </h3>
 <p><strong>概念</strong>：需要安装的第三方模块包</p>
 <table>
 <thead>
@@ -740,11 +730,10 @@ web<span class="token punctuation">.</span><span class="token method function pr
 <li>按对应模块包名按照即可</li>
 </ul>
 <hr>
-<h4 class="crossnote-header" id="form-serialize%E6%A8%A1%E5%9D%97%E5%8C%85">form-serialize模块包</h4>
-
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> serialize<span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'form-serialize'</span><span class="token punctuation">)</span>
+<h4 id="form-serialize模块包">form-serialize模块包 </h4>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> serialize<span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'form-serialize'</span><span class="token punctuation">)</span>
 cosnt object <span class="token operator">=</span> <span class="token function">serialize</span><span class="token punctuation">(</span>表单标签对象<span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token literal-property property">hash</span><span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">,</span><span class="token literal-property property">empty</span><span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-</pre><ul>
+</code></pre><ul>
 <li>
 <p>hash：true返回对象，false返回url格式的查询参数</p>
 </li>
@@ -753,24 +742,21 @@ cosnt object <span class="token operator">=</span> <span class="token function">
 </li>
 </ul>
 <hr>
-<h4 class="crossnote-header" id="dayjs%E6%A8%A1%E5%9D%97%E5%8C%85">dayjs模块包</h4>
-
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> dayjs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'dayjs'</span><span class="token punctuation">)</span>
+<h4 id="dayjs模块包">dayjs模块包 </h4>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> dayjs <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'dayjs'</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-const">const</span> now <span class="token operator">=</span> <span class="token function">dayjs</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 now<span class="token punctuation">.</span><span class="token method function property-access">format</span><span class="token punctuation">(</span><span class="token string">'当前时间为YYYY-MM-DD HH:mm:ss'</span><span class="token punctuation">)</span>
-</pre><hr>
-<h4 class="crossnote-header" id="nodemoon%E6%A8%A1%E5%9D%97%E5%8C%85">nodemoon模块包</h4>
-
+</code></pre><hr>
+<h4 id="nodemoon模块包">nodemoon模块包 </h4>
 <p><strong>安装</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm i nodemoon -g
-</pre><p><strong>使用</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">nodemoon js文件
-</pre><hr>
-<h2 class="crossnote-header" id="webpack">webpack</h2>
-
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm i nodemoon -g
+</code></pre><p><strong>使用</strong></p>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>nodemoon js文件
+</code></pre><hr>
+<h2 id="webpack">webpack </h2>
 <p><strong>安装</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm i --save-dev webpack webpack-cli
-</pre><table>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm i --save-dev webpack webpack-cli
+</code></pre><table>
 <thead>
 <tr>
 <th style="text-align:center">项目文件组成</th>
@@ -809,12 +795,11 @@ now<span class="token punctuation">.</span><span class="token method function pr
 </tbody>
 </table>
 <hr>
-<h3 class="crossnote-header" id="%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE">基础功能配置</h3>
-
+<h3 id="基础功能配置">基础功能配置 </h3>
 <p><strong>运行打包</strong>：自定义命令配置在package.json的<code>script:{"build":"webpack"}</code></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm run build
-</pre><p><strong>配置输入输出端</strong>：于webpack.config.js文件中</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm run build
+</code></pre><p><strong>配置输入输出端</strong>：于webpack.config.js文件中</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
 module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
     <span class="token literal-property property">entry</span><span class="token operator">:</span>path<span class="token punctuation">.</span><span class="token method function property-access">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span><span class="token string">'输入文件路径_默认src/index.js'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token literal-property property">output</span><span class="token operator">:</span><span class="token punctuation">{</span>
@@ -823,8 +808,8 @@ module<span class="token punctuation">.</span><span class="token property-access
         clean<span class="token operator">:</span><span class="token boolean">true</span> <span class="token comment">//输出前清空文件夹目录</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><p><strong>配置引入图片处理</strong>：于webpack.config.js文件中</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript">module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
+</code></pre><p><strong>配置引入图片处理</strong>：于webpack.config.js文件中</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code>module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
     <span class="token literal-property property">module</span><span class="token operator">:</span><span class="token punctuation">{</span>
         <span class="token literal-property property">rules</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span>    <span class="token comment">//新增引入处理规则</span>
             <span class="token literal-property property">test</span><span class="token operator">:</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(png|jpg|jpeg|gif)$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><span class="token punctuation">,</span>   
@@ -835,7 +820,7 @@ module<span class="token punctuation">.</span><span class="token property-access
         <span class="token punctuation">}</span><span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><ul>
+</code></pre><ul>
 <li>
 <p><strong>处理规则</strong>：小于8kb以二进制数据流形式写入js，大于8kb放入图床assets文件夹。</p>
 </li>
@@ -854,33 +839,31 @@ module<span class="token punctuation">.</span><span class="token property-access
 </ul>
 <hr>
 <p><strong>配置显示错误行</strong>：于webpack.config.js文件中</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript">config <span class="token operator">=</span> <span class="token punctuation">{</span>其他配置<span class="token punctuation">}</span>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code>config <span class="token operator">=</span> <span class="token punctuation">{</span>其他配置<span class="token punctuation">}</span>
 <span class="token keyword control-flow keyword-if">if</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token property-access">env</span><span class="token punctuation">.</span><span class="token constant">NODE_ENV</span><span class="token operator">===</span><span class="token string">'开发环境'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>   <span class="token comment">//开发环境才开启</span>
     config<span class="token punctuation">.</span><span class="token property-access">devtool</span> <span class="token operator">=</span> <span class="token string">'inline-source-map'</span>
 <span class="token punctuation">}</span>
 module<span class="token punctuation">.</span><span class="token property-access">exports</span> <span class="token operator">=</span> config
-</pre><p><strong>配置路径别名解析</strong>：于webpack.config.js文件中</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript">module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
+</code></pre><p><strong>配置路径别名解析</strong>：于webpack.config.js文件中</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code>module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
     <span class="token literal-property property">resolve</span><span class="token operator">:</span><span class="token punctuation">{</span>
         <span class="token string-property property">'@'</span><span class="token operator">:</span>path<span class="token punctuation">.</span><span class="token method function property-access">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span><span class="token string">'src'</span><span class="token punctuation">)</span> <span class="token comment">//让@代表src文件夹的路径</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><hr>
-<h3 class="crossnote-header" id="%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%8F%92%E4%BB%B6">开发环境插件</h3>
-
+</code></pre><hr>
+<h3 id="开发环境插件">开发环境插件 </h3>
 <p><strong>概念</strong>：提供保存自动重新打包，与网页热更新显示。</p>
 <p><strong>安装</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm i --save-dev webpack-dev-server
-</pre><p><strong>配置启动命令</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token string-property property">"scripts"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string-property property">"dev"</span><span class="token operator">:</span><span class="token string">"webpack serve --open --mode=development"</span><span class="token punctuation">}</span>
-</pre><hr>
-<h3 class="crossnote-header" id="%E6%9B%B4%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%8F%92%E4%BB%B6">更多环境插件</h3>
-
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm i --save-dev webpack-dev-server
+</code></pre><p><strong>配置启动命令</strong></p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token string-property property">"scripts"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token string-property property">"dev"</span><span class="token operator">:</span><span class="token string">"webpack serve --open --mode=development"</span><span class="token punctuation">}</span>
+</code></pre><hr>
+<h3 id="更多环境插件">更多环境插件 </h3>
 <p><strong>概念</strong>：提供除开发环境和生产环境外，的可自定义环境。</p>
 <p><strong>安装</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm i --save-dev cross-env
-</pre><p><strong>配置与添加环境案例</strong>：于webpack.config.js文件中</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> <span class="token maybe-class-name">MiniCssExtractPlugin</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mini-css-extract-plugin'</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm i --save-dev cross-env
+</code></pre><p><strong>配置与添加环境案例</strong>：于webpack.config.js文件中</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> <span class="token maybe-class-name">MiniCssExtractPlugin</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mini-css-extract-plugin'</span><span class="token punctuation">)</span>
 <span class="token string-property property">'plugin'</span><span class="token operator">:</span><span class="token punctuation">[</span>
     <span class="token keyword keyword-new">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">]</span>
@@ -894,8 +877,8 @@ module<span class="token punctuation">.</span><span class="token property-access
             <span class="token punctuation">}</span><span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><p><strong>配置在前端代码中能够被识别</strong>（如html、js项目文件中）于webpack.config.js文件中</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span>
+</code></pre><p><strong>配置在前端代码中能够被识别</strong>（如html、js项目文件中）于webpack.config.js文件中</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span>
 module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
     <span class="token string-property property">'plugin'</span><span class="token operator">:</span><span class="token punctuation">[</span>
         <span class="token keyword keyword-new">new</span> <span class="token class-name">webpack<span class="token punctuation">.</span>DefinePlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -904,14 +887,13 @@ module<span class="token punctuation">.</span><span class="token property-access
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
-</pre><hr>
-<h3 class="crossnote-header" id="%E5%8D%95%E7%8B%AC%E7%94%9F%E6%88%90html%E6%96%87%E4%BB%B6%E6%8F%92%E4%BB%B6">单独生成html文件插件</h3>
-
+</code></pre><hr>
+<h3 id="单独生成html文件插件">单独生成html文件插件 </h3>
 <p><strong>概念</strong>：解决默认html代码输出到js文件中</p>
 <p><strong>安装</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm i --save-dev cross-env
-</pre><p><strong>配置输入输出端</strong>：于文件./webpack.config.js中</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> <span class="token maybe-class-name">HtmlWebpackPlugin</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'html-webpack-plugin'</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm i --save-dev cross-env
+</code></pre><p><strong>配置输入输出端</strong>：于文件./webpack.config.js中</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> <span class="token maybe-class-name">HtmlWebpackPlugin</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'html-webpack-plugin'</span><span class="token punctuation">)</span>
 <span class="token keyword keyword-const">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
 <span class="token string-property property">'plugin'</span><span class="token operator">:</span><span class="token punctuation">[</span>
     <span class="token keyword keyword-new">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -919,8 +901,8 @@ module<span class="token punctuation">.</span><span class="token property-access
         <span class="token literal-property property">filename</span><span class="token operator">:</span>path<span class="token punctuation">.</span><span class="token method function property-access">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span><span class="token string">'输出html文件路径'</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">]</span>
-</pre><p><strong>配置开启CDN加速</strong>：于文件./webpack.config.js中</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword module keyword-import">import</span> <span class="token imports">object</span> <span class="token keyword module keyword-from">from</span> <span class="token string">'第三方模块名'</span>
+</code></pre><p><strong>配置开启CDN加速</strong>：于文件./webpack.config.js中</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword module keyword-import">import</span> <span class="token imports">object</span> <span class="token keyword module keyword-from">from</span> <span class="token string">'第三方模块名'</span>
 config<span class="token operator">=</span><span class="token punctuation">{</span>其他配置<span class="token punctuation">}</span>
 <span class="token keyword control-flow keyword-if">if</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span><span class="token property-access">env</span><span class="token punctuation">.</span><span class="token constant">NODE_ENV</span><span class="token operator">===</span><span class="token string">'生产环境'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>   <span class="token comment">//生产环境才开启</span>
     config<span class="token punctuation">.</span><span class="token property-access">externals</span><span class="token operator">=</span><span class="token punctuation">{</span>
@@ -935,18 +917,17 @@ module<span class="token punctuation">.</span><span class="token property-access
         <span class="token literal-property property">useCDN</span><span class="token operator">:</span>process<span class="token punctuation">.</span><span class="token property-access">env</span><span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">'生产环境'</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">]</span>
-</pre><p><strong>指定使用CDN加速的引入文件</strong>：于输入html文件中</p>
-<pre data-role="codeBlock" data-info="html" class="language-html html">&lt;% if(htmlWebpackPlugin.options.useCDN){ %&gt;
+</code></pre><p><strong>指定使用CDN加速的引入文件</strong>：于输入html文件中</p>
+<pre data-role="codeBlock" data-info="html" class="language-html html"><code>&lt;% if(htmlWebpackPlugin.options.useCDN){ %&gt;
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>CDN地址<span class="token punctuation">"</span></span><span class="token punctuation">/&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>CDN地址<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 &lt;% } %&gt;
-</pre><hr>
-<h3 class="crossnote-header" id="%E5%BC%95%E5%85%A5css%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E6%8F%92%E4%BB%B6">引入css文件解析插件</h3>
-
+</code></pre><hr>
+<h3 id="引入css文件解析插件">引入css文件解析插件 </h3>
 <p><strong>概念</strong>：解决默认无法识别引入到js的css文件</p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm i --save-dev css-loader
-</pre><p><strong>配置引入css文件处理</strong>：于webpack.config.js文件中</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript">module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm i --save-dev css-loader
+</code></pre><p><strong>配置引入css文件处理</strong>：于webpack.config.js文件中</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code>module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
     <span class="token literal-property property">module</span><span class="token operator">:</span><span class="token punctuation">{</span>
         <span class="token literal-property property">rules</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span>    <span class="token comment">//新增引入处理规则</span>
             <span class="token literal-property property">test</span><span class="token operator">:</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><span class="token punctuation">,</span>
@@ -954,17 +935,16 @@ module<span class="token punctuation">.</span><span class="token property-access
         <span class="token punctuation">}</span><span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><ul>
+</code></pre><ul>
 <li>注意：css文件都要引入到js文件中</li>
 </ul>
 <hr>
-<h3 class="crossnote-header" id="%E5%8D%95%E7%8B%AC%E7%94%9F%E6%88%90css%E6%96%87%E4%BB%B6%E6%8F%92%E4%BB%B6">单独生成css文件插件</h3>
-
+<h3 id="单独生成css文件插件">单独生成css文件插件 </h3>
 <p><strong>概念</strong>：解决默认css代码输出到js文件中</p>
 <p><strong>安装</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm i --save-dev mini-css-extract-plugin
-</pre><p><strong>配置引入css文件处理</strong>：于webpack.config.js文件中</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> <span class="token maybe-class-name">MiniCssExtractPlugin</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mini-css-extract-plugin'</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm i --save-dev mini-css-extract-plugin
+</code></pre><p><strong>配置引入css文件处理</strong>：于webpack.config.js文件中</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> <span class="token maybe-class-name">MiniCssExtractPlugin</span> <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mini-css-extract-plugin'</span><span class="token punctuation">)</span>
 <span class="token string-property property">'plugin'</span><span class="token operator">:</span><span class="token punctuation">[</span>
     <span class="token keyword keyword-new">new</span> <span class="token class-name">MiniCssExtractPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">]</span>
@@ -976,14 +956,13 @@ module<span class="token punctuation">.</span><span class="token property-access
         <span class="token punctuation">}</span><span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><hr>
-<h3 class="crossnote-header" id="%E5%8E%8B%E7%BC%A9css%E6%8F%92%E4%BB%B6">压缩css插件</h3>
-
+</code></pre><hr>
+<h3 id="压缩css插件">压缩css插件 </h3>
 <p><strong>概念</strong>：解决单独生成的css文件没有压缩</p>
 <p><strong>安装</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm i --save-dev css-minimizer-webpack-plugin
-</pre><p><strong>配置输出压缩算法</strong>：于webpack.config.js文件中</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> <span class="token maybe-class-name">CssMinimizerWebpackPlugin</span> <span class="token operator">=</span> 
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm i --save-dev css-minimizer-webpack-plugin
+</code></pre><p><strong>配置输出压缩算法</strong>：于webpack.config.js文件中</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> <span class="token maybe-class-name">CssMinimizerWebpackPlugin</span> <span class="token operator">=</span> 
     <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'css-minimizer-webpack-plugin'</span><span class="token punctuation">)</span>
 module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
     <span class="token literal-property property">optimization</span><span class="token operator">:</span><span class="token punctuation">{</span>
@@ -993,13 +972,12 @@ module<span class="token punctuation">.</span><span class="token property-access
         <span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><hr>
-<h3 class="crossnote-header" id="%E5%BC%95%E5%85%A5less%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E6%8F%92%E4%BB%B6">引入less文件解析插件</h3>
-
+</code></pre><hr>
+<h3 id="引入less文件解析插件">引入less文件解析插件 </h3>
 <p><strong>概念</strong>：解决默认无法识别引入到js的less文件</p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">npm i --save-dev less less-loader
-</pre><p><strong>配置引入less文件处理</strong>：于webpack.config.js文件中</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript">module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm i --save-dev less less-loader
+</code></pre><p><strong>配置引入less文件处理</strong>：于webpack.config.js文件中</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code>module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
     <span class="token literal-property property">module</span><span class="token operator">:</span><span class="token punctuation">{</span>
         <span class="token literal-property property">rules</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span>    <span class="token comment">//新增引入处理规则</span>
             <span class="token literal-property property">test</span><span class="token operator">:</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.less$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span><span class="token punctuation">,</span>
@@ -1007,14 +985,13 @@ module<span class="token punctuation">.</span><span class="token property-access
         <span class="token punctuation">}</span><span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><ul>
+</code></pre><ul>
 <li>注意：less文件都要引入到js文件中</li>
 </ul>
 <hr>
-<h3 class="crossnote-header" id="%E5%A4%9A%E9%A1%B5%E9%9D%A2%E6%89%93%E5%8C%85%E9%85%8D%E7%BD%AE%E6%96%B9%E6%B3%95">多页面打包配置方法</h3>
-
+<h3 id="多页面打包配置方法">多页面打包配置方法 </h3>
 <p><strong>概念</strong>：上述都是单页面配置方法，此处归纳并展示多页面配置方法</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><span class="token keyword keyword-const">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword keyword-const">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
 module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
     <span class="token literal-property property">entry</span><span class="token operator">:</span><span class="token punctuation">{</span>
     <span class="token string-property property">'js-chunk1'</span><span class="token operator">:</span>path<span class="token punctuation">.</span><span class="token method function property-access">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span><span class="token string">'src/js1.js'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -1040,8 +1017,8 @@ module<span class="token punctuation">.</span><span class="token property-access
         <span class="token literal-property property">filename</span><span class="token operator">:</span><span class="token string">'./[name]/index.css'</span> <span class="token comment">//输出同文件名的文件夹下</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">]</span>
-</pre><p><strong>配置提取公共js减少重复下载</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript">module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
+</code></pre><p><strong>配置提取公共js减少重复下载</strong></p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code>module<span class="token punctuation">.</span><span class="token property-access">exports</span><span class="token operator">=</span><span class="token punctuation">{</span>
     <span class="token literal-property property">optimization</span><span class="token operator">:</span><span class="token punctuation">{</span> <span class="token comment">//输出优化</span>
         <span class="token literal-property property">splitChunks</span><span class="token operator">:</span><span class="token punctuation">{</span> <span class="token comment">//js-chunks分割算法</span>
             <span class="token literal-property property">chunks</span><span class="token operator">:</span><span class="token string">'all'</span><span class="token punctuation">,</span> <span class="token comment">//所有js-chunks</span>
@@ -1060,16 +1037,13 @@ module<span class="token punctuation">.</span><span class="token property-access
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</pre><hr>
-<h2 class="crossnote-header" id="git">Git</h2>
-
-<h3 class="crossnote-header" id="%E7%94%A8%E6%88%B7%E9%85%8D%E7%BD%AE">用户配置</h3>
-
-<pre data-role="codeBlock" data-info="git" class="language-git git">git config --global use.name <span class="token string">"用户名"</span>
+</code></pre><hr>
+<h2 id="git">Git </h2>
+<h3 id="用户配置">用户配置 </h3>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>git config --global use.name <span class="token string">"用户名"</span>
 git config --global use.email <span class="token string">"用户邮箱"</span>
 git config --list    //查看全部配置
-</pre><h3 class="crossnote-header" id="%E4%B8%89%E4%B8%AA%E5%8C%BA%E5%9F%9F">三个区域</h3>
-
+</code></pre><h3 id="三个区域">三个区域 </h3>
 <table>
 <thead>
 <tr>
@@ -1093,22 +1067,22 @@ git config --list    //查看全部配置
 </tbody>
 </table>
 <p><strong>项目仓库初始化</strong>：生成.git隐藏文件，用于版本记录和文件跟踪。</p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">git init
-</pre><p><strong>暂存区操作</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">git add 文件名    //暂存指定文件
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>git init
+</code></pre><p><strong>暂存区操作</strong></p>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>git add 文件名    //暂存指定文件
 git add .    //暂存全部文件
 git ls-files    //查看暂存区全部文件
 git rm 文件名    //移除暂存区文件
 git restore 文件    //从暂存区恢复文件
-</pre><p><strong>版本区操作</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">git commit -m <span class="token string">"版本说明"</span>    //生成版本
+</code></pre><p><strong>版本区操作</strong></p>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>git commit -m <span class="token string">"版本说明"</span>    //生成版本
 git log    //查看最近历史版本
 git log --oneline    //简略查看最近历史版本
 git relog --oneline    //简略查看全部历史版本
 git reset --soft 版本号    //恢复版本，部分
 git reset --hard 版本号    //恢复版本，彻底
 git reset --mixed 版本号    //恢复版本，暂存区彻底，工作区部分
-</pre><ul>
+</code></pre><ul>
 <li>部分：只恢复有的文件，不删除新产生的文件</li>
 </ul>
 <table>
@@ -1139,31 +1113,29 @@ git reset --mixed 版本号    //恢复版本，暂存区彻底，工作区部�
 </table>
 <p><strong>忽略文件</strong>：新建<code>gitignore</code>文件，文件一行写一个被忽略文件</p>
 <hr>
-<h3 class="crossnote-header" id="%E5%88%86%E6%94%AF">分支</h3>
-
+<h3 id="分支">分支 </h3>
 <p><strong>概念</strong>：实现多人对同项目同时开发，只能基于主分支进行创建、删除、合并</p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">git branch    //查看所有分支
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>git branch    //查看所有分支
 git branch 分支名    //创建分支
 git branch -d 分支名    //删除分支
 git checkout 分支名    //切换分支
 git merge 分支名    //合并分支
-</pre><h3 class="crossnote-header" id="%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93">远程仓库</h3>
-
+</code></pre><h3 id="远程仓库">远程仓库 </h3>
 <p><strong>概念</strong>：git仓库部署在远程服务器，与之的交互操作</p>
 <p><strong>链接</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">git remote add 远程仓库名 远程仓库地址    //链接
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>git remote add 远程仓库名 远程仓库地址    //链接
 git remote remove 远程仓库名    //取消链接
 git remote -v    //查看已链接
-</pre><p><strong>拉取合并</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">git pull 远程仓库名 远程分支:本地分支
+</code></pre><p><strong>拉取合并</strong></p>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>git pull 远程仓库名 远程分支:本地分支
 git pull 远程仓库名 远程分支    //到当前省略
 git pull 远程仓库名    //主分支到当前省略
 git pull --rebase 远程仓库名 本地分支    //强制合并，以远程分支为准
-</pre><p><strong>推送</strong></p>
-<pre data-role="codeBlock" data-info="git" class="language-git git">git push 远程仓库名 本地分支:远程分支
+</code></pre><p><strong>推送</strong></p>
+<pre data-role="codeBlock" data-info="git" class="language-git git"><code>git push 远程仓库名 本地分支:远程分支
 git push 远程仓库名 本地分支    //同名省略
 git push --force 远程仓库名 本地分支    //强制推送，以本地分支为准
-</pre>
+</code></pre>
       </div>
       <script src="./nav.js"></script>
       

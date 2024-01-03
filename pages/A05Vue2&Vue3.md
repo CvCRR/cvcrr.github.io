@@ -1,6 +1,6 @@
 <h1 align="center">Vue2&Vue3</h1>
 
-<div align="right">最近更新时间：2023-08-07</div>
+<div align="right">最近更新时间：2024-01-04</div>
 
 ## 介绍
 
@@ -941,14 +941,16 @@ app.use(router)    //使用路由插件
 
 ## Pinia插件
 
+**概念**：因为某些属性和方法不能与组件所绑定，不能随组件注销而注销，所以就有了pinia中的store**全局对象**的诞生，用来保存这些全局属性和全局方法。
+
 **在src/stores/counter.js下新建文件并配置**
 
 ```javascript
 import { defineStore } from 'pinia'
-export const useCounterStore = defineStore{    //封装为类
+export const useCounterStore = defineStore('唯一标识名',()=>{
     同setup语法糖的属性/方法/计算属性定义方式
-    return {属性/方法/计算属性}
-}
+    return {属性/方法/计算属性}    //必须返回给全局对象
+})
 ```
 
 **在js入口文件配置**
@@ -967,7 +969,7 @@ app.use(createPinia())    //使用Pinia插件
 <script setup>
     import { useCounterStore } from './src/stores/counter.js'
     import { storeToRefs } from 'pinia'
-    const conterStore = useCounterStore() //实例化，返回实例成员
+    const conterStore = useCounterStore() //引入接收全局对象
     conterStore.属性/方法/计算属性 //无解构时的使用方式
     const { 方法 } = conterStore //方法直接解构
     const { 属性/计算属性 } = storeToRefs(conterStore) //属性解构

@@ -1,6 +1,6 @@
 <h1 align="center">TypeScript</h1>
 
-<div align="right">最近更新时间：2023-08-12</div>
+<div align="right">最近更新时间：2024-01-04</div>
 
 ## 介绍
 

@@ -1,6 +1,6 @@
 <h1 align="center">Vue2&Vue3</h1>
 
-<div align="right">最近更新时间：2024-01-04</div>
+<div align="right">最近更新时间：2024-01-14</div>
 
 ## 介绍
 
@@ -629,6 +629,8 @@ export default new Vue()
 
 ### 响应式数据
 
+**概念**：值变会自动重新渲染的数据，只有需要渲染到页面上的数据才需要绑定。
+
 **reactive函数**
 
 ```javascript
@@ -676,6 +678,8 @@ export default new Vue()
 ---
 
 ### 计算属性
+
+**概念**：也是一种响应式数据，具有额外的特性：计算属性的值会根据其计算依赖的响应式数据变化而重新计算。
 
 ```javascript
 <script setup>
@@ -784,7 +788,7 @@ export default new Vue()
 <script setup>
     import { ref } from 'vue' 
     const key1 = ref(value1)
-    const emits = defineEmits(['extEvent']) //声明自定义事件
+    const emits = defineEmits(['textEvent']) //声明自定义事件
     method1(){
         console.log(`处于发送时机`)
         emits('textEvent',key1.value) //触发自定义事件
@@ -802,7 +806,7 @@ export default new Vue()
 
 ---
 
-### 非父子通信
+### provide通信
 
 **发生方组件**
 
@@ -941,15 +945,15 @@ app.use(router)    //使用路由插件
 
 ## Pinia插件
 
-**概念**：因为某些属性和方法不能与组件所绑定，不能随组件注销而注销，所以就有了pinia中的store**全局对象**的诞生，用来保存这些全局属性和全局方法。
+**概念**：全局状态管理，存储全局对象，实现万能的跨组件通讯
 
-**在src/stores/counter.js下新建文件并配置**
+**在src/stores/xxx.js下新建文件并配置**
 
 ```javascript
 import { defineStore } from 'pinia'
-export const useCounterStore = defineStore('唯一标识名',()=>{
+export const useXxxStore = defineStore('xxx',()=>{
     同setup语法糖的属性/方法/计算属性定义方式
-    return {属性/方法/计算属性}    //必须返回给全局对象
+    return {属性/方法/计算属性}    //作为局部变量必须返回
 })
 ```
 
@@ -967,12 +971,12 @@ app.use(createPinia())    //使用Pinia插件
 
 ```javascript
 <script setup>
-    import { useCounterStore } from './src/stores/counter.js'
+    import { useXxxStore } from './src/stores/xxx.js'
     import { storeToRefs } from 'pinia'
-    const conterStore = useCounterStore() //引入接收全局对象
-    conterStore.属性/方法/计算属性 //无解构时的使用方式
-    const { 方法 } = conterStore //方法直接解构
-    const { 属性/计算属性 } = storeToRefs(conterStore) //属性解构
+    const xxxStore = useXxxStore() //引入接收全局对象
+    xxxStore.属性/方法/计算属性 //无解构时的使用方式
+    const { 方法 } = xxxStore //方法直接解构
+    const { 属性/计算属性 } = storeToRefs(xxxStore) //属性解构
 <script>
 ```
 

@@ -1,6 +1,6 @@
 <h1 align="center">UniApp</h1>
 
-<div align="right">最近更新时间：2024-01-16</div>
+<div align="right">最近更新时间：2024-01-25</div>
 
 ## 介绍
 
@@ -732,7 +732,7 @@ export const useXxx = () => {
 }
 ```
 
-**与下列使用pinia全局状态管理的对比**：上述是全局类实例化对象，下列是全局对象
+**与下列使用pinia全局状态管理的对比**：上述是全局类实例化不同对象，下列是全局对象
 
 ```typescript
 //src/stores/xxx.ts

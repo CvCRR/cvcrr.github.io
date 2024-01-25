@@ -25,7 +25,7 @@
       <div class="crossnote markdown-preview  ">
       
 <h1 align="center">Vue2&amp;Vue3</h1>
-<div align="right">最近更新时间：2024-01-14</div>
+<div align="right">最近更新时间：2024-01-25</div>
 <h2 id="介绍">介绍 </h2>
 <table>
 <thead>
@@ -387,7 +387,7 @@
 <span class="token maybe-class-name">Vue</span><span class="token punctuation">.</span><span class="token method function property-access">component</span><span class="token punctuation">(</span><span class="token string">'Child'</span><span class="token punctuation">,</span><span class="token maybe-class-name">Child</span><span class="token punctuation">)</span>
 </code></pre><hr>
 <h3 id="组件通信">组件通信 </h3>
-<h4 id="父传子自定义属性">父传子自定义属性 </h4>
+<h4 id="自定义属性父传子">自定义属性（父传子） </h4>
 <p><strong>父组件</strong></p>
 <pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
     <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token maybe-class-name">Child</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'@/compoents/Child.vue'</span>
@@ -426,7 +426,7 @@
 
 <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
 </code></pre><hr>
-<h4 id="子传父自定义事件">子传父自定义事件 </h4>
+<h4 id="自定义事件子传父">自定义事件（子传父） </h4>
 <p><strong>父组件</strong></p>
 <pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
     <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token maybe-class-name">Child</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'@/compoents/Child.vue'</span>
@@ -474,7 +474,8 @@
 <li>script标签中的<strong>this</strong>：指向了本vue文件的vm实例对象</li>
 </ul>
 <hr>
-<h4 id="非父子通信eventbus">非父子通信EventBus </h4>
+<h4 id="eventbus中间组件万能跨组件通信">EventBus中间组件（万能跨组件通信） </h4>
+<p><strong>原理</strong>：新建Vue实例作为通信的中间组件名叫bus，使用其<code>$emit</code>函数发送和<code>$on</code>函数接收使用。可见每个Vue组件都有这两个函数，自定义事件就是依赖于子组件的这两个函数。</p>
 <p><strong>eventBus.js制作</strong></p>
 <pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token maybe-class-name">Vue</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'vue'</span>
 <span class="token keyword module keyword-export">export</span> <span class="token keyword module keyword-default">default</span> <span class="token keyword keyword-new">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -514,7 +515,7 @@
     <span class="token punctuation">}</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre><hr>
-<h4 id="ref和nexttick">ref和nextTick </h4>
+<h4 id="ref和nexttick子传父父调子">ref和nextTick（子传父，父调子） </h4>
 <p><strong>概念</strong>：ref是标签属性，用于获取DOM对象，操作DOM对象，或者获取子组件vm实例对象，实现子传父通信。nextTick是异步函数，等待网页元素更新后才执行。</p>
 <pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
     <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token maybe-class-name">Child</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'@/compoents/Child.vue'</span>
@@ -551,30 +552,7 @@
 
 <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
 </code></pre><hr>
-<h3 id="动态组件">动态组件 </h3>
-<p><strong>概念</strong>：component占位符，实现子组件的动态显示和隐藏，可以实现路由</p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
-    <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token maybe-class-name">Child</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'@/compoents/Child.vue'</span>
-    <span class="token keyword module keyword-export">export</span> <span class="token keyword module keyword-default">default</span><span class="token punctuation">{</span>
-        <span class="token literal-property property">component</span><span class="token operator">:</span><span class="token punctuation">{</span>
-            <span class="token literal-property property">Child</span><span class="token operator">:</span><span class="token maybe-class-name">Child</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            <span class="token keyword control-flow keyword-return">return</span><span class="token punctuation">{</span>
-                <span class="token literal-property property">key1</span><span class="token operator">:</span><span class="token maybe-class-name">Child</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
-
-<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
-
-    <span class="token operator">&lt;</span>component is<span class="token operator">=</span><span class="token string">"Child"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>component<span class="token operator">&gt;</span> <span class="token comment">//只显示is属性值名字的子组件</span>
-    <span class="token operator">&lt;</span>component <span class="token operator">:</span>is<span class="token operator">=</span><span class="token string">"key1"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>component<span class="token operator">&gt;</span>
-
-<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
-</code></pre><hr>
-<h3 id="组件插槽">组件插槽 </h3>
+<h4 id="组件插槽父传子">组件插槽（父传子） </h4>
 <p><strong>概念</strong>：子组件提供的随意插入内容的区域</p>
 <p><strong>父组件</strong></p>
 <pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
@@ -611,6 +589,29 @@
     <span class="token operator">&lt;</span>slot<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>slot<span class="token operator">&gt;</span>    <span class="token comment">//默认插槽</span>
     <span class="token operator">&lt;</span>slot name<span class="token operator">=</span><span class="token string">"slot2"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>slot<span class="token operator">&gt;</span>    <span class="token comment">//具名插槽</span>
     <span class="token operator">&lt;</span>slot name<span class="token operator">=</span><span class="token string">"slot3"</span> msg<span class="token operator">=</span><span class="token string">"hello"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>slot<span class="token operator">&gt;</span>    <span class="token comment">//具名通信插槽</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+</code></pre><hr>
+<h3 id="动态组件">动态组件 </h3>
+<p><strong>概念</strong>：component标签占位符，实现子组件的动态显示和隐藏，可用于实现路由</p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token maybe-class-name">Child</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'@/compoents/Child.vue'</span>
+    <span class="token keyword module keyword-export">export</span> <span class="token keyword module keyword-default">default</span><span class="token punctuation">{</span>
+        <span class="token literal-property property">component</span><span class="token operator">:</span><span class="token punctuation">{</span>
+            <span class="token literal-property property">Child</span><span class="token operator">:</span><span class="token maybe-class-name">Child</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword control-flow keyword-return">return</span><span class="token punctuation">{</span>
+                <span class="token literal-property property">key1</span><span class="token operator">:</span><span class="token maybe-class-name">Child</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+
+    <span class="token operator">&lt;</span>component is<span class="token operator">=</span><span class="token string">"Child"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>component<span class="token operator">&gt;</span> <span class="token comment">//只显示is属性值名字的子组件</span>
+    <span class="token operator">&lt;</span>component <span class="token operator">:</span>is<span class="token operator">=</span><span class="token string">"key1"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>component<span class="token operator">&gt;</span>
 
 <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
 </code></pre><hr>
@@ -697,7 +698,7 @@
 </li>
 </ul>
 <hr>
-<h2 id="setup语法糖">setup语法糖 </h2>
+<h2 id="setup语法糖vue3组合式api">setup语法糖（Vue3组合式API） </h2>
 <h3 id="响应式数据">响应式数据 </h3>
 <p><strong>概念</strong>：值变会自动重新渲染的数据，只有需要渲染到页面上的数据才需要绑定。</p>
 <p><strong>reactive函数</strong></p>
@@ -778,10 +779,11 @@
 </li>
 </ul>
 <hr>
-<h3 id="父传子自定义属性-1">父传子自定义属性 </h3>
+<h3 id="组件通信-1">组件通信 </h3>
+<h4 id="自定义属性父传子-1">自定义属性（父传子） </h4>
 <p><strong>父组件</strong></p>
 <pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
-    <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token maybe-class-name">Child</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'@/compoents/Child.vue'</span> <span class="token comment">//自动注册</span>
+    <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token maybe-class-name">Child</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'@/compoents/Child.vue'</span> <span class="token comment">//引入后自动注册</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 
 <span class="token operator">&lt;</span>template<span class="token operator">&gt;</span><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
@@ -806,7 +808,7 @@
 <li>script内访问自定义属性需要用<code>props.color</code>，template直接使用<code>color</code></li>
 </ul>
 <hr>
-<h3 id="子传父自定义事件-1">子传父自定义事件 </h3>
+<h4 id="自定义事件子传父-1">自定义事件（子传父） </h4>
 <p><strong>父组件</strong></p>
 <pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
     <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token maybe-class-name">Child</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'@/compoents/Child.vue'</span>
@@ -840,14 +842,14 @@
 <li>script内无需用this指针访问变量，this指针也不用指向本vm实例对象。</li>
 </ul>
 <hr>
-<h3 id="provide通信">provide通信 </h3>
-<p><strong>发生方组件</strong></p>
+<h4 id="provide通信顶传底">provide通信（顶传底） </h4>
+<p><strong>顶部发送方组件</strong></p>
 <pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
     <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span> ref<span class="token punctuation">,</span>provide <span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'vue'</span> 
     <span class="token keyword keyword-const">const</span> key1 <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">56</span><span class="token punctuation">)</span>
     <span class="token function">provide</span><span class="token punctuation">(</span><span class="token string">'textPhone'</span><span class="token punctuation">,</span>key1<span class="token punctuation">.</span><span class="token property-access">value</span><span class="token punctuation">)</span>    <span class="token comment">//发送</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
-</code></pre><p><strong>接收方组件</strong></p>
+</code></pre><p><strong>底部接收方组件</strong></p>
 <pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
     <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span> ref<span class="token punctuation">,</span>inject <span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'vue'</span> 
     <span class="token keyword keyword-const">const</span> key1 <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token keyword null nil keyword-null">null</span><span class="token punctuation">)</span>
@@ -857,7 +859,7 @@
 <li>提供响应式数据时，为不产生<strong>响应式丢失</strong>，需传的信息封装为计算属性</li>
 </ul>
 <hr>
-<h3 id="ref获取标签的变化">ref获取标签的变化 </h3>
+<h4 id="ref获取标签子传父父调子">ref获取标签（子传父，父调子） </h4>
 <pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
     <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span> ref <span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'vue'</span>
     <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token maybe-class-name">Child</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'@/compoents/Child.vue'</span>
@@ -878,6 +880,33 @@
     <span class="token punctuation">}</span><span class="token punctuation">)</span>                               
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
 </code></pre><hr>
+<h4 id="pinia插件万能跨组件通信">Pinia插件（万能跨组件通信） </h4>
+<p><strong>概念</strong>：全局状态管理，存储全局对象，实现万能的跨组件通讯</p>
+<p><strong>在src/stores/xxx.js下新建文件并配置</strong></p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span> defineStore <span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'pinia'</span>
+<span class="token keyword module keyword-export">export</span> <span class="token keyword keyword-const">const</span> useXxxStore <span class="token operator">=</span> <span class="token function">defineStore</span><span class="token punctuation">(</span><span class="token string">'xxx'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span>
+    同setup语法糖的属性<span class="token operator">/</span>方法<span class="token operator">/</span>计算属性定义方式
+    <span class="token keyword control-flow keyword-return">return</span> <span class="token punctuation">{</span>属性<span class="token operator">/</span>方法<span class="token operator">/</span>计算属性<span class="token punctuation">}</span>    <span class="token comment">//作为局部变量必须返回</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre><p><strong>在js入口文件配置</strong></p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span> createApp <span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'vue'</span>
+<span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token maybe-class-name">App</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'@/App.vue'</span>
+<span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span> createPinia <span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'pinia'</span>
+<span class="token keyword keyword-const">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span><span class="token maybe-class-name">App</span><span class="token punctuation">)</span>
+app<span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span><span class="token function">createPinia</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment">//使用Pinia插件</span>
+</code></pre><p><strong>在vue组件中使用</strong></p>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
+    <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span> useXxxStore <span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'./src/stores/xxx.js'</span>
+    <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span> storeToRefs <span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'pinia'</span>
+    <span class="token keyword keyword-const">const</span> xxxStore <span class="token operator">=</span> <span class="token function">useXxxStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//引入接收全局对象</span>
+    xxxStore<span class="token punctuation">.</span><span class="token property-access">属性</span><span class="token operator">/</span>方法<span class="token operator">/</span>计算属性 <span class="token comment">//无解构时的使用方式</span>
+    <span class="token keyword keyword-const">const</span> <span class="token punctuation">{</span> 方法 <span class="token punctuation">}</span> <span class="token operator">=</span> xxxStore <span class="token comment">//方法直接解构</span>
+    <span class="token keyword keyword-const">const</span> <span class="token punctuation">{</span> 属性<span class="token operator">/</span>计算属性 <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">storeToRefs</span><span class="token punctuation">(</span>xxxStore<span class="token punctuation">)</span> <span class="token comment">//属性解构</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+</code></pre><ul>
+<li>storeToRefs函数进行解构，解决<strong>响应式丢失</strong>的问题</li>
+</ul>
+<hr>
 <h2 id="前端路由插件">前端路由插件 </h2>
 <p><strong>概念</strong>：监听hash地址的变化，显示不同的画面，会产生历史记录</p>
 <p><strong>在src/router/index.js下新建文件并配置</strong></p>
@@ -948,33 +977,6 @@ app<span class="token punctuation">.</span><span class="token method function pr
 
 <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
 </code></pre><hr>
-<h2 id="pinia插件">Pinia插件 </h2>
-<p><strong>概念</strong>：全局状态管理，存储全局对象，实现万能的跨组件通讯</p>
-<p><strong>在src/stores/xxx.js下新建文件并配置</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span> defineStore <span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'pinia'</span>
-<span class="token keyword module keyword-export">export</span> <span class="token keyword keyword-const">const</span> useXxxStore <span class="token operator">=</span> <span class="token function">defineStore</span><span class="token punctuation">(</span><span class="token string">'xxx'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token arrow operator">=&gt;</span><span class="token punctuation">{</span>
-    同setup语法糖的属性<span class="token operator">/</span>方法<span class="token operator">/</span>计算属性定义方式
-    <span class="token keyword control-flow keyword-return">return</span> <span class="token punctuation">{</span>属性<span class="token operator">/</span>方法<span class="token operator">/</span>计算属性<span class="token punctuation">}</span>    <span class="token comment">//作为局部变量必须返回</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</code></pre><p><strong>在js入口文件配置</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span> createApp <span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'vue'</span>
-<span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token maybe-class-name">App</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'@/App.vue'</span>
-<span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span> createPinia <span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'pinia'</span>
-<span class="token keyword keyword-const">const</span> app <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span><span class="token maybe-class-name">App</span><span class="token punctuation">)</span>
-app<span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span><span class="token function">createPinia</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token comment">//使用Pinia插件</span>
-</code></pre><p><strong>在vue组件中使用</strong></p>
-<pre data-role="codeBlock" data-info="javascript" class="language-javascript javascript"><code><span class="token operator">&lt;</span>script setup<span class="token operator">&gt;</span>
-    <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span> useXxxStore <span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'./src/stores/xxx.js'</span>
-    <span class="token keyword module keyword-import">import</span> <span class="token imports"><span class="token punctuation">{</span> storeToRefs <span class="token punctuation">}</span></span> <span class="token keyword module keyword-from">from</span> <span class="token string">'pinia'</span>
-    <span class="token keyword keyword-const">const</span> xxxStore <span class="token operator">=</span> <span class="token function">useXxxStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//引入接收全局对象</span>
-    xxxStore<span class="token punctuation">.</span><span class="token property-access">属性</span><span class="token operator">/</span>方法<span class="token operator">/</span>计算属性 <span class="token comment">//无解构时的使用方式</span>
-    <span class="token keyword keyword-const">const</span> <span class="token punctuation">{</span> 方法 <span class="token punctuation">}</span> <span class="token operator">=</span> xxxStore <span class="token comment">//方法直接解构</span>
-    <span class="token keyword keyword-const">const</span> <span class="token punctuation">{</span> 属性<span class="token operator">/</span>计算属性 <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">storeToRefs</span><span class="token punctuation">(</span>xxxStore<span class="token punctuation">)</span> <span class="token comment">//属性解构</span>
-<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
-</code></pre><ul>
-<li>storeToRefs函数进行解构，解决<strong>响应式丢失</strong>的问题</li>
-</ul>
-<hr>
 <h2 id="vue3项目搭建">Vue3项目搭建 </h2>
 <p><strong>使用vue官方脚手架</strong></p>
 <pre data-role="codeBlock" data-info="git" class="language-git git"><code>npm init vue@latest

@@ -1,6 +1,6 @@
 <h1 align="center">AJAX&nodejs&webpack&Git</h1>
 
-<div align="right">最近更新时间：2024-01-04</div>
+<div align="right">最近更新时间：2024-01-25</div>
 
 ## 介绍
 
@@ -423,7 +423,7 @@ const mygenerator = MyGenerator()//生成器函数调用，返回generator对象
 
 ### fetch类
 
-**概念**：js自带的轻量版axios请求函数
+**概念**：浏览器自带的轻量版axios请求函数
 
 ```javascript
 (async function(){

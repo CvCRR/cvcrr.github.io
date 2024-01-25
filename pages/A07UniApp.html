@@ -25,7 +25,7 @@
       <div class="crossnote markdown-preview  ">
       
 <h1 align="center">UniApp</h1>
-<div align="right">最近更新时间：2024-01-16</div>
+<div align="right">最近更新时间：2024-01-25</div>
 <h2 id="介绍">介绍 </h2>
 <table>
 <thead>
@@ -910,7 +910,7 @@ uni<span class="token punctuation">.</span><span class="token function">addInter
     同setup语法糖的属性<span class="token operator">/</span>方法<span class="token operator">/</span>计算属性定义方式
     <span class="token keyword keyword-return">return</span> <span class="token punctuation">{</span>属性<span class="token operator">/</span>方法<span class="token operator">/</span>计算属性<span class="token punctuation">}</span>    <span class="token comment">//作为局部变量必须返回</span>
 <span class="token punctuation">}</span>
-</code></pre><p><strong>与下列使用pinia全局状态管理的对比</strong>：上述是全局类实例化对象，下列是全局对象</p>
+</code></pre><p><strong>与下列使用pinia全局状态管理的对比</strong>：上述是全局类实例化不同对象，下列是全局对象</p>
 <pre data-role="codeBlock" data-info="typescript" class="language-typescript typescript"><code><span class="token comment">//src/stores/xxx.ts</span>
 <span class="token keyword keyword-import">import</span> <span class="token punctuation">{</span> defineStore <span class="token punctuation">}</span> <span class="token keyword keyword-from">from</span> <span class="token string">'pinia'</span>
 <span class="token keyword keyword-export">export</span> <span class="token keyword keyword-const">const</span> useXxxStore <span class="token operator">=</span> <span class="token function">defineStore</span><span class="token punctuation">(</span><span class="token string">'xxx'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span><span class="token punctuation">{</span>
@@ -1113,8 +1113,8 @@ uni<span class="token punctuation">.</span><span class="token function">addInter
 </ul>
 
       </div>
-      
       <script src="./nav.js"></script>
+      
     
     
     

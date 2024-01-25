@@ -1,6 +1,6 @@
 <h1 align="center">Vue2&Vue3</h1>
 
-<div align="right">最近更新时间：2024-01-14</div>
+<div align="right">最近更新时间：2024-01-25</div>
 
 ## 介绍
 
@@ -310,7 +310,7 @@ Vue.component('Child',Child)
 
 ### 组件通信
 
-#### 父传子自定义属性
+#### 自定义属性（父传子）
 
 **父组件**
 
@@ -359,7 +359,7 @@ Vue.component('Child',Child)
 
 ---
 
-#### 子传父自定义事件
+#### 自定义事件（子传父）
 
 **父组件**
 
@@ -416,7 +416,9 @@ Vue.component('Child',Child)
 
 ---
 
-#### 非父子通信EventBus
+#### EventBus中间组件（万能跨组件通信）
+
+**原理**：新建Vue实例作为通信的中间组件名叫bus，使用其`$emit`函数发送和`$on`函数接收使用。可见每个Vue组件都有这两个函数，自定义事件就是依赖于子组件的这两个函数。
 
 **eventBus.js制作**
 
@@ -470,7 +472,7 @@ export default new Vue()
 
 ---
 
-#### ref和nextTick
+#### ref和nextTick（子传父，父调子）
 
 **概念**：ref是标签属性，用于获取DOM对象，操作DOM对象，或者获取子组件vm实例对象，实现子传父通信。nextTick是异步函数，等待网页元素更新后才执行。
 
@@ -513,36 +515,7 @@ export default new Vue()
 
 ---
 
-### 动态组件
-
-**概念**：component占位符，实现子组件的动态显示和隐藏，可以实现路由
-
-```javascript
-<script>
-    import Child from '@/compoents/Child.vue'
-    export default{
-        component:{
-            Child:Child
-        },
-        data(){
-            return{
-                key1:Child
-            }
-        }
-    }
-</script>
-
-<template><div>
-
-    <component is="Child"></component> //只显示is属性值名字的子组件
-    <component :is="key1"></component>
-
-</div></template>
-```
-
----
-
-### 组件插槽
+#### 组件插槽（父传子）
 
 **概念**：子组件提供的随意插入内容的区域
 
@@ -568,11 +541,11 @@ export default new Vue()
 </div></template>
 ```
 
-+ **必须新建**template标签，再用该标签属性说明使用哪个具名插槽。
+- **必须新建**template标签，再用该标签属性说明使用哪个具名插槽。
 
-+ 非通信插槽直接**无值属性写法** `v-slot:插槽名` 或 `#插槽名` 。
+- 非通信插槽直接**无值属性写法** `v-slot:插槽名` 或 `#插槽名` 。
 
-+ 通信插槽就利用属性值接收，**接收通信的属性值是变量**，可直接使用。
+- 通信插槽就利用属性值接收，**接收通信的属性值是变量**，可直接使用。
 
 **子组件**
 
@@ -582,6 +555,35 @@ export default new Vue()
     <slot></slot>    //默认插槽
     <slot name="slot2"></slot>    //具名插槽
     <slot name="slot3" msg="hello"></slot>    //具名通信插槽
+
+</div></template>
+```
+
+---
+
+### 动态组件
+
+**概念**：component标签占位符，实现子组件的动态显示和隐藏，可用于实现路由
+
+```javascript
+<script>
+    import Child from '@/compoents/Child.vue'
+    export default{
+        component:{
+            Child:Child
+        },
+        data(){
+            return{
+                key1:Child
+            }
+        }
+    }
+</script>
+
+<template><div>
+
+    <component is="Child"></component> //只显示is属性值名字的子组件
+    <component :is="key1"></component>
 
 </div></template>
 ```
@@ -625,7 +627,7 @@ export default new Vue()
 
 ---
 
-## setup语法糖
+## setup语法糖（Vue3组合式API）
 
 ### 响应式数据
 
@@ -726,13 +728,15 @@ export default new Vue()
 
 ---
 
-### 父传子自定义属性
+### 组件通信
+
+#### 自定义属性（父传子）
 
 **父组件**
 
 ```javascript
 <script setup>
-    import Child from '@/compoents/Child.vue' //自动注册
+    import Child from '@/compoents/Child.vue' //引入后自动注册
 </script>
 
 <template><div>
@@ -763,7 +767,7 @@ export default new Vue()
 
 ---
 
-### 子传父自定义事件
+#### 自定义事件（子传父）
 
 **父组件**
 
@@ -806,9 +810,9 @@ export default new Vue()
 
 ---
 
-### provide通信
+#### provide通信（顶传底）
 
-**发生方组件**
+**顶部发送方组件**
 
 ```javascript
 <script setup>
@@ -818,7 +822,7 @@ export default new Vue()
 </script>
 ```
 
-**接收方组件**
+**底部接收方组件**
 
 ```javascript
 <script setup>
@@ -832,7 +836,7 @@ export default new Vue()
 
 ---
 
-### ref获取标签的变化
+#### ref获取标签（子传父，父调子）
 
 ```javascript
 <script setup>
@@ -859,6 +863,47 @@ export default new Vue()
     })                               
 </script>
 ```
+
+---
+
+#### Pinia插件（万能跨组件通信）
+
+**概念**：全局状态管理，存储全局对象，实现万能的跨组件通讯
+
+**在src/stores/xxx.js下新建文件并配置**
+
+```javascript
+import { defineStore } from 'pinia'
+export const useXxxStore = defineStore('xxx',()=>{
+    同setup语法糖的属性/方法/计算属性定义方式
+    return {属性/方法/计算属性}    //作为局部变量必须返回
+})
+```
+
+**在js入口文件配置**
+
+```javascript
+import { createApp } from 'vue'
+import App from '@/App.vue'
+import { createPinia } from 'pinia'
+const app = createApp(App)
+app.use(createPinia())    //使用Pinia插件
+```
+
+**在vue组件中使用**
+
+```javascript
+<script setup>
+    import { useXxxStore } from './src/stores/xxx.js'
+    import { storeToRefs } from 'pinia'
+    const xxxStore = useXxxStore() //引入接收全局对象
+    xxxStore.属性/方法/计算属性 //无解构时的使用方式
+    const { 方法 } = xxxStore //方法直接解构
+    const { 属性/计算属性 } = storeToRefs(xxxStore) //属性解构
+<script>
+```
+
+- storeToRefs函数进行解构，解决**响应式丢失**的问题
 
 ---
 
@@ -940,47 +985,6 @@ app.use(router)    //使用路由插件
 
 </div></template>
 ```
-
----
-
-## Pinia插件
-
-**概念**：全局状态管理，存储全局对象，实现万能的跨组件通讯
-
-**在src/stores/xxx.js下新建文件并配置**
-
-```javascript
-import { defineStore } from 'pinia'
-export const useXxxStore = defineStore('xxx',()=>{
-    同setup语法糖的属性/方法/计算属性定义方式
-    return {属性/方法/计算属性}    //作为局部变量必须返回
-})
-```
-
-**在js入口文件配置**
-
-```javascript
-import { createApp } from 'vue'
-import App from '@/App.vue'
-import { createPinia } from 'pinia'
-const app = createApp(App)
-app.use(createPinia())    //使用Pinia插件
-```
-
-**在vue组件中使用**
-
-```javascript
-<script setup>
-    import { useXxxStore } from './src/stores/xxx.js'
-    import { storeToRefs } from 'pinia'
-    const xxxStore = useXxxStore() //引入接收全局对象
-    xxxStore.属性/方法/计算属性 //无解构时的使用方式
-    const { 方法 } = xxxStore //方法直接解构
-    const { 属性/计算属性 } = storeToRefs(xxxStore) //属性解构
-<script>
-```
-
-+ storeToRefs函数进行解构，解决**响应式丢失**的问题
 
 ---
 

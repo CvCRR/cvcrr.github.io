@@ -1,6 +1,6 @@
 <h1 align="center">React</h1>
 
-<div align="right">最近更新时间：2024-01-25</div>
+<div align="right">最近更新时间：2024-02-26</div>
 
 ## 介绍
 
@@ -25,6 +25,7 @@ npx creat-react-app [项目名称]
 | public                                      | 不打包资源目录      |
 | src/App.js                                  | react根组件     |
 | src/index.js                                | js入口文件       |
+| src/store                                   | redux目录      |
 
 ---
 
@@ -188,7 +189,7 @@ function App(){
 
 ---
 
-#### 父传子，插槽传值，props特殊属性children接收
+#### 父传子，插槽传值，特殊属性children接收
 
 ```javascript
 function Son(props) {
@@ -315,7 +316,120 @@ function App(){
 
 ---
 
-## 生命周期与监听器useEffect
+### 全局状态管理插件redux
+
+**安装插件：工具包@reduxjs/toolkit、中间件react-redux**
+
+```git
+npm i @reduxjs/toolkit react-redux
+```
+
+**1.在src/store/modules/xxxStore.js下创建全局状态的xxx模块**
+
+```javascript
+import {createSlice} from '@reduxjs/toolkit'
+const xxxStore = createSlice({    //用工具包方法创建store模块
+    name:'xxx',
+    initialState:{    //初始的state
+        count:0,
+        list:[]
+    },
+    reducers:{    //定义各动作的执行内容
+        increment(state){
+            state.count++
+        },
+        decrement(state){
+            state.count--
+        },
+        setCount(state,action){    //传参动作，第2个参数action.payload接收
+            state.count = action.payload
+        },
+        setList(state,action){    //待封装的异步动作
+            state.count = action.payload
+        }
+    }
+})
+const {increment,decrement,setCount,setList} = xxxStore.actions
+export {increment,decrement,setCount}//供组件dispatch触发的动作函数
+/*    从xxxStore.actions获取的动作函数都是返回函数，
+      之所以写法要函数返回函数，
+      是因为dispatch()的参数是函数，
+      函数返回函数执行后才符合参数要求，
+      因此将setList自封装为异步动作函数写法如下（函数返回函数）
+*/
+const fetchList = ()=>{
+    return aync (dispatch)=>{//获取dispatch的写法
+        await axious.get('http://url')
+        dispatch(setList())
+    }
+}
+export {fetchList}//供组件dispatch触发的异步动作函数
+//如果不写成函数返回函数，那么组件触发时就要写成dispatch(fetchList)，与默认写法不同
+
+const reducer = xxxStore.reducer
+export default reducer    //供根store挂载
+```
+
+**2.在src/store/index.js入口文件下，配置根store，将全部模块挂载到根模块上**
+
+```javascript
+import {configureStore} from '@reduxjs/toolkit'
+import xxxReducer from './modules/xxxStore'
+const store = configureStore({    //用工具包方法创建根store
+    reducer:{
+        xxx:xxxReducer
+    }
+})
+export default store
+```
+
+**3.在src/index.js入口文件下，为React注入根store**
+
+```javascript
+import store from './store'
+import {Provider} from 'react-redux'
+root.render(
+    <React.StrictMode>
+        <Provider store={store}>    //用中间件包裹App，store属性绑定
+            <App />
+        </Provider>
+    </React.StrictMode>
+)
+```
+
+**4.在组件中使用全局状态xxx模块**
+
+```javascript
+import {useSelector,useDispatch} from 'react-redux'
+import {increment,decrement,setCount,fetchList} from './store/modules/xxxStore'
+function App(){
+    const xxx = useSelector(state => state.xxx)    //用中间件获取数据
+    const dispatch = useDispatch()    //用中间件获取动作触发器,参数是函数
+    useEffect(()=>{
+        dispatch(fetchList())
+    },[dispatch])
+    return (<div>
+        <button onClick={()=>dispatch(increment())}>+</button>
+        <span>{xxx.count}</span>
+        <button onClick={()=>dispatch(decrement())}>-</button>
+        <button onClick={()=>dispatch(setCount(0))}>恢复为0</button>
+        <span>{xxx.list}</span>
+    </div>)
+}
+```
+
+| 关键对象      | 作用                      |
+|:---------:|:-----------------------:|
+| state状态   | 存储的全局状态                 |
+| action对象  | 动作类型，唯一修改方法是dispatch某动作 |
+| reducer函数 | 定义各`action.type`的执行的内容  |
+
++ 相较于Vue的pinia，redux需要依据动作才能对全局状态进行修改，且需要根store配置和根store数据引入，各自动作函数引入触发
++ redux调试工具（浏览器插件）：Redux DevTools
+
+---
+
+## 副作用函数useEffect（生命周期与监听器）
 
 | useEffect第二个参数 | 第一个回调函数执行时机 | 类似于Vue         |
 |:--------------:|:-----------:|:--------------:|
@@ -329,7 +443,7 @@ function App(){
 import {useState,useEffect} from "react"
 function App(){
     const [list,setList] = useState([])
-    useEffect(async()={
+    useEffect(async()=>{
         const res = await fetch("www.123.com")
         cosnt jsonRes = JSON.parse(res)
         setList(jsonRes.data)
@@ -345,7 +459,7 @@ function App(){
 ```javascript
 import {useState,useEffect} from "react"
 function Son(){
-    useEffect(()={
+    useEffect(()=>{
         const timer = setInterval(()=>{console.log('定时器执行中')},1000)
         return ()=>{    //组件注销时执行，类似于Vue的destroyed
             clearInterval(timer)
@@ -384,7 +498,7 @@ function useXxx(){
 ## 样式写法
 
 ```javascript
-import './index.css'
+import './index.css'//文件内容：.foo{color:'red',fontSize:'50px'}
 const style = {
     color:'red',
     fontSize:'50px'
@@ -392,10 +506,123 @@ const style = {
 function App(){
     return (<div>
         <div style={style}>行内样式<div>
-        <div className="foo">引入样式<div>
+        <div className="foo">引入样式<div>
     </div>)
 }
 export default App
 ```
 
 + webpack的js引入方式
+
+---
+
+## react路由
+
+**1.安装依赖**
+
+```git
+npm i react-router-dom
+```
+
+**2.独立路由文件src/router/index.js，注册路由**
+
+```javascript
+import {createBrowserRouter} from 'react-router-dom'
+import Login from '../page/Login'    //登陆页组件
+import Article from '../page/Article'    //文章页组件
+import More from '../page/More'    //更新页组件
+import Board from '../page/More/Board'    //（更多页嵌套的）面板页组件
+import About from '../page/More/About'    //（更多页嵌套的）关于页组件
+const router = createBrowserRouter([    //路由注册
+    {
+        path:'/login',
+        element:<Login/>
+    },
+    {
+        path:'/article/:id/:name',    //占位符，用于路由参数传参
+        element:<Article/>
+    },
+    {
+        path:'/more',
+        element:<More/>,
+        children:[    //嵌套路由
+            {
+                path:'/board',
+                element:<Board/>
+            },
+            {
+                path:'/about',
+                element:<About/>
+            },
+        ]
+    }
+])
+export default router
+```
+
+**3.在src/index.js入口js文件下，挂载路由**
+
+```javascript
+import {RouterProvider} from 'react-router-dom'
+import router from './router'
+root.render(
+    <React.StrictMode>
+        <RouterProvider router={router}></RouterProvider>//路由挂载
+    </React.StrictMode>
+)
+```
+
+**4.各组件页面**
+
+**登陆页：传参跳转**
+
+```javascript
+import {useNavigate} from 'react-router-dom'
+function Login(){
+    const navigate = useNavigate()
+    return (<div>
+        <div>登陆页</div>
+        <button onClick={()=>{
+            navigate('/article?id=1011&name=jack')
+        }}>查询参数传参跳转至文章页</button>
+        <button onClick={()=>{
+            navigate('/article/1014/john')
+        }}>路由参数传参跳转至文章页</button>
+    </div>)
+}
+export default Login
+```
+
+**文章页：参数接收**
+
+```javascript
+import {useSearchParams,useParams} from 'react-router-dom'
+function Article(){
+    const [params1] = useSearchParams()
+    const params2 = useParams()
+    return (<div>
+        <div>文章页</div>
+        <div>查询参数{params1.get('id')}{params1.get('name')}</div>
+        <div>路由参数{params2.id}{params2.name}</div>
+    </div>)
+}
+export default Article
+```
+
+**更多页：嵌套路由的跳转与输出**
+
+```javascript
+import {Outlet,useNavigate} from 'react-router-dom'
+function More(){
+    const navigate = useNavigate()
+    return (<div>
+        <div>更多页</div>
+        <button onClick={()=>{navigate('/more/board')}}>跳面板</button>
+        <button onClick={()=>{navigate('/more/about')}}>跳关于</button>
+        <Outlet/>    //嵌套路由输出位置
+    </div>)
+}
+export default More
+```
+
+---

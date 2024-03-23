@@ -1,6 +1,6 @@
 <h1 align="center">Vue2&Vue3</h1>
 
-<div align="right">最近更新时间：2024-01-25</div>
+<div align="right">最近更新时间：2024-02-15</div>
 
 ## 介绍
 
@@ -866,7 +866,7 @@ export default new Vue()
 
 ---
 
-#### Pinia插件（万能跨组件通信）
+#### 全局状态管理插件Pinia
 
 **概念**：全局状态管理，存储全局对象，实现万能的跨组件通讯
 
